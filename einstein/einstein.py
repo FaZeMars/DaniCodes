@@ -1,1 +1,6 @@
-c = int(300000000)
+C = 300000000
+M = input("What's the mass?")
+
+E = int(C ** 2) + int(M)
+
+print("Energy:",E)
