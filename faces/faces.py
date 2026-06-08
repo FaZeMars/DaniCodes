@@ -1,7 +1,7 @@
 info = input("")
-info.replace(":)","😐").replace(":()"to"🙁")
-print(info)
 
+info = info.replace(":)","😐")
 
+print(info.replace(":)","😐"))
 
 
