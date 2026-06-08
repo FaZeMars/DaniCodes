@@ -1,5 +1,5 @@
 info = input("")
-info.convert(":)","😐").convert(":()","🙁")
+info.replace(":)","😐").replace(":()","🙁")
 print(info)
 
 
