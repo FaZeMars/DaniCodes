@@ -6,7 +6,7 @@ def main():
 
 def dollars_to_float(d):
     nosign = d.replace("$", "")
-    clean = float.(nosign)
+    clean = float(nosign)
 
 
 
