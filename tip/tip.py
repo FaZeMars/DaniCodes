@@ -5,7 +5,7 @@ def main():
     print(f"Leave ${tip:.2f}")
 
 def dollars_to_float(d):
-    float.("")
+    
 
 
 def percent_to_float(p):
