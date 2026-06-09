@@ -6,11 +6,19 @@ def main():
 
 def dollars_to_float(d):
     nosign = d.replace("$", "")
-    clean = float(nosign)
+    done = float(nosign)
+
+
 
 
 
 def percent_to_float(p):
+    signo = p.replace("%", "")
+    float = float(signo)
+
+
 
 
 main()
+
+int(doneee) * int(float)
