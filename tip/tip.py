@@ -16,7 +16,7 @@ def dollars_to_float(d):
 def percent_to_float(p):
     signo = p.replace("%", "")
     casa = float(signo)
-    resultado = (int(casa) / 100) * done
+    resultado = (int(casa) / 100)
     return resultado
 
 
