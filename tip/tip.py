@@ -6,7 +6,8 @@ def main():
 
 def dollars_to_float(d):
     nosign = d.replace("$", "")
-    asac = float(nosign)
+    done = float(nosign)
+    return done
 
 
 
@@ -15,7 +16,7 @@ def dollars_to_float(d):
 def percent_to_float(p):
     signo = p.replace("%", "")
     casa = float(signo)
-
+    return casa
 
 
 
