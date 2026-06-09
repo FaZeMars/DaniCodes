@@ -5,8 +5,8 @@ def main():
     print(f"Leave ${tip:.2f}")
 
 def dollars_to_float(d):
-    nosign = d.replace("$", "")
-    done = float(nosign)
+    pre = d.replace("$", "")
+    done = float(pre)
     return done
 
 
@@ -14,8 +14,8 @@ def dollars_to_float(d):
 
 
 def percent_to_float(p):
-    signo = p.replace("%", "")
-    casa = float(signo)
+    pres = p.replace("%", "")
+    casa = float(pres)
     resultado = (int(casa) / 100)
     return resultado
 
