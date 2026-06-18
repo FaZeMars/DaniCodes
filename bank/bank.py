@@ -1,6 +1,7 @@
 def main():
-    greet = input("Greeting: ")
-    
+    greet = input("Greeting: ").lower().strip()
+
+
 
 
 
