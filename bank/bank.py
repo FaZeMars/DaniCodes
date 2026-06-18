@@ -1,15 +1,15 @@
 def main():
     greet = input("Greeting: ").lower().strip()
-    print(f"{value(greet)}")
+    print(value(greet))
 
 
 
 def value(greet):
     if greet.startswith("hello"):
-        print("$0")
+        return("$0")
     elif greet.startswith("h"):
-        print("$20")
+        return("$20")
     else:
-        print("$100")
+        return("$100")
 
 main()
