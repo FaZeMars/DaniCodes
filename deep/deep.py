@@ -1,6 +1,6 @@
 def main():
     x = input("What is the Answer to the Great Question of Life, the Universe, and Everything?" )
-    print()
+    answer
 
 
 def answer(x):
