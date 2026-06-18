@@ -1,6 +1,6 @@
 def main():
     greet = input("Greeting: ").lower().strip()
-    value(greet)
+    print(f"{value(greet)}")
 
 
 
@@ -11,14 +11,5 @@ def value(greet):
         print("$20")
     else:
         print("$100")
-
-
-
-
-
-
-
-
-
 
 main()
