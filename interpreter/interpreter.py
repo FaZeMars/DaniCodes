@@ -2,11 +2,30 @@ def main():
     expression = input("Expression: ")
     parts = expression.split(" ")
 
-    x = parts [0]
-    y = parts [1]
-    z = parts [2]
+    x = int(parts[0])
+    y = parts[1]
+    z = int(parts[2])
 
-    suma = int(x), (y), int(z)
+    if y == "+":
+        result = float(x + z)
+    elif y == "-":
+        result = float(x - z)
+    elif y == "*":
+        result = float(x * z)
+    elif y == "/":
+        result = float(x / z)
 
-    resultado = suma.float(2)
-    print(resultado)
+    print(result)
+
+
+main()
+
+
+
+
+
+
+
+
+
+
