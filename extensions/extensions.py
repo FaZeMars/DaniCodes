@@ -3,6 +3,7 @@ def main():
 
     if filename.endswith(".gif"):
         print("image/gif")
+    elif filename.endswith(")
 
 
 
