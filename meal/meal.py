@@ -13,15 +13,15 @@ def main():
         print("dinner time")
 
 def convert(time):
-    if time.endswith(".pm"):
-        realtime = time.replace(".pm", "")
+    if time.endswith("p.m."):
+        realtime = time.replace("p.m.", "")
         partes = realtime.split(":")
         horas = float(partes[0]) + 12
         minutos = float(partes[1])
         return horas + (minutos / 60)
 
     elif time.endswith("am"):
-        realtime = time.replace(".am", "")
+        realtime = time.replace("a.m.", "")
         partes = realtime.split(":")
         horas = float(partes[0])
         minutos = float(partes[1])
