@@ -2,13 +2,15 @@ def main():
     timeinput = input("What time is it ")
 
     hora = convert(timeinput)
-    
+
     if 7.0 <= hora <= 8.0:
         print("breakfast time")
     elif 12.0 <= hora <= 13:
         print("lunch time")
     elif 18.0 <= hora <= 19.0:
         print("dinner time")
+    else:
+        print("nothing time")
 
 def convert(time):
     time = time.strip()
