@@ -22,7 +22,7 @@ def convert(time):
         minutos = float(partes[1])
         return horas + (minutos / 60)
 
-    elif time.endswith("am"):
+    elif time.endswith("a.m."):
         realtime = time.replace("a.m.", "")
         partes = realtime.split(":")
         horas = float(partes[0])
