@@ -3,4 +3,7 @@ def main():
 
     info = info.replace(":)", "🙂")
     info = info.replace(":(", "🙁")
+
+    print(info)
+
 main()
