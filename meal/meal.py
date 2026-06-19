@@ -17,7 +17,8 @@ def convert(time):
         realtime = time.replace("p.m.", "")
         partes = realtime.split(":")
         horas = float(partes[0])
-            if horas !=
+        if horas != 12:
+                horas = horas + 12
         minutos = float(partes[1])
         return horas + (minutos / 60)
 
@@ -25,6 +26,8 @@ def convert(time):
         realtime = time.replace("a.m.", "")
         partes = realtime.split(":")
         horas = float(partes[0])
+        if horas == 12:
+            horas = 0
         minutos = float(partes[1])
         return horas + (minutos / 60)
 
