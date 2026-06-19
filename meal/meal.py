@@ -1,8 +1,8 @@
 def main():
     timeinput = input("What time is it ")
-    hora = convert(time)
-    if hora.endswith(".pm"):
-       int((hora.replace(".pm", "")) + 12.0
+    
+    hora = convert(timeinput)
+
 
 
     if 7.0 <= hora <= 8.0:
