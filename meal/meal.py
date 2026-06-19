@@ -1,6 +1,6 @@
 def main():
     timeinput = input("What time is it ")
-    
+
     hora = convert(timeinput)
 
 
@@ -13,6 +13,10 @@ def main():
         print("dinner time")
 
 def convert(time):
+    if time.endswith(".pm"):
+        int(time.replace(".pm", "").float) + 12
+
+
     partes = time.split(":")
     horas = float(partes[0])
     minutos = float(partes[1])
