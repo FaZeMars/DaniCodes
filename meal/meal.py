@@ -1,8 +1,8 @@
 def main():
     timeinput = input("What time is it ")
-    hora = convert(timeinput)
+    hora = convert(time)
     if hora.endswith(".pm"):
-       int((hora.replace(".pm", "") + 12.0
+       int((hora.replace(".pm", "")) + 12.0
 
 
     if 7.0 <= hora <= 8.0:
@@ -11,9 +11,6 @@ def main():
         print("lunch time")
     elif 18.0 <= hora <= 19.0:
         print("dinner time")
-
-
-
 
 def convert(time):
     partes = time.split(":")
