@@ -39,4 +39,5 @@ def convert(time):
         return horas + (minutos / 60)
 
 
-main()
+if __name__ == "__main__":
+    main()
