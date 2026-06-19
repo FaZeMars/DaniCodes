@@ -1,9 +1,12 @@
-def main()
+def main():
     info = input("")
-        if info.
 
+    if "😐" in info:
+        infor = info.replace("😐", ":)")
+        print(infor)
 
-info = input("")
-print(info.replace(":)","😐").replace(":(","🙁"))
+    elif "🙁" in info:
+        infor = info.replace("🙁", ":(")
+        print(info)
 
-
+main()
