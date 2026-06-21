@@ -8,7 +8,7 @@ def main():
     while owed > 0:
         print("Amount due:", owed)
         nueva_moneda = int(input("insert coin: "))
-        owed = price - nueva_moneda
+        owed = owed - nueva_moneda
 
 
 
