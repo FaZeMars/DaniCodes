@@ -10,6 +10,9 @@ def main():
         nueva_moneda = int(input("insert coin: "))
         owed = owed - nueva_moneda
 
+    if owed <= 0:
+        print("Change due: ", owed)
+
 
 
 
