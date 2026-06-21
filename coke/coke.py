@@ -5,18 +5,19 @@ def main():
     coin = int(input("insert coin"))
     owed = price - coin
 
-    while owed > 0:
-        print("Amount due:", owed)
-        nueva_moneda = int(input("insert coin: "))
-        owed = owed - nueva_moneda
+    if coin == 25 and coin == 10 and coin == 5:
+         while owed > 0:
+             print("Amount due:", owed)
+             nueva_moneda = int(input("insert coin: "))
+             owed = owed - nueva_moneda
+    else:
+        print("Insert a valid coin")
+        return
 
     if owed <= 0:
-        print("Change due: ", owed)
+        print("Change due: ", abs(owed))
 
 
 
 
 main()
-
-
-
