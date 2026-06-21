@@ -11,7 +11,7 @@ def main():
         owed = owed - nueva_moneda
 
     if owed <= 0:
-        print("Change due: ", owed)
+        print("Change due: ", owed.replace("-", ""))
 
 
 
