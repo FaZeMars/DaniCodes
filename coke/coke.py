@@ -1,9 +1,13 @@
 def main():
 
     price = 50
+    print(owed)
+    coin = int(input("insert coin"))
     owed = price - coin
 
-    coin = int(input("insert coin"))
+    while owed > 0:
+       input("amount due:", price - coin)
+
 
 main()
 
