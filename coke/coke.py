@@ -17,7 +17,7 @@ def main():
             print("insert a valid coin")
 
     if owed <= 0:
-        print("Change due:", abs(owed))
+        print("Change Owed:", abs(owed))
 
 
 
