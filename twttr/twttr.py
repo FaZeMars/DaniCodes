@@ -3,7 +3,6 @@ def main():
     vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
     for vowel in vowels:
-        text.find(vowel)
         text = text.replace(vowel, "")
 
     print("Output:", text)
@@ -20,6 +19,3 @@ main()
 
 
 
-
-
-main()
