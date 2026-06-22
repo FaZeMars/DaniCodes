@@ -13,8 +13,9 @@ def is_valid(s):
         return False
     if not s[0].isalpha() or not s[1].isalpha():
         return False
-    for pla in plate:
-        
+    for pla in s:
+        if pla[1, 2, 3, 4].isnumber():
+            return False
 
 
 
