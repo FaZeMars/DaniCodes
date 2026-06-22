@@ -6,8 +6,6 @@ def main():
         print("Invalid")
 
 
-valid = []
-
 def is_valid(s):
     if not 2 <= len(s) <= 6:
         return False
@@ -15,9 +13,6 @@ def is_valid(s):
         return False
     for pla in s:
         if pla.isdigit():
-            
-
-
 
 
 
