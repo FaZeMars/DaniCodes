@@ -6,7 +6,7 @@ def main():
         text.find(vowel)
         text = text.replace(vowel, "")
 
-    print("Output: ", text)
+    print("Output:", text)
 
 main()
 
