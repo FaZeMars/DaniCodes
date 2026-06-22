@@ -6,8 +6,11 @@ def main():
         print("Invalid")
 
 
+valid = []
+
 def is_valid(s):
-    
+    if
+
 
 
 main()
