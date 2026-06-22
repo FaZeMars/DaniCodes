@@ -9,7 +9,7 @@ def main():
 valid = []
 
 def is_valid(s)
-    if  2 <= len(plate) >= 6:
+    if  2 <= len(s) <= 6:
 
 
 
