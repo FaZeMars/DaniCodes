@@ -20,8 +20,11 @@ def is_valid(s):
             number = True
 
         if pla.isalpha():
-            if number == True
+            if number == True:
                 return False
+
+        if not pla.isalnum():
+            return False
 
 
 
