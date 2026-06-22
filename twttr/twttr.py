@@ -1,7 +1,7 @@
 def main()
     vowel = input("Input: ")
-    vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
-        if vowel 
+    vowel_s = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+        for vowel in vowels
 
 
     no_vowel = print("Output: ", )
