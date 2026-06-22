@@ -8,10 +8,10 @@ def main():
 
 valid = []
 
-def is_valid(s)
+def is_valid(s):
     if not 2 <= len(s) <= 6:
         return false
-    if s.startswith()
+    if s.isalpha(:2):
 
 
 
