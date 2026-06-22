@@ -11,8 +11,16 @@ def is_valid(s):
         return False
     if not s[0].isalpha() or not s[1].isalpha():
         return False
+    number = False
     for pla in s:
         if pla.isdigit():
+            if number == False and pla == "0":
+                return false
+            hubo_numero = True
+
+
+        if hubo_numero == True:
+            return F
 
 
 
