@@ -2,9 +2,6 @@ def main():
     text = input("Input: ")
     vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
-    for vowel in vowels:
-        text.find(vowel)
-        return vowel
 
     for vowel in vowels:
         text.find(vowel)
@@ -16,13 +13,6 @@ def main():
         print(text)
     else:
         return
-
-
-
-    for vowel in vowels:
-        text.find(vowel)
-        return vowel
-
 
 
 
