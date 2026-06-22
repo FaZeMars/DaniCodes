@@ -11,7 +11,7 @@ valid = []
 def is_valid(s):
     if not 2 <= len(s) <= 6:
         return False
-    if not s[0].isalpha() opr s[1].isalpha():
+    if not s[0].isalpha() and not s[1].isalpha():
         return False
     if
 
