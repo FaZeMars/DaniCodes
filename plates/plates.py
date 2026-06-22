@@ -8,8 +8,8 @@ def main():
 
 valid = []
 
-def is_valid(s):
-    if
+def is_valid(s)
+    if  2 <= len(plate) >= 6:
 
 
 
