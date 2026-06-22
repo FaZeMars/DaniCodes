@@ -16,11 +16,11 @@ def is_valid(s):
     for pla in s:
         if pla.isdigit():
             if number == False and pla == "0":
-                return false
+                return False
             number = True
-            
-        if pla.isalpha().
-            if number == true.
+
+        if pla.isalpha():
+            if number == True
                 return False
 
 
