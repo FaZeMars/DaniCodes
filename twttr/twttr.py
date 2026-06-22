@@ -2,19 +2,11 @@ def main():
     text = input("Input: ")
     vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
-
     for vowel in vowels:
         text.find(vowel)
-        return vowel
+        text = text.replace(vowel, "")
 
-
-    if vowel in text:
-        text.replace(vowel, "")
-        print(text)
-    else:
-        return
-
-
+    print("Output: ", text)
 
 main()
 
