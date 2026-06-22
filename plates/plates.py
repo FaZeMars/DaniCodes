@@ -9,7 +9,9 @@ def main():
 valid = []
 
 def is_valid(s)
-    if  2 <= len(s) <= 6:
+    if not 2 <= len(s) <= 6:
+        return false
+    if not 
 
 
 
