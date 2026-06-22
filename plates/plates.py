@@ -25,6 +25,7 @@ def is_valid(s):
 
         if not pla.isalnum():
             return False
+    return True
 
 
 
