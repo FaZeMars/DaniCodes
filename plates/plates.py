@@ -11,7 +11,7 @@ valid = []
 def is_valid(s)
     if not 2 <= len(s) <= 6:
         return false
-    if not 
+    if s
 
 
 
