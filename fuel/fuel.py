@@ -5,8 +5,7 @@ def main():
     num1 = int(part1)
     num2 = int(part2)
 
-    if w == 0:
-        print("E")
+    print(w,"%")
 
 
 
@@ -21,7 +20,7 @@ def main():
             except (ValueError):
                 pass
             except (ZeroDivisionError):
-                return w == 0
+                return w
 
 
 
