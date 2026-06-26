@@ -22,7 +22,7 @@ def main():
         "watermelon": "80"
     }
 
-    item = (input("Item: ")).lowercase()
+    item = (input("Item: ")).lower()
 
     if item in fruits:
         print(item[1])
