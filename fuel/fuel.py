@@ -5,22 +5,22 @@ def main():
     num1 = int(part1)
     num2 = int(part2)
 
-    print(w,"%")
+    print(percent,"%")
 
 
+    def percent():
+        while 0 <= num1 <= num2:
+            if  0 < num1 < num2:
+                try:
+                    z = num1 / num2
+                    q = z * 100
+                    w = q.round()
+                    return percent
 
-    while 0 <= num1 <= num2:
-        if  0 < num1 < num2:
-            try:
-                z = num1 / num2
-                q = z * 100
-                w = q.round()
-                return w
-
-            except (ValueError):
-                pass
-            except (ZeroDivisionError):
-                return w
+                except (ValueError):
+                    pass
+                except (ZeroDivisionError):
+                    return percent
 
 
 
