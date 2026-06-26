@@ -1,8 +1,9 @@
 def main():
     fraction = get_fuel("Fraction: ")
-    twovalues = fraction.split("/")
 
-    
+def fuel(s):
+
+
 
 
 def get_fuel(prompt):
