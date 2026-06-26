@@ -24,9 +24,7 @@ def main():
 
     item = (input("Item: ")).lower()
 
-    if item in fruits:
-        print(frui
-
+    for fruit in fruits.keys()
 
 
 main()
