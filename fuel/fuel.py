@@ -1,7 +1,9 @@
 def main():
-    x = input("Fraction: ")
 
-    
+    inp = input("Fraction: ")
+
+    x, y = inp.strip"/"
+
 
 
 
