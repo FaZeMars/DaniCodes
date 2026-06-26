@@ -2,16 +2,14 @@ def main():
 
     inp = input("Fraction: ")
 
-
-    print(w)
-
+def get_int(inp):
     while True:
         try:
             x, y = inp.split("/")
             num1 = int(x)
             num2 = int(y)
-            w = x + y
-            return int(w)
+            w = num1 + num2
+            return w
 
         except ValueError:
             pass
