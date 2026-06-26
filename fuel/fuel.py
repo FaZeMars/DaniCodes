@@ -3,9 +3,9 @@ def main():
     inp = input("Fraction: ")
     x, y = inp.strip("/")
 
-    if w = 0
+    if w == 0:
         print("E")
-    Elif w =
+
 
 
     while 0 <= int("x") <= int("y"):
@@ -22,7 +22,7 @@ def main():
             return w
 
 
-
+main()
 
 
 
