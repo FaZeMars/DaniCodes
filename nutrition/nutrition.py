@@ -5,7 +5,7 @@ def main():
         "banana": "110",
         "cantaloupe": "50",
         "grapefruit": "60",
-        "honeydew melon": "50",  
+        "honeydew melon": "50",
         "grapes": "90",
         "kiwifruit": "90",
         "lemon": "15",
@@ -21,4 +21,8 @@ def main():
         "tangerine": "50",
         "watermelon": "80"
     }
+
+    item = input("Item: ")
+    
+
 
