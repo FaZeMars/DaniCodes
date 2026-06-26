@@ -2,6 +2,7 @@ def main():
     fraction = get_fuel("Fraction: ")
 
 def fuel(s):
+    fraction.split("/")
 
 
 
