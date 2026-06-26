@@ -25,7 +25,7 @@ def main():
     item = (input("Item: ")).lower()
 
     if item in fruits:
-        print(fruits[0])
+        print(frui
 
 
 
