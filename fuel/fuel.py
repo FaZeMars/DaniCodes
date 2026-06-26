@@ -16,10 +16,13 @@ def main():
                 w = q.round()
                 return w
 
-            except (ValueError, ZeroDivisionError):
+            except (ValueError):
                 pass
-        else:
-            return w
+            except (ZeroDivisionError):
+                return w == 0
+
+
+
 
 
 main()
