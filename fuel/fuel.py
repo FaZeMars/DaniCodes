@@ -1,24 +1,31 @@
 def main():
-    fraction = get_fuel("Fraction: ")
+    x = input("Fraction: ")
 
-def fuel(s):
-    fraction.split("/")
-
+    
 
 
+def fuel(x):
+    x.strip().split("/")
+    return x[0], x[1]
 
-def get_fuel(prompt):
-    while True:
-        try:
-            return int(input(prompt))
-        except (ValueError, ZeroDivisionError):
-            pass
+
+
+
+
 
 
 
 
 
 main()
+
+
+
+
+
+
+
+
 
 
 
