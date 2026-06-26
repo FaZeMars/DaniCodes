@@ -1,11 +1,12 @@
 def main():
-    print(f"F: {get_fuel}")
+    fraction = get_fuel("Fraction: ")
 
 def get_fuel(prompt):
     while True:
         return int(input(prompt))
-    except:
+    except (ValueError, ZeroDivisionError):
         pass
+
 
 
 
