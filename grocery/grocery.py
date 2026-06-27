@@ -4,14 +4,14 @@ def main():
 
 def get_list(s):
     while True:
-        Try:
-            empty = {}
+        empty = {}
+        try:
             groc = input("").upper()
             empty[""] = groc
 
 
         except EOFError:
-        print("")
+            print("")
             break
 
 
