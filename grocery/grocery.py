@@ -14,7 +14,7 @@ def get_list(s):
         print("")
             break
 
-        except
+
 
 
 
