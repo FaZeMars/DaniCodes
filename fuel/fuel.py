@@ -1,26 +1,19 @@
 def main():
 
-    inp = input("Fraction: ")
+resultado = get_fraction("Fraction: ")
 
 
-
-def get_int(inp):
+def get_fraction(prompt):
     while True:
         try:
-            input(inp)
-            x, y = inp.split("/")
-            num1 = int(x)
-            num2 = int(y)
-            w = num1 + num2
-            return w
+            x, y = int(prompt.split("/"))
+            divis = x / y
 
-        except ValueError:
+        except (ValueError, ZeroDivisionError):
             pass
 
-        print(w)
 
 
-main()
 
 
 
