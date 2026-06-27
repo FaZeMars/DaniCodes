@@ -18,9 +18,9 @@ def main():
         inp = input(prompt).titlecase()
         while True:
             try:
-                for price in prices:
-                    print(prices[price])
-                return price
+                if inp in prices:
+                    print(prices[inp])
+                    return x
 
             except (ValueError):
                 pass
