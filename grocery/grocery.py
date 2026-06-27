@@ -5,6 +5,6 @@ def main():
 def get_list(s):
     while True:
         Try:
-            lits = input(s)
-            listed
+            empty = {}
+            
 
