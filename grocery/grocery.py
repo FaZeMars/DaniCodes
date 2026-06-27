@@ -11,7 +11,7 @@ def get_list(s):
             groc = input("").upper()
             if groc in empty:
                 empty[groc] += 1
-            if not groc in empty:
+            else :
                 empty[groc] = 1
 
 
