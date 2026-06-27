@@ -12,15 +12,14 @@ def main():
 }
 
 
-
+    total = 0.0
 
     while True:
         try:
             inp = input("Item: ").title()
-            precios = prices[inp]
 
-            total = precios
-            print(total)
+            total += prices[inp]
+            print(f"Total: ${total:.2f}")
 
 
 
@@ -28,6 +27,7 @@ def main():
         except KeyError:
             pass
         except EOFError:
+            print()
             break
 
 
