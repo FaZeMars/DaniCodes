@@ -10,7 +10,7 @@ def get_list(s):
         try:
             groc = input("").upper()
             empty[groc] = groc
-            comp = (empty[groc]).count()
+            comp = count(empty[groc])
 
 
         except EOFError:
