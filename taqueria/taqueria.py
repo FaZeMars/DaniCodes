@@ -17,7 +17,7 @@ def get_inp(prompt):
     while True:
         try:
             if inp in prices:
-                return inp
+                
 
         except (ValueError):
             pass
