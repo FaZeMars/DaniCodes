@@ -4,8 +4,9 @@ def main():
     print(list)
 
 def get_list(s):
+    empty = {}
     while True:
-        empty = {}
+
         try:
             groc = input("").upper()
             empty[groc] = groc
@@ -13,7 +14,7 @@ def get_list(s):
 
         except EOFError:
             print("")
-            return empty[groc]
+            return empty
 
 
 
