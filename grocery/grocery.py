@@ -9,13 +9,15 @@ def get_list(s):
 
         try:
             groc = input("").upper()
-            empty[groc] = groc
-            comp = count(empty[groc])
+            if groc in empty:
+                empty[groc] += 1
+            if not groc in empty:
+                empty[groc] = 1
 
 
         except EOFError:
             print("")
-            return comp
+            return empty
 
 
 
