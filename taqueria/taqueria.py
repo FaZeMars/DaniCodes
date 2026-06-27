@@ -1,5 +1,5 @@
 def main():
-prices = {
+    prices = {
     "Baja Taco": 4.25,
     "Burrito": 7.50,
     "Bowl": 8.50,
@@ -11,22 +11,20 @@ prices = {
     "Tortilla Salad": 8.00
 }
 
-x = get_inp("Item: ")
+    x = get_inp("Item: ")
 
 
-def get_inp(prompt):
-    inp = input(prompt).titlecase()
-    while True:
-        try:
-            if inp in prices:
-                print(prices[inp])
-                return x
+    def get_inp(prompt):
+        inp = input(prompt).titlecase()
+        while True:
+            try:
+                for price in prices:
+                    print(prices[price])
 
-        except (ValueError):
-            pass
+            except ValueError:
 
 
-main()
+
 
 
 
