@@ -11,14 +11,15 @@ def main():
     "Tortilla Salad": 8.00
 }
 
-    x = get_inp("Item: ")
+    
 
 
-def get_inp(prompt):
-    inp = input(prompt).titlecase()
-    for price in prices
-        if inp == price:
-            
+    while True:
+        inp = input(prompt).titlecase()
+        try:
+            for price in prices:
+                if inp == price
+
 
 
 main()
