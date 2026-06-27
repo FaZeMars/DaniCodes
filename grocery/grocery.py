@@ -6,9 +6,16 @@ def get_list(s):
     while True:
         Try:
             empty = {}
-            groc = input("")
+            groc = input("").upper()
             empty[""] = groc
 
-            
+
+        except EOFError:
+        print("")
+            break
+
+        except
+
+
 
 
