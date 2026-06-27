@@ -16,9 +16,13 @@ def main():
 
     while True:
         try:
-            inp = input("Item: ").titlecase()
+            inp = input("Item: ").title()
             precios = prices[inp]
-            
+
+            total = precios
+            print(total)
+
+
 
 
         except KeyError:
