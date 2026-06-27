@@ -16,7 +16,7 @@ def get_fraction(prompt):
             x = int(x)
             y = int(y)
             divis = x / y
-            percentage = (divis * 100).round()
+            percentage = round(divis * 100)
             return percentage
 
         except (ValueError, ZeroDivisionError):
