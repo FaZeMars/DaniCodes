@@ -1,7 +1,8 @@
 def main():
 
     list = get_list("")
-    print(list)
+    for item in sorted(list):
+        print(list[item], item)
 
 def get_list(s):
     empty = {}
