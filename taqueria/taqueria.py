@@ -11,14 +11,20 @@ def main():
     "Tortilla Salad": 8.00
 }
 
-    
+
 
 
     while True:
-        inp = input(prompt).titlecase()
         try:
-            for price in prices:
-                if inp == price
+            inp = input("Item: ").titlecase()
+            precios = prices[inp]
+            
+
+
+        except KeyError:
+            pass
+        except EOFError:
+            break
 
 
 
