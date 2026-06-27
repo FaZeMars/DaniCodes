@@ -16,14 +16,9 @@ def main():
 
 def get_inp(prompt):
     inp = input(prompt).titlecase()
-    while True:
-        try:
-            if inp in prices:
-                print(prices[inp])
-                return x
-
-        except (ValueError):
-            pass
+    for price in prices
+        if inp == price:
+            
 
 
 main()
