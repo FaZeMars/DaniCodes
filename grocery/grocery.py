@@ -1,21 +1,22 @@
 def main():
 
     list = get_list("")
+    print(list)
 
 def get_list(s):
     while True:
         empty = {}
         try:
             groc = input("").upper()
-            empty[""] = groc
+            empty[groc] = groc
 
 
         except EOFError:
             print("")
-            break
+            return empty[groc]
 
 
 
 
-
+main()
 
