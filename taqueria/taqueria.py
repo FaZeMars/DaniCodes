@@ -14,16 +14,15 @@ def main():
     x = get_inp("Item: ")
 
 
-    def get_inp(prompt):
-        inp = input(prompt).titlecase()
-        while True:
-            try:
-                if inp in prices:
-                    print(prices[inp])
-                    return x
+def get_inp(prompt):
+    inp = input(prompt).titlecase()
+    while True:
+        try:
+            if inp in prices:
+                return x
 
-            except (ValueError):
-                pass
+        except (ValueError):
+            pass
 
 
 main()
