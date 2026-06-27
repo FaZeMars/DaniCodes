@@ -13,19 +13,19 @@ prices = {
 
 
 def get_inp(prompt):
-    inp = input(prompt).titlecase()
+    inp = input(prompt).title()
     while True:
         try:
             if inp in prices:
-                return x
+                return inp
 
         except (ValueError):
             pass
 
 
 
-x = get_inp("Item: ")
-print(prices[get_inp])
+inp = get_inp("Item: ")
+print(prices[inp])
 
 
 
