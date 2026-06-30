@@ -28,7 +28,7 @@ def main():
         print(f"{year}-{int(month):02}-{int(day):02}", end= " ")
 
     else:
-        pass
+        return
 
 
 
