@@ -17,12 +17,15 @@ def main():
 
 
     month, day, year = get_int("Date: ")
-        if 0 < int(day) <= 9
+
 
 
 
     if month in valid:
-        print(f"{year}-{valid[month]}-{day}")
+        print(f"{year}-{valid[month]}-{int(day): 02}")
+
+    else:
+        print(f"{year}-{month}-{int(day): 02}")
 
 
 
