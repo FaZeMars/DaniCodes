@@ -21,7 +21,7 @@ def main():
 
 
 
-    if month in valid and 0 < int(day) <= 31:
+    if month in valid:
         print(f"{year}-{valid[month]}-{int(day):02}")
 
     elif not month in valid and 0 < int(day) <= 31:
@@ -35,15 +35,27 @@ def main():
 def get_int(s):
     while True:
         try:
+
+
+
             inp = input(s)
             if "/" in inp:
                 x = inp.split("/")
-                return x[0], x[1], x[2]
+                if 0 < int(x[1]) <= 31:
+                    return x[0], x[1], x[2]
+                else:
+                    pass
+
+
+
 
             elif "," in inp:
                 z = inp.replace(",", "").title()
                 x = z.split()
-                return x[0], x[1], x[2]
+                if 0 < int(x[1]) <= 31:
+                    return x[0], x[1], x[2]
+                else:
+                    pass
 
             else:
                 print("")
