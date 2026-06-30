@@ -23,7 +23,7 @@ def main():
     while True:
         for moth in valid:
             if month == moth:
-                print(f"{valid[moth]}/{day}/{year}")
+                print(f"{year}")
                 break
             else:
                 return
@@ -39,12 +39,15 @@ def get_int(s):
                 return x[0], x[1], x[2]
 
             elif "," in inp:
+                x = inp.replace(",", "")
+                x = inp.split("")
+                return x[0], x[1], x[2]
 
-                return inp
             else:
                 pass
 
         except ValueError:
+            print("")
             pass
 
         except EOFError:
