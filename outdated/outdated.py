@@ -16,14 +16,14 @@ def main():
 
 
 
-    year, month, day = get_int("Date: ")
+    month, day, year = get_int("Date: ")
 
 
 
     while True:
         for moth in valid:
             if month == moth:
-                print(f"{year}/{valid[moth]}/{day}")
+                print(f"{valid[moth]}/{day}/{year}")
                 break
             else:
                 return
