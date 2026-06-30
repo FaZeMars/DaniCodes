@@ -20,12 +20,13 @@ def main():
 
 
 
-
-    for moth in valid:
-        if month == moth:
-            print(f"{year}/{valid[moth]}/{day}")
-        else:
-            return
+    while True:
+        for moth in valid:
+            if month == moth:
+                print(f"{year}/{valid[moth]}/{day}")
+                break
+            else:
+                return
 
 
 
