@@ -14,53 +14,41 @@ def main():
     "December": "12"
     }
 
-
-
-    month, day, year = get_int("Date: ")
-
     while True:
-        month, day, year = get_int("Date: ")
         try:
+            month, day, year = get_int("Date: ")
 
             if month in valid and 0 < int(day) <= 31:
-                print(f"{year}-{valid[month]}-{int(day): 02}")
+                print(f"{year}-{valid[month]}-{int(day):02}")
+                break
 
-            elif not month in valid and 0 < int(day) <= 31:
-                print(f"{year}-{int(month):02}-{int(day):02}", end= "")
+            elif not month in valid and 0 < int(day) <= 31 and 0 < int(month) <= 12:
+                print(f"{year}-{int(month):02}-{int(day):02}")
+                break
 
             else:
-                raise ValueError
+                pass
 
         except ValueError:
             pass
         except EOFError:
-             break
-
-
-
-
-
+            print("")
+            break
 
 
 def get_int(s):
-            inp = input(s)
-            if "/" in inp:
-                x = inp.split("/")
-                return x[0], x[1], x[2]
+    inp = input(s).strip()
+    if "/" in inp:
+        x = inp.split("/")
+        return x[0], x[1], x[2]
 
-            elif "," in inp:
-                z = inp.replace(",", "").title()
-                x = z.split()
-                return x[0], x[1], x[2]
+    elif "," in inp:
+        z = inp.replace(",", "").title()
+        x = z.split()
+        return x[0], x[1], x[2]
 
-            else:
-                raise ValueError
-        except ValueError:
-            pass
-
+    else:
+        raise ValueError
 
 
 main()
-
-
-
