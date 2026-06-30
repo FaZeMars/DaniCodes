@@ -53,11 +53,10 @@ def get_int(s):
                 if 0 < int(x[1]) <= 31:
                     return x[0], x[1], x[2]
                 else:
-                    pass
+                    raise ValueError
 
-            else:
-                print("")
-                pass
+
+
 
 
 
