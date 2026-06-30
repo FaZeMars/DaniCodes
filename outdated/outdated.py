@@ -39,8 +39,8 @@ def get_int(s):
                 return x[0], x[1], x[2]
 
             elif "," in inp:
-                x = inp.replace(",", "")
-                x = inp.split("")
+                z = inp.replace(",", "").title()
+                x = z.split(" ")
                 return x[0], x[1], x[2]
 
             else:
