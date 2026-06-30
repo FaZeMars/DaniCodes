@@ -1,17 +1,17 @@
 def main():
     valid = {
-    "January": 1,
-    "February": 2,
-    "March": 3,
-    "April": 4,
-    "May": 5,
-    "June": 6,
-    "July": 7,
-    "August": 8,
-    "September": 9,
-    "October": 10,
-    "November": 11,
-    "December": 12,
+    "January": "01",
+    "February": "02",
+    "March": "03",
+    "April": "04",
+    "May": "05",
+    "June": "06",
+    "July": "07",
+    "August": "08",
+    "September": "09",
+    "October": "10",
+    "November": "11",
+    "December": "12"
     }
 
 
@@ -21,9 +21,9 @@ def main():
 
 
 
-    for moth in valid
+    for moth in valid:
         if month == moth:
-            print(f"{year}/{month}/{day}")
+            print(f"{year}/{valid[moth]}/{day}")
         else:
             return
 
