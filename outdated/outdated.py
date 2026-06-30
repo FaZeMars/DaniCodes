@@ -18,7 +18,7 @@ def main():
     while True:
 
         try:
-            year, month, day = get_int("Date: ")
+            year, month, day = get_int()
             if month in valid:
                 print(f"{year}-{valid[month]}-{int(day):02}")
 
@@ -39,7 +39,7 @@ def main():
 
 
 def get_int(s):
-            inp = input(s)
+            inp = input("Date: ")
             if "/" in inp:
                 x = inp.split("/")
                 if 0 < int(x[1]) <= 31:
