@@ -25,7 +25,7 @@ def main():
         print(f"{year}-{valid[month]}-{int(day):02}")
 
     elif not month in valid:
-        print(f"{year}-{int(month):02}-{int(day):02}", end= " ")
+        print(f"{year}-{int(month):02}-{int(day):02}", end= "")
 
     else:
         return
@@ -35,7 +35,7 @@ def main():
 def get_int(s):
     while True:
         try:
-            
+
             inp = input(s)
             if "/" in inp:
                 x = inp.split("/")
