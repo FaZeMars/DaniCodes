@@ -17,6 +17,7 @@ def main():
 
 
     month, day, year = get_int("Date: ")
+        if 0 < int(day) <= 9
 
 
 
