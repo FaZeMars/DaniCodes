@@ -25,10 +25,10 @@ def get_int(s):
             inp = input(s)
             if "/" in inp:
                 inp.split("/","")
-                return inp[0], inp[1], inp[2]
+                return inp[0], inp[1], inp[2]  # 7/7/2011
 
             elif "," in inp:
-                
+
                 return inp
             else:
                 pass
