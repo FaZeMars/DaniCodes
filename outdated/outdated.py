@@ -23,7 +23,7 @@ def main():
     while True:
         for moth in valid:
             if month == moth:
-                print(f"{year}")
+                print(f"{year}/{valid[moth]}/{day}")
                 break
             else:
                 return
