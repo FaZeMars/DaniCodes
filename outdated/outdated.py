@@ -16,7 +16,13 @@ def main():
 
 
 
-year, month, day = get_int("Date: ")
+    year, month, day = get_int()
+
+    if month in valid:
+        print(f"{year}/{month}/{day})
+    else:
+        return
+
 
 
 def get_int(s):
