@@ -20,13 +20,8 @@ def main():
 
 
 
-    while True:
-        for moth in valid:
-            if month == moth:
-                print(f"{year}/{valid[moth]}/{day}")
-                break
-            else:
-                return
+    if month in valid:
+        print(f"{year}/{valid[month]}/{day}")
 
 
 
@@ -40,7 +35,7 @@ def get_int(s):
 
             elif "," in inp:
                 z = inp.replace(",", "").title()
-                x = z.split(" ")
+                x = z.split()
                 return x[0], x[1], x[2]
 
             else:
