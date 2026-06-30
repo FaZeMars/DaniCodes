@@ -15,7 +15,7 @@ def main():
 ]
 
     inputt = get_int("Date: ")
-    if inputt in valid:
+    print(inputt)
 
 
 
@@ -28,9 +28,10 @@ def get_int(s):
                 return inp[0], inp[1], inp[2]
 
             elif "," in inp:
-                inp.split(" ")
-
-
+                inp.replace(",", " ").split(" ")
+                return inp[0], inp[1], inp[2]
+            else:
+                pass
 
         except ValueError:
             pass
@@ -40,7 +41,7 @@ def get_int(s):
             break
 
 
-
+main()
 
 
 
