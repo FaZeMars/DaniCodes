@@ -20,10 +20,10 @@ def main():
 
 
 
-    
+
 
     if month in valid:
-        print(f"{year}/{month}/{day})
+        print(f"{year}/{month}/{day}")
     else:
         return
 
