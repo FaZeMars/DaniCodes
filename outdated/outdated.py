@@ -35,7 +35,7 @@ def get_int(s):
             inp = input(s)
             if "/" in inp:
                 x = inp.split("/")
-                return x  # 7/7/2011
+                return x[0], x[1], x[2]
 
             elif "," in inp:
 
