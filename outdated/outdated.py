@@ -37,12 +37,10 @@ def main():
 
 
 def get_int(s):
+    inp = input(s).strip()
     if "/" in inp:
         x = inp.split("/")
-        if x[0].isdigit():
-            return x[0], x[1], x[2]
-        else:
-            raise ValueError
+        return x[0], x[1], x[2]
 
     elif "," in inp:
         z = inp.replace(",", "").title()
