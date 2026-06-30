@@ -16,13 +16,16 @@ def main():
 
 
 
+year, month, day = get_int("Date: ")
+
+
 def get_int(s):
     while True:
         try:
             inp = input(s)
             if "/" in inp:
-                inp.split("/")
-                return inp[0], inp[1], inp[2]  # 7/7/2011
+                x = inp.split("/")
+                return x  # 7/7/2011
 
             elif "," in inp:
 
