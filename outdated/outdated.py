@@ -20,7 +20,7 @@ def main():
 
     while True:
         month, day, year = get_int("Date: ")
-         try:
+        try:
 
             if month in valid and 0 < int(day) <= 31:
                 print(f"{year}-{valid[month]}-{int(day): 02}")
@@ -31,9 +31,9 @@ def main():
             else:
                 raise ValueError
 
-         except ValueError:
+        except ValueError:
             pass
-         except EOFError:
+        except EOFError:
              break
 
 
@@ -55,6 +55,8 @@ def get_int(s):
 
             else:
                 raise ValueError
+        except ValueError:
+            pass
 
 
 
