@@ -47,7 +47,7 @@ def get_int(s):
 
             else:
                 print("")
-                break
+                pass
 
         except ValueError:
             print("")
