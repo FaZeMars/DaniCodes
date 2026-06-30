@@ -25,7 +25,7 @@ def main():
         print(f"{year}-{valid[month]}-{int(day): 02}")
 
     else:
-        print(f"{year}-{month}-{int(day): 02}")
+        print(f"{year}-{month}-{int(day):02}")
 
 
 
