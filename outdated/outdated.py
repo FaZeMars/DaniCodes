@@ -14,10 +14,10 @@ def main():
     "December": 12,
     }
 
-    a = get_int([0])
-    b = get_int([1])
-    c = get_int([2])
-    print(c)
+    a = get_int[0]
+    b = get_int[1]
+    c = get_int[2]
+    print(a, b, c)
 
 
 
