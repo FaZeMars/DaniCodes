@@ -28,7 +28,7 @@ def get_int(s):
                 return inp[0], inp[1], inp[2]
 
             elif "," in inp:
-                #inp.replace(",", " ").split(" ", "")
+                
                 return inp
             else:
                 pass
