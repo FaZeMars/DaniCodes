@@ -15,27 +15,30 @@ def main():
     }
 
 
+    while True:
 
-    month, day, year = get_int("Date: ")
+        try:
+            year, month, day = get_int("Date: ")
+            if month in valid:
+                print(f"{year}-{valid[month]}-{int(day):02}")
 
+            elif not month in valid:
+                print(f"{year}-{int(month):02}-{int(day):02}", end= "")
 
+            else:
+                return
 
+        except ValueError:
+            pass
 
-    if month in valid:
-        print(f"{year}-{valid[month]}-{int(day):02}")
+        except EOFError:
+            print("")
+            break
 
-    elif not month in valid:
-        print(f"{year}-{int(month):02}-{int(day):02}", end= "")
-
-    else:
-        return
 
 
 
 def get_int(s):
-    while True:
-        try:
-
             inp = input(s)
             if "/" in inp:
                 x = inp.split("/")
@@ -56,13 +59,7 @@ def get_int(s):
                 print("")
                 pass
 
-        except ValueError:
-            print("")
-            break
 
-        except EOFError:
-            print("")
-            break
 
 
 main()
