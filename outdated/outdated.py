@@ -14,11 +14,6 @@ def main():
     "December": 12,
     }
 
-    a = get_int[0]
-    b = get_int[1]
-    c = get_int[2]
-    print(a, b, c)
-
 
 
 def get_int(s):
