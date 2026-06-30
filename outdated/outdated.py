@@ -22,7 +22,7 @@ def main():
 
 
     if month in valid and 0 < int(day) <= 31:
-        print(f"{year}-{valid[month]}-{int(day): 02}")
+        print(f"{year}-{valid[month]}-{int(day):02}")
 
     elif not month in valid and 0 < int(day) <= 31:
         print(f"{year}-{int(month):02}-{int(day):02}", end= " ")
