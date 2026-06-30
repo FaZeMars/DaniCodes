@@ -21,11 +21,11 @@ def main():
 
 
 
-
-    if month in valid:
-        print(f"{year}/{month}/{day}")
-    else:
-        return
+    for moth in valid
+        if month == moth:
+            print(f"{year}/{month}/{day}")
+        else:
+            return
 
 
 
