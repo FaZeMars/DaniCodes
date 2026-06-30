@@ -19,6 +19,7 @@ def main():
     month, day, year = get_int("Date: ")
 
     while True:
+        month, day, year = get_int("Date: ")
          try:
 
             if month in valid and 0 < int(day) <= 31:
@@ -31,8 +32,8 @@ def main():
                 raise ValueError
 
          except ValueError:
-            break
-         except ValueError:
+            pass
+         except EOFError:
              break
 
 
