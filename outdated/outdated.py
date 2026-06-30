@@ -21,7 +21,7 @@ def main():
 
 
     if month in valid:
-        print(f"{year}/{valid[month]}/{day}")
+        print(f"{year}-{valid[month]}-{day}")
 
 
 
