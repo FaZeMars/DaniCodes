@@ -16,7 +16,6 @@ def main():
 
 
     while True:
-
         try:
             year, month, day = get_int()
             if month in valid:
@@ -54,6 +53,8 @@ def get_int(s):
                     return x[0], x[1], x[2]
                 else:
                     raise ValueError
+            else:
+                raise ValueError
 
 
 
