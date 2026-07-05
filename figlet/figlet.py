@@ -10,7 +10,9 @@ def main():
     if sys.argv[1] == "0":
         x = input("Input: ")
         fo = figlet.getFonts()
-        random.choice(figlet.setFont(font=fo))
+        for fonti in fo:
+            f = random.choice("fonti")
+        figlet.setFont(font=f)
         print(figlet.renderText(x))
 
 
