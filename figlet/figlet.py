@@ -7,11 +7,13 @@ figlet = Figlet()
 
 
 def main():
-    if sys.argv[1] == 0:
+    if sys.argv[1] == "0":
         x = input("Input: ")
         fo = figlet.getFonts()
-        for f in fo:
-            
+        random.choice(figlet.setFont(font=fo))
+        print(figlet.renderText(x))
 
 
 
+
+main()
