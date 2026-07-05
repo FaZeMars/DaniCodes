@@ -24,7 +24,7 @@ def main():
         else:
             sys.exit("Invalid Usage")
 
-    else:
+     else:
         sys.exit("Invalid Usage")
 
 
