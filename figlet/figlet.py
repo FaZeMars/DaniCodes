@@ -10,7 +10,8 @@ def main():
     if sys.argv[1] == 0:
         x = input("Input: ")
         fo = figlet.getFonts()
-        fon =
+        for f in fo:
+            
 
 
 
