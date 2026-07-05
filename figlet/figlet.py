@@ -10,14 +10,19 @@ def main():
     if sys.argv[1] == "0":
         x = input("Input: ")
         fo = figlet.getFonts()
-
         f = random.choice(fo)
         figlet.setFont(font=f)
         print(figlet.renderText(x))
 
-    elif sys.argv[1] == "-f" or "font":
+    elif sys.argv[1] == "-f" or "--font":
         x = input("Input: ")
         fo = figlet.getFonts()
+        if sys.argv[2] in fo:
+            figlet.setFont(font=sys.argv[2])
+            print(figlet.renderText(x))
+        else:
+            sys.exit("Invalid Usage")
+
 
 
 
