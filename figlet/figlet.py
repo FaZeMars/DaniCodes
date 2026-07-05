@@ -15,6 +15,8 @@ def main():
         figlet.setFont(font=f)
         print(figlet.renderText(x))
 
+    elif sys.argv[1] == "2"
+
 
 
 
