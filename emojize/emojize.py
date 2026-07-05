@@ -1,6 +1,8 @@
 import emojize
 import sys
 
-string = input("Input: ")
+def main():
+    string = input("Input: ")
+    
 
 
