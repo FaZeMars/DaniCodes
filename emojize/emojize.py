@@ -3,7 +3,8 @@ import sys
 
 def main():
     string = input("Input: ")
-    emoji.emojize(string)
+    emoj = emoji.emojize(string, language='alias')
+    print(emoj)
 
 
 main()
