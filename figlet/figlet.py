@@ -15,7 +15,11 @@ def main():
         figlet.setFont(font=f)
         print(figlet.renderText(x))
 
-    elif sys.argv[1] == "2"
+    elif sys.argv[1] == "-f" or "font":
+        x = input("Input: ")
+        fo = figlet.getFonts()
+
+
 
 
 
