@@ -21,6 +21,7 @@ def main():
                 else:
                     print("EEE")
                     incorrect += 1
+                    pass
 
         except ValueError:
             pass
