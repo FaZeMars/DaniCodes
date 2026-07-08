@@ -1,21 +1,19 @@
 import inflect
+p = inflect.engine()
 
 def main():
 
-    z = x.joinas()
-    print(f"Adieu, Adieu to {z}.")
 
+    x = []
     while True:
-        s
         try:
-            x = {input("Name: ")}
-            pass
-
+            user_input = input("Name: ")
+            x.append(user_input)
         except EOFError:
-            return x
+            break
+    print()
 
-
-def joinas(s):
-    s.join((s))
+    final = p.join(x)
+    print(f"Adieu, adieu, to {final}")
 
 main()
