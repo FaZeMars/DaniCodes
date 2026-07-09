@@ -11,7 +11,7 @@ def main():
         bitcoin = 0
         for dato in o["data"]:
             bitcoin = float(dato["priceUsd"])
-            x = float(int((sys.argv[1]).strip))
+            x = float((sys.argv[1].strip()))
             return bitcoin
 
     except ValueError:
