@@ -18,5 +18,6 @@ def main():
     except requests.RequestException:
         sys.exit("Conection Error")
 
-    
+    x = float(int(sys.argv[1]))
+    print(f"${x * bitcoin:,.4f}")
 
