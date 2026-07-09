@@ -14,8 +14,7 @@ def main():
         o = response.json()
         bitcoin = 0
         for dato in o["data"]:
-            bitcoin = dato[float("priceUsd")]
-            return bitcoin
+            bitcoin = float(dato["priceUsd"])
     except requests.RequestException:
         sys.exit("Conection Error")
 
