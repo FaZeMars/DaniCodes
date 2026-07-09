@@ -11,14 +11,12 @@ def main():
         bitcoin = 0
         for dato in o["data"]:
             bitcoin = float(dato["priceUsd"])
+            return bitcoin
 
     except ValueError:
         sys.exit("Command-line argument is not a number")
-
-
-
-
-
     except requests.RequestException:
         sys.exit("Conection Error")
+
+    
 
