@@ -1,42 +1,50 @@
 import random
-
-
-
+import sys
 
 def main():
     levelinput = get_level()
-
     correct = 0
-    incorrect = 0
-    while True:
-        try:
-            for problem in range(0,10):
-                x = generate_integer(levelinput)
-                y = generate_integer(levelinput)
-                z = x + y
-                intento = (input(f"{x} + {y}"))
+    try:
+        for problem in range(0,10):
+            x = generate_integer(levelinput)
+            y = generate_integer(levelinput)
+            z = x + y
+            incorrect = 0
+            while True:
+                intento = int(input(f"{x} + {y} ="))
                 if intento == z:
                     correct += 1
                     break
+
                 else:
                     print("EEE")
                     incorrect += 1
-                    pass
+                    if incorrect == 3:
+                        incorrect = 0
+                        print(f"{x} + {y} = {z}")
+                        break
 
-        except ValueError:
-            pass
+        print(f"Score: {correct}")
 
+
+    except ValueError:
+        pass
+    except EOFError:
+        sys.exit(" Program Closed")
 
 
 
 
 def get_level():
-    levelinput = int(input("Level: "))
-    if int == 1 or int == 2 or int == 3:
-        return levelinput
+    while True:
+        try:
+            levelinput = int(input("Level: "))
+            if levelinput == 1 or levelinput == 2 or levelinput == 3:
+                return levelinput
 
-    else:
-        raise ValueError
+        except ValueError:
+            pass
+
 
 
 def generate_integer(level):
@@ -45,6 +53,7 @@ def generate_integer(level):
         return x
     elif level == 2:
         x = random.randint(10, 99)
+        return x
     elif level == 3:
         x = random.randint(100, 999)
         return x
