@@ -12,9 +12,7 @@ def main():
     try:
         response = requests.get(url)
         o = response.json()
-        bitcoin = 0
-        for dato in o["data"]:
-            bitcoin = float(dato["priceUsd"])
+        bitcoin = float(o["data"]["priceUsd"])
     except requests.RequestException:
         sys.exit("Conection Error")
 
