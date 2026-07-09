@@ -2,7 +2,7 @@ import sys
 import requests
 import json
 
-url = "rest.coincap.io/v3/assets/bitcoin?apiKey=d4d29d2d0a72c79a3448eceb57525d79b56c9d5b687793b4ddbb9dad86095625"
+url = "https://rest.coincap.io/v3/assets/bitcoin?apiKey=d4d29d2d0a72c79a3448eceb57525d79b56c9d5b687793b4ddbb9dad86095625"
 def main():
     try:
         x = float((sys.argv[1].strip()))
@@ -14,7 +14,7 @@ def main():
         o = response.json()
         bitcoin = 0
         for dato in o["data"]:
-            bitcoin = float(dato["priceUsd"])
+            bitcoin = dato[float("priceUsd")]
             return bitcoin
     except requests.RequestException:
         sys.exit("Conection Error")
