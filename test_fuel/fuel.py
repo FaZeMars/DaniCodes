@@ -19,8 +19,10 @@ def convert(fraction):
             percent = round(divis * 100)
             return percent
 
-    except (ValueError, ZeroDivisionError):
+    except ValueError:
         raise ValueError
+    except ZeroDivisionError:
+        raise ZeroDivisionError
 
 def gauge(percentage):
     if percentage >= 99:
