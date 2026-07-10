@@ -19,9 +19,14 @@ def test_numbers_rules():
         assert is_valid(plate) == False
 
 def test_no_punctuation():
-    for plate in ["CS'50", "CS 50", "DANI_30"]
+    for plate in ["CS'50", "CS 50", "DANI_30"]:
         assert is_valid(plate) == False
-    for plate in ["]
+    for plate in ["CS50", "DANI30", "PRO329"]:
+        assert is_valid(plate) == True
+
+def test_validplate():
+    for plate in ["DANI40", "PRO2", "C2"]:
+        assert is_valid(plate) == True
 
 
 
