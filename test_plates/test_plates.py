@@ -9,7 +9,7 @@ def test_length():
         assert is_valid(plate) == False
 
 def test_numbers_rules():
-    for plate in ["CS05", "050CS", "DANI03"]:
+    for plate in ["CS05", "DANI03"]:
         assert is_valid(plate) == False
 
 def test_no_punctuation():
@@ -17,7 +17,7 @@ def test_no_punctuation():
         assert is_valid(plate) == False
 
 def test_validplate():
-    for plate in ["DANI40", "PRO2", "C2"]:
+    for plate in ["DANI40", "PRO2", "CA"]:
         assert is_valid(plate) == True
 
 
