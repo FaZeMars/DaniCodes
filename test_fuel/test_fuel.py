@@ -6,7 +6,7 @@ import pytest
 def test_convert_zero():
     with pytest.raises(ZeroDivisionError):
         for number in ["0/4", "0/0", "0/100"]:
-            assert convert(number) == ZeroDivisionError
+            convert(number) == ZeroDivisionError
 
 def test_convert_string():
    with pytest.raises(ValueError):
