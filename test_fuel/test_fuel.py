@@ -21,4 +21,11 @@ def test_convert_xnegative():
 
 #Test for gauge function
 def test_gauge_99():
-    for number in
+    assert gauge(99) == "F"
+
+def test_gauge_0():
+    assert gauge(1) == "E"
+
+def test_gauge_middle():
+    for percent in ["55", "67", "94", "9"]:
+        assert gauge(percent) == f"{percent}%"
