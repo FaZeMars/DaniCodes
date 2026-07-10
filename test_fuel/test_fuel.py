@@ -1,6 +1,7 @@
 from fuel import convert
 from fuel import gauge
 
+#Test for convert function
 def test_convert_zero():
     for number in ["0/4", "0/0", "0/100"]:
         assert convert(number) == ZeroDivisionError
@@ -18,3 +19,6 @@ def test_convert_xnegative():
         assert convert(number) == ValueError
 
 
+#Test for gauge function
+def test_gauge_99():
+    for number in
