@@ -1,5 +1,6 @@
 from fuel import convert
 from fuel import gauge
+import pytest
 
 #Test for convert function
 def test_convert_zero():
@@ -7,7 +8,7 @@ def test_convert_zero():
         assert convert(number) == ZeroDivisionError
 
 def test_convert_string():
-    for string in ["one/3", "3/four", "1/4"]:
+    for string in ["one/3", "3/four", "one/4"]:
         assert convert(string) == ValueError
 
 def test_convert_xgreaterthany():
@@ -27,5 +28,5 @@ def test_gauge_0():
     assert gauge(1) == "E"
 
 def test_gauge_middle():
-    for percent in ["55", "67", "94", "9"]:
+    for percent in [55, 67, 94, 9]:
         assert gauge(percent) == f"{percent}%"
