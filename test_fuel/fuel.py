@@ -17,14 +17,14 @@ def convert(fraction):
         if x > y:
             raise ValueError
         elif x < 0:
-            pass
+            raise ValueError
         else:
             divis = x / y
             percentage = round(divis * 100)
             return percentage
 
     except (ValueError, ZeroDivisionError):
-        pass
+        raise ValueError
 
 
 if __name__ == "__main__":
