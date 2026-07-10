@@ -4,20 +4,24 @@ import pytest
 
 #Test for convert function
 def test_convert_zero():
-    for number in ["0/4", "0/0", "0/100"]:
-        assert convert(number) == ZeroDivisionError
+    with pytest.raises(ZeroDivisionError):
+        for number in ["0/4", "0/0", "0/100"]:
+            assert convert(number) == ZeroDivisionError
 
 def test_convert_string():
-    for string in ["one/3", "3/four", "one/4"]:
-        assert convert(string) == ValueError
+   with pytest.raises(ValueError):
+        for string in ["one/3", "3/four", "one/4"]:
+            assert convert(string) == ValueError
 
 def test_convert_xgreaterthany():
-    for number in ["4/3", "8/4", "2/1"]:
-        assert convert(number) == ValueError
+   with pytest.raises(ValueError):
+        for number in ["4/3", "8/4", "2/1"]:
+            assert convert(number) == ValueError
 
 def test_convert_xnegative():
-    for number in ["-3/3", "-4/2", "-10/100"]:
-        assert convert(number) == ValueError
+    with pytest.raises(ValueError):
+        for number in ["-3/3", "-4/2", "-10/100"]:
+            assert convert(number) == ValueError
 
 
 #Test for gauge function
