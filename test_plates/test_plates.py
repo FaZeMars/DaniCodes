@@ -1,7 +1,7 @@
 from plates import is_valid
 
 def test_initial_letters():
-    for plate in ["50CS", "560CS", "30DANI"]:
+    for plate in ["C523", "C236", "D922"]:
         assert is_valid(plate) == False
 
 def test_length():
@@ -9,7 +9,7 @@ def test_length():
         assert is_valid(plate) == False
 
 def test_numbers_rules():
-    for plate in ["CS05", "DANI03"]:
+    for plate in ["CS05P", "DANI03P"]:
         assert is_valid(plate) == False
 
 def test_no_punctuation():
