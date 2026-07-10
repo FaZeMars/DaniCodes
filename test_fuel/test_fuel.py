@@ -23,6 +23,12 @@ def test_convert_xnegative():
         for number in ["-3/3", "-4/2", "-10/100"]:
             convert(number)
 
+def test_convert_valid():
+    assert convert("1/4") == 25
+    assert convert("2/4") == 50
+    assert convert("3/4") == 75
+    assert convert("4/4") == 100
+
 
 #Test for gauge function
 def test_gauge_99():
