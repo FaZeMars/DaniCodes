@@ -13,7 +13,7 @@ def test_alfnum():
 
 def test_valid():
     for plate in ["CS50", "DAM300", "LIN251"]:
-        assert is_valid("name") == True
+        assert is_valid(name) == True
 
 
 
