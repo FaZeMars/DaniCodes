@@ -11,6 +11,12 @@ def test_alfnum():
     assert is_valid("COS5000") == "Invalid"
     assert is_valid("C5") == "Invalid"
 
-def test_withspace():
-    assert is
+def test_valid():
+    for plate in ["CS50", "DAM300", "LIN251"]:
+        assert is_valid("name") == "Valid"
+
+
+
+
+
 
