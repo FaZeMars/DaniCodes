@@ -4,10 +4,10 @@ def main():
 
 
 
-def value(greet):
-    if greet.startswith("hello"):
+def value(greeting):
+    if greeting.startswith("hello"):
         return("$0")
-    elif greet.startswith("h"):
+    elif greeting.startswith("h"):
         return("$20")
     else:
         return("$100")
