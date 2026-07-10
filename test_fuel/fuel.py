@@ -1,6 +1,6 @@
 def main():
 
-    resultado = get_fraction("Fraction: ")
+    resultado = convert(input("Fraction: "))
     if resultado >= 99:
         print("F")
     elif resultado <= 1:
@@ -9,24 +9,23 @@ def main():
         print(f"{resultado}%")
 
 
-def get_fraction(prompt):
-    while True:
-        try:
-            x, y = input(prompt).split("/")
-            x = int(x)
-            y = int(y)
-            if x > y:
-                pass
-            elif x < 0:
-                pass
-            else:
-                divis = x / y
-                percentage = round(divis * 100)
-                return percentage
-
-        except (ValueError, ZeroDivisionError):
+def convert(fraction):
+    try:
+        x, y = fraction.split("/")
+        x = int(x)
+        y = int(y)
+        if x > y:
+            raise ValueError
+        elif x < 0:
             pass
+        else:
+            divis = x / y
+            percentage = round(divis * 100)
+            return percentage
+
+    except (ValueError, ZeroDivisionError):
+        pass
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     main()
