@@ -12,25 +12,18 @@ elif len(command) > 2:
 else:
     try:
         if command[1].endswith(".csv"):
-
-
-            if command[1] == "sicilian.csv":
-                prices = []
-                with open("sicilian.csv") as file:
-                    reader = csv.reader(file)
-                    for row in reader:
-                        prices.append({"Sicilian Pizza": row["Sicilian Pizza"], "Small": row["Small"], "Large": row["Large"]})
-
-                print(tabulate(prices))
+            with open(command[1]) as file:
+                reader = csv.DictReader
+                for row in reader:
+                    command[1].append({"row1": row[1], row"})
 
 
 
-            elif command[1] == "regular.csv":
-                with open("regular.csv") as file:
-                    pass
 
-            else:
-                raise FileNotFoundError
+                    #students.append({"name": row["name"], "home": row["home"]})
+
+
+
 
         else:
             sys.exit("Not a CSV file")
