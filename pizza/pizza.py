@@ -17,7 +17,7 @@ else:
                 reader = csv.DictReader(file)
                 for row in reader:
                     prices.append(row)
-            print(tabulate.tabulate(prices, headers="keys", tablefmt="outline"))
+            print(tabulate.tabulate(prices, headers="keys", tablefmt="grid"))
 
 
         else:
