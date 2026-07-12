@@ -21,7 +21,7 @@ else:
                     for row in reader:
                         prices.append({"Sicilian Pizza": row["Sicilian Pizza"], "Small": row["Small"], "Large": row["Large"]})
 
-                print(tabulate([prices]))
+                print(tabulate(prices))
 
 
 
