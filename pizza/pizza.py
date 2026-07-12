@@ -27,6 +27,7 @@ else:
 
             elif command[1] == "regular.csv":
                 with open("regular.csv") as file:
+                    pass
 
             else:
                 raise FileNotFoundError
