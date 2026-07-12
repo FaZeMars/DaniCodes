@@ -1,15 +1,16 @@
 import sys
 
 command = sys.argv
-if command[0].endswith(".py"):
+if command[1].endswith(".py"):
     try:
-        with open command[1] as file:
+        with open(command[1]) as file:
             lineamount = 0
             for line in file:
-                if line.lstrip == "" or line.startswith("#"):
+                if line.lstrip() == "" or line.startswith("#"):
                     lineamount += 0
                 else:
                     lineamount += 1
+        print(lineamount)
 
 
 
