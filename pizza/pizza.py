@@ -14,14 +14,18 @@ else:
 
 
             if command[1] == "sicilian.csv":
+                prices = []
                 with open("sicilian.csv") as file:
-                    
+                    reader = csv.reader(file)
+                    for row in reader:
+                        prices.append({"Sicilian Pizza": row["Sicilian Pizza"], "Small": row["Small"], "Large": row["Large"]})
+                
+
+
 
 
             elif command[1] == "regular.csv":
                 with open("regular.csv") as file:
-                    for line in file:
-                        print
 
             else:
                 raise FileNotFoundError
