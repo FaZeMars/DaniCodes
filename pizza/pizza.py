@@ -1,4 +1,5 @@
 import sys
+import csv
 
 command = sys.argv
 
@@ -14,8 +15,8 @@ else:
 
             if command[1] == "sicilian.csv":
                 with open("sicilian.csv") as file:
-                    for line in file:
-                        
+                    
+
 
             elif command[1] == "regular.csv":
                 with open("regular.csv") as file:
