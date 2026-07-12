@@ -14,17 +14,10 @@ else:
         if command[1].endswith(".csv"):
             prices = []
             with open(command[1]) as file:
-                reader = csv.DictReader
+                reader = csv.DictReader(file)
                 for row in reader:
                     prices.append(row)
-            print(tabulate)
-
-
-
-
-                    #students.append({"name": row["name"], "home": row["home"]})
-
-
+            print(tabulate(prices, headers="keys", tablefmt="outline"))
 
 
         else:
