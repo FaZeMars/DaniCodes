@@ -6,12 +6,10 @@ if command[0].endswith(".py"):
         with open command[1] as file:
             lineamount = 0
             for line in file:
-                if line.startswith("#"):
+                if line.lstrip == "" or line.startswith("#"):
                     lineamount += 0
-                elif line.startswith('"""'):
-                    lineamount += 0
-                elif line.startswith
-
+                else:
+                    lineamount += 1
 
 
 
