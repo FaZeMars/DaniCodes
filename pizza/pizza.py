@@ -10,10 +10,18 @@ elif len(command) > 2:
 else:
     try:
         if command[1].endswith(".csv"):
+
+
             if command[1] == "sicilian.csv":
                 with open("sicilian.csv") as file:
+                    for line in file:
+                        print
+
             elif command[1] == "regular.csv":
                 with open("regular.csv") as file:
+                    for line in file:
+                        print
+
             else:
                 raise FileNotFoundError
 
