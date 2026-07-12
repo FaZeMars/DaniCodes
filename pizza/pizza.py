@@ -12,10 +12,12 @@ elif len(command) > 2:
 else:
     try:
         if command[1].endswith(".csv"):
+            prices = []
             with open(command[1]) as file:
                 reader = csv.DictReader
                 for row in reader:
-                    command[1].append({"row1": row[1], row"})
+                    prices.append(row)
+            print(tabulate)
 
 
 
