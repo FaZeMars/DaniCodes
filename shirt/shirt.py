@@ -1,4 +1,5 @@
 import sys
+import os
 
 def main():
     pass
@@ -11,7 +12,7 @@ def validate():
         sys.exit("Too few command-line arguments")
     elif len(sys.argv) > 3:
         sys.exit("Too many command-line arguments")
-    
+
             sys.exit("Not a CSV file")
 
 
