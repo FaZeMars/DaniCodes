@@ -2,7 +2,7 @@ import sys
 import os
 
 def main():
-    pass
+    before, after = validate()
 
 
 
@@ -21,7 +21,7 @@ def validate():
             if ext1 in valid_Extensions and ext2 in valid_Extensions:
                 return command[1] and command[2]
             else:
-                sys.exit(")
+                sys.exit("Not a valid extension")
 
         else:
             sys.exit("Input and Output have different extensions")
