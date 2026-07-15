@@ -1,14 +1,12 @@
 import sys
 
-
 def main():
-    old_file, new_file = validate()
-    clean_list = organize(old_file)
-    organized_list = newcsv(new_file, clean_list)
+    pass
+
 
 
 def validate():
-    command = sys.argv
+    command = sys.argv.lowercase()
     if len(sys.argv) < 3:
         sys.exit("Too few command-line arguments")
     elif len(sys.argv) > 3:
@@ -20,25 +18,8 @@ def validate():
         else:
             sys.exit("Not a CSV file")
 
-def organize(x):
-    students = []
-    with open(x) as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            fullname = row["name"]
-            house = row["house"]
-            last, first = fullname.split(", ")
-            students.append({"first": first, "last": last, "house": house})
-    return students
 
 
-def newcsv(x, y):
-    columns = ["first", "last", "house"]
-    with open(x, "w", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=columns)
-        writer.writeheader()
-        for student in y:
-            writer.writerow(student)
 
 
 if __name__ == "__main__":
