@@ -12,7 +12,7 @@ def validate():
     elif len(sys.argv) > 3:
         sys.exit("Too many command-line arguments")
     else:
-        if command[1].endswith(".csv") and command[2].endswith(".csv"):
+        if command[1].endswith(".") and command[2].endswith(".csv"):
             return command[1], command[2]
 
         else:
