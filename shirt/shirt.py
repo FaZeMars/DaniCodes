@@ -5,21 +5,7 @@ from PIL import Image, ImageOps
 def main():
     before, after = validate()
     student_resized = refit(before)
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    studentclean = paste(student_resized, after)
 
 
 
@@ -50,8 +36,11 @@ def refit(s):
     return student_resized
 
 def paste(s, y):
-    pass
-
+    readystudent = refit(s)
+    shirtemplate = Image.open("shirt.png")
+    readystudent.paste(shirtemplate, shirtemplate)
+    readystudent.save(y)
+# y being sys.argv[1]
 
 
 
