@@ -41,10 +41,13 @@ def validate():
         else:
             sys.exit("Input and Output have different extensions")
 
-def refit(s, y):
+def refit(s):
     student_image = Image.open(s)
-    templateimage ) Image.open("shirt.png")
-    template = ImageOps.fit(student_image, "shirt.png")
+    templateimage = Image.open("shirt.png")
+    student_resized = ImageOps.fit(student_image, "shirt.png")
+    return student_resized
+
+def paste(s, y)
 
 
 
