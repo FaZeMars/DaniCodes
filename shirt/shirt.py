@@ -40,8 +40,10 @@ def validate():
         else:
             sys.exit("Input and Output have different extensions")
 
-def asd():
-    pass
+def refit(s, y):
+    with open(s) as y:
+        
+
 
 
 
