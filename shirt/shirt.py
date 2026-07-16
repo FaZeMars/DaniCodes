@@ -1,6 +1,6 @@
 import sys
 import os
-import PIL
+from PIL import Image, ImageOps
 
 def main():
     before, after = validate()
