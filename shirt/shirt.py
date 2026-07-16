@@ -42,7 +42,7 @@ def validate():
             sys.exit("Input and Output have different extensions")
 
 def refit(s, y):
-    shirt = Image.open
+    shirt = Image.open(s)
 
 
 
