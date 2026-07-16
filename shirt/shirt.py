@@ -1,6 +1,6 @@
 import sys
 import os
-from  pillow import image
+import PIL
 
 def main():
     before, after = validate()
