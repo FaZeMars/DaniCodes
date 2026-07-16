@@ -43,7 +43,7 @@ def validate():
 
 def refit(s, y):
     student_image = Image.open(s)
-    imagesize = student_image.size
+    templateimage ) Image.open("shirt.png")
     template = ImageOps.fit(student_image, "shirt.png")
 
 
