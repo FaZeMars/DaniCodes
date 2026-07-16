@@ -4,6 +4,8 @@ from PIL import Image, ImageOps
 
 def main():
     before, after = validate()
+    student_resized = refit(before)
+    
 
 
 
@@ -47,7 +49,8 @@ def refit(s):
     student_resized = ImageOps.fit(student_image, "shirt.png")
     return student_resized
 
-def paste(s, y)
+def paste(s, y):
+    pass
 
 
 
