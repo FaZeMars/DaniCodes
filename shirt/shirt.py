@@ -43,6 +43,7 @@ def validate():
 
 def refit(s, y):
     shirt = Image.open(s)
+    size = s.size
 
 
 
