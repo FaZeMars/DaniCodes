@@ -40,6 +40,8 @@ def validate():
         else:
             sys.exit("Input and Output have different extensions")
 
+def
+
 
 
 
