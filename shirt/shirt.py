@@ -1,5 +1,6 @@
 import sys
 import os
+from  pillow import image
 
 def main():
     before, after = validate()
@@ -41,8 +42,8 @@ def validate():
             sys.exit("Input and Output have different extensions")
 
 def refit(s, y):
-    with open(s) as y:
-        
+    shirt = Image.open
+
 
 
 
