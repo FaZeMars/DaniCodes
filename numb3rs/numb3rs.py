@@ -9,7 +9,7 @@ def main():
 def validate(ip):
     first, second, third, fourth = ip.split(".").strip
     try:
-        if re.search(r"^[0-9]\.", first):
+        if re.search(r"^[0-9]", first):
 
 
 
