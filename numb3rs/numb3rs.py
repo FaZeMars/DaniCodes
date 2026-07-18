@@ -17,7 +17,7 @@ def validate(ip):
         if (len(first) > 1 and first[0] == "0") or (len(second) > 1 and second[0] == "0") or (len(third) > 1 and third[0] == "0") or (len(fourth) > 1 and fourth[0] == "0"):
             return False
 
-        elif  0 <= first <= 255 and 0 <= second <= 255 and 0 <= third <= 255 and 0 <= fourth <= 255:
+        elif  0 <= int(first) <= 255 and 0 <= int(second) <= 255 and 0 <= int(third) <= 255 and 0 <= int(fourth) <= 255:
             return True
         else:
             return False
