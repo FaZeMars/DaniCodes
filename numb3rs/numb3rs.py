@@ -7,7 +7,8 @@ def main():
 
 
 def validate(ip):
-    if re.search(r"")
+    first, second, third, fourth = ip.split(".").strip
+    if re.search(r"^[0-9])
 
 
 
