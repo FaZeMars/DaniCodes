@@ -3,24 +3,25 @@ import sys
 
 
 def main():
-    validate(input("IPv4 Address: "))
+    print(validate(input("IPv4 Address: ")))
 
 
 def validate(ip):
-    match = re.search(r"^(d+)\.(d+)\.(d+)\.(d+)", ip)
+    ip = ip.strip()
+    match = re.search(r"^(d+)\.(d+)\.(d+)\.(d+)$", ip)
     if match:
         first = int(match.group(1))
         second = int(match.group(2))
         third = int(match.group(3))
         fourth = int(match.group(4))
 
-        if not 0 < first <= 255:
+        if not 0 <= first <= 255:
             return False
-        if not 0 < second <= 255:
+        if not 0 <= second <= 255:
             return False
-        if not 0 < third <= 255:
+        if not 0 <= third <= 255:
             return False
-        if not 0 < fourth <= 255:
+        if not 0 <= fourth <= 255:
             return False
         else:
             return True
