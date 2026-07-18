@@ -13,26 +13,21 @@ def validate(ip):
         second = match.group(2)
         third = match.group(3)
         fourth = match.group(4)
-        try:
-            counter = 0
-            if 0 < first <= 255:
-                counter += 1
-            if 0 < second <= 255:
-                counter += 1
-            if 0 < third <= 255:
-                counter += 1
-            if 0 < fourth <= 255:
-                counter += 1
-            else:
-                counter = 0
-        except ValueError:
 
-
-
-
-
-
-
+        if not 0 < first <= 255:
+            return False
+        if not 0 < second <= 255:
+            return False
+        if not 0 < third <= 255:
+            return False
+        if not 0 < fourth <= 255:
+            return False
+        else:
+            return True
+    elif True:
+        sys.exit("True")
+    else:
+        sys.exit("False")
 
 if __name__ == "__main__":
     main()
