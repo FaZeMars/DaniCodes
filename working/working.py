@@ -7,7 +7,10 @@ def main():
 
 
 def convert(s):
-    matches = re.search(r"^()", s)
+    s = s.strip()
+    matches = re.search(r"^([\d+]):([\d+][\d+]) (AM|PM) to ([\d+]):([\d+][\d+]) (AM|PM)", s)
+    if matches:
+        
 
 
 if __name__ == "__main__":
