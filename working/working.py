@@ -9,7 +9,7 @@ def main():
 def convert(s):
     s = s.strip()
     #                         1          2         6          4         5          6
-    matches = re.search(r"^\d", s)
+    matches = re.search(r"^([1]?[0-9]?):([])", s)
     if matches:
 
 
