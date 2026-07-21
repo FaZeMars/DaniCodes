@@ -8,9 +8,10 @@ def main():
 
 def convert(s):
     s = s.strip()
+    #                         1          2         6          4         5          6
     matches = re.search(r"^([\d+]):([\d+][\d+]) (AM|PM) to ([\d+]):([\d+][\d+]) (AM|PM)", s)
     if matches:
-        
+
 
 
 if __name__ == "__main__":
