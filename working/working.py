@@ -8,9 +8,18 @@ def main():
 
 def convert(s):
     s = s.strip()
-    #                         1          2         6          4         5          6
-    matches = re.search(r"^([1]?[0-9]?):([])", s)
+    #                             1               2          3                4         5            6
+    matches = re.search(r"^([0-1]?[0-9]+):([0-5]?[0-9]?) (AM|PM) to ([0-1]?[0-9]]?):([0-5]?[0-9]?) (AM|PM)", s)
     if matches:
+        s1, s2, s3 = matches.group(1), matches.group(2), matches.group(3)
+        s4, s5, s6 = matches.group(4), matches.group(5), matches.group(6)
+        try:
+            if int(s1) > 12 or int(s2) > 59 or int(s4) > 12 or int(s5) > 59:
+                raise ValueError
+            elif int(s1) < 0 or int(s2) < 0 or int(s4) < 0 or int(s5) < 0:
+                raise ValueError
+            else:
+
 
 
 
