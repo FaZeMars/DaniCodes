@@ -16,20 +16,35 @@ def convert(s):
         try:
 
 
-
+############################## 1
             if int(s1) > 12 or int(s4) > 12:
                 raise ValueError
 
-            if not (s3 == "AM" or s3 == "PM") or not (s6 == "AM" or s6 == "PM")
+            if not (s3 == "AM" or s3 == "PM") or not (s6 == "AM" or s6 == "PM"):
                 raise ValueError
+############################## 2
+            if s3 == "AM":
+                if s1 == "12":
+                    s1 = "00"
+                elif s4 == None:
+                    s4 = "00"
 
+            elif s3 == "PM":
+                if int(s1) < 12:
+                    s1 = str(int(s1) + 12)
+############################## 3
 
-            
+            if s6 == "AM":
+                if s4 == "12":
+                    s4 = "00"
+                elif s4 == None:
+                    s4 = "00"
+            elif s6 == "PM":
+                if int(s4) < 12:
+                    s4 = str(int(s4) + 12)
 
-
-
-
-
+            time = f"{s1}:{s2} to {s4}:{s5}"
+            print(time)
 
 
 
