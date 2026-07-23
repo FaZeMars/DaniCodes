@@ -34,22 +34,22 @@ def convert(s):
 
             elif s3 == "AM":
                 if s1 == "12":
-                    s1 == "0"
+                    s1 = "00"
 
             elif s6 == "AM":
                 if s4 == "12":
-                    s4 == "0"
+                    s4 = "00"
 
             elif s3 == "PM":
                 if 0 < int(s1) < 12:
-                    int(s1) + 12
+                    s1 = int(s1) + 12
 
             elif s6 == "PM":
                 if 0 < int(s3) < 12:
-                    int(s3) + 12
+                    s3 = int(s3) + 12
 
             else:
-                print(")
+                print
 
 
 
