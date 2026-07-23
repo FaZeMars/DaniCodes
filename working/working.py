@@ -26,6 +26,17 @@ def convert(s):
             elif s5 == None:
                 s5 = "00"
 
+            elif s3 == "AM":
+                if s1 == "12"
+                    s1 == "0"
+            elif s6 == "AM":
+                if s4 == "12"
+                    s4 == "0"
+            elif s3 == "PM":
+                if s1 == "12":
+                    
+
+
             else:
                 if not (s3 == "AM" or s3 == "PM") or (s6 == "AM" or s6 == "PM"):
                     raise ValueError
