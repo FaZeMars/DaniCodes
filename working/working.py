@@ -32,6 +32,8 @@ def convert(s):
             elif s3 == "PM":
                 if int(s1) < 12:
                     s1 = str(int(s1) + 12)
+                elif s2 == None:
+                    s2 = "00"
 ############################## 3
 
             if s6 == "AM":
@@ -42,6 +44,8 @@ def convert(s):
             elif s6 == "PM":
                 if int(s4) < 12:
                     s4 = str(int(s4) + 12)
+                elif s5 == None:
+                    s5 = "00"
 
             return f"{s1.zfill(2)}:{s2} to {s4.zfill(2)}:{s5}"
 
