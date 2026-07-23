@@ -9,7 +9,7 @@ def main():
 def convert(s):
     s = s.strip()
     #                             1               2          3                4         5            6
-    matches = re.search(r"^([0-1]?[0-9]+):([0-5]?[0-9]?) (AM|PM) to ([0-1]?[0-9]?):([0-5]?[0-9]?) (AM|PM)", s)
+    matches = re.search(r"^([0-1]?[0-9])(?::([0-5]?[0-9]))? (AM|PM) to ([0-1]?[0-9])(?::([0-5]?[0-9]))? (AM|PM)$", s)
     if matches:
         s1, s2, s3 = matches.group(1), matches.group(2), matches.group(3)
         s4, s5, s6 = matches.group(4), matches.group(5), matches.group(6)
@@ -26,8 +26,8 @@ def convert(s):
             if s3 == "AM":
                 if s1 == "12":
                     s1 = "00"
-                elif s4 == None:
-                    s4 = "00"
+                elif s2 == None:
+                    s2 = "00"
 
             elif s3 == "PM":
                 if int(s1) < 12:
@@ -37,19 +37,20 @@ def convert(s):
             if s6 == "AM":
                 if s4 == "12":
                     s4 = "00"
-                elif s4 == None:
-                    s4 = "00"
+                elif s5 == None:
+                    s5 = "00"
             elif s6 == "PM":
                 if int(s4) < 12:
                     s4 = str(int(s4) + 12)
 
-            time = f"{s1}:{s2} to {s4}:{s5}"
-            print(time)
+            return f"{s1.zfill(2)}:{s2} to {s4.zfill(2)}:{s5}"
 
 
 
         except ValueError:
-            sys.exit("Enter a valid time")
+            raise ValueError
+    else:
+        raise ValueError
 
 
 
