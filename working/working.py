@@ -14,6 +14,8 @@ def convert(s):
         s1, s2, s3 = matches.group(1), matches.group(2), matches.group(3)
         s4, s5, s6 = matches.group(4), matches.group(5), matches.group(6)
         try:
+            if int(s1) == 0 or int(s4) == 0:
+                raise ValueError
 
 
 ############################## 1
