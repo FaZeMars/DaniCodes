@@ -1,4 +1,6 @@
+from validator_collection import email
 
+def main():
 
 
 
