@@ -1,4 +1,4 @@
-from validator_collection import validators, errors
+from validator_collection import validators, checkers, errors
 
 def main():
 
@@ -6,9 +6,9 @@ def main():
 
 
 def emailchecker(s):
-    matches = validators.is_email(s)
+    mail = validators.is_email(s)
     try:
-        if matches == "
+        if mail == "True"
 
 
 
