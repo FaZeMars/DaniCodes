@@ -14,6 +14,12 @@ def convert(s):
         s1, s2, s3 = matches.group(1), matches.group(2), matches.group(3)
         s4, s5, s6 = matches.group(4), matches.group(5), matches.group(6)
         try:
+            if s2 == None:
+                s2 = "00"
+            if s5 == None:
+                s5 = "00"
+
+
             if int(s1) == 0 or int(s4) == 0:
                 raise ValueError
 
@@ -28,21 +34,18 @@ def convert(s):
             if s3 == "AM":
                 if s1 == "12":
                     s1 = "00"
-                elif s2 == None:
-                    s2 = "00"
+
 
             elif s3 == "PM":
                 if int(s1) < 12:
                     s1 = str(int(s1) + 12)
-                elif s2 == None:
-                    s2 = "00"
+
 ############################## 3
 
             if s6 == "AM":
                 if s4 == "12":
                     s4 = "00"
-                elif s5 == None:
-                    s5 = "00"
+
             elif s6 == "PM":
                 if int(s4) < 12:
                     s4 = str(int(s4) + 12)
