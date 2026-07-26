@@ -7,7 +7,7 @@ def main():
 
 
 def count(s):
-    re.findall("^$", s, flags=re.IGNORECASE)
+    re.findall(r"um", s, flags=re.IGNORECASE)
 
 
 
