@@ -5,7 +5,10 @@ def main():
 
 
 
-
+def emailchecker(s):
+    matches = validators.is_email(s)
+    try:
+        if matches == "
 
 
 
