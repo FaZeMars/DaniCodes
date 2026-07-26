@@ -7,7 +7,7 @@ def main():
 
 
 def count(s):
-    re.search("^$", s, re.IGNORECASE)
+    re.findall("^$", s, flags=re.IGNORECASE)
 
 
 
