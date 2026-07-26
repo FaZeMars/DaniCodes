@@ -6,4 +6,5 @@ def test_valid():
 
 def test_uminword():
     assert count("yummy") == 0
-
+def test_uppercase():
+    assert count("UM, um, Um, um") == 4
