@@ -1,4 +1,4 @@
-from validator_collection import email
+from validator_collection import validators, errors
 
 def main():
 
