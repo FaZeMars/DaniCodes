@@ -12,7 +12,7 @@ class Jar:
 
     def deposit(self, n):
         self.n = n
-        try:
+
         if self.n > self.capacity or self.n < 0:
             raise ValueError
         return self.size + self.n
@@ -26,6 +26,11 @@ class Jar:
         return self.capacity - self.n
 
 
+
+
+
+
+
     @property
     def capacity(self):
         return self.capacity
@@ -34,21 +39,3 @@ class Jar:
     def size(self):
         return self.size
 
-
-
-
-
-
-def main():
-    
-
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    main()
