@@ -5,19 +5,26 @@ class Jar:
             raise ValueError
         self.capacity = capacity
         self.size = 0
-        ...
+
 
     def __str__(self):
-
-        for _ in range(self.size)
-        print("🍪")
+        return "🍪" * self.size
 
     def deposit(self, n):
+        self.n = n
+        try:
+        if self.n > self.capacity or self.n < 0:
+            raise ValueError
+        return self.size + self.n
 
-        ...
+
 
     def withdraw(self, n):
-        ...
+        self.n = n
+        if self.n > self.capacity or self.n < 0:
+            raise ValueError
+        return self.capacity - self.n
+
 
     @property
     def capacity(self):
@@ -26,3 +33,22 @@ class Jar:
     @property
     def size(self):
         return self.size
+
+
+
+
+
+
+def main():
+    
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
