@@ -9,7 +9,8 @@ class Jar:
 
     def __str__(self):
 
-        ...
+        for _ in range(self.size)
+        print("🍪")
 
     def deposit(self, n):
 
