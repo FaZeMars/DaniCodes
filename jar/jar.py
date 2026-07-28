@@ -14,8 +14,8 @@ class Jar:
         self.n = n
 
         if self.n > self.capacity or self.n < 0:
-            raise ValueError
-        return self.size + self.n
+            raise ValueError("Too Many Cookies!")
+        self.size += self.n
 
 
 
@@ -23,7 +23,7 @@ class Jar:
         self.n = n
         if self.n > self.capacity or self.n < 0:
             raise ValueError
-        return self.capacity - self.n
+        self.size -= self.n
 
 
 
@@ -33,9 +33,9 @@ class Jar:
 
     @property
     def capacity(self):
-        return self.capacity
+        return self._capacity
 
     @property
     def size(self):
-        return self.size
+        return self._size
 
