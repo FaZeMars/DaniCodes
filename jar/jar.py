@@ -5,6 +5,7 @@ class Jar:
         ...
 
     def __str__(self):
+
         ...
 
     def deposit(self, n):
