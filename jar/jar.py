@@ -10,9 +10,11 @@ class Jar:
     def __str__(self):
         return "🍪" * self.size
 
-    def deposit(self, n):
+    def deposit(self, n, capacity):
         if not n:
             raise ValueError("Missing Cookies")
+        elif not isinstance(n, int):
+            raise ValueError("Not a cookie")
         elif n > self.capacity:
             raise ValueError("Too Many Cookies")
         elif n < 0:
