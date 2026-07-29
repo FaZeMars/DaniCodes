@@ -17,9 +17,10 @@ class Jar:
             raise ValueError("Too Many Cookies")
         elif n < 0:
             raise ValueError("Please Insert A Valid Number Of Cookies")
+        elif not isinstance
         else:
             self.n = n
-            
+
 
     def withdraw(self, n):
         ...
