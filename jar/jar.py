@@ -8,10 +8,18 @@ class Jar:
             self.capacity = capacity
 
     def __str__(self):
-        ...
+        return "🍪" * self.size
 
     def deposit(self, n):
-        ...
+        if not n:
+            raise ValueError("Missing Cookies")
+        elif n > self.capacity:
+            raise ValueError("Too Many Cookies")
+        elif n < 0:
+            raise ValueError("Please Insert A Valid Number Of Cookies")
+        else:
+            self.n = n
+            
 
     def withdraw(self, n):
         ...
