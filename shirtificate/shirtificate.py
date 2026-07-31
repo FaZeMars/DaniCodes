@@ -1,7 +1,7 @@
 import sys
-from fpdf2 import FPDF
+from fpdf import FPDF
 
-class PDF:
+class PDF(FPDF):
     def __init__(self,name):
         name = input("What's your name?")
         if not name:
