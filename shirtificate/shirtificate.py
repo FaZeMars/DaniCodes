@@ -1,6 +1,6 @@
 from fpdf2 import FPDF
 
-class Shirt:
+class PDF:
     def __init__(self, name):
         self.name = name
 
