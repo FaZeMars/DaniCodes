@@ -1,6 +1,7 @@
 import pytest
+from datetime import date, timedelta
 from seasons import Birth
 
-def test_invalid():
-    Birth.get("2026-1-2") == "Invalid Date"
+def test_valid():
+    oneyear = str(date.today() - timedelta(days=))
 
