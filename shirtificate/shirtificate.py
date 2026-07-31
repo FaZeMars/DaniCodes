@@ -1,16 +1,14 @@
+import sys
 from fpdf2 import FPDF
 
 class PDF:
-    def __init__(self, name):
+    def __init__(self,name):
+        name = input("What's your name?")
+        if not name:
+            sys.exit("Missing Name")
         self.name = name
 
 
 
-    @classmethod
-    def get(cls):
-        name = input("What's your name?")
-        return cls(name)
 
 
-
-#wget https://cs50.harvard.edu/python/2022/psets/8/shirtificate/shirtificate.png
