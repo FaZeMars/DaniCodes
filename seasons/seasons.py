@@ -9,13 +9,7 @@ class Birth:
     def __init__(self, birthdate):
         self.birthdate = birthdate
 
-    def __str__(self):
-        today = date.today()
-        difference = (today - self._birthdate).days
-        minutes = difference * 24 * 60
-        words = p.number_to_words(minutes, andword="")
 
-        return f"{words.capitalize()} minutes"
 
 
     @classmethod
@@ -41,6 +35,12 @@ class Birth:
         else:
             sys.exit("Invalid Date")
 
+    def convert(self):
+        today = date.today()
+        difference = (today - self._birthdate).days
+        minutes = difference * 24 * 60
+        words = p.number_to_words(minutes, andword="")
+        return f"{words.capitalize()} minutes"
 
 def main():
     birth = Birth.get()
