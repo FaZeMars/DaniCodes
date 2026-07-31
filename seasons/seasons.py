@@ -44,7 +44,7 @@ class Birth:
 
 def main():
     birth = Birth.get()
-    print(birth)
+    print(birth.convert())
 
 
 if __name__ == "__main__":
