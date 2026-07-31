@@ -30,7 +30,7 @@ class Birth:
 
             try:
                 self._birthdate = date(yyyy, mm, dd)
-            except ValueError:
+            except (ValueError, TypeError):
                 sys.exit("Invalid Date")
         else:
             sys.exit("Invalid Date")
