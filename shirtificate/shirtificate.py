@@ -4,8 +4,6 @@ from fpdf import FPDF
 class PDF(FPDF):
     def __init__(self, name):
         super().__init__(orientation="P", unit="mm", format="A4")
-        if not name:
-            sys.exit("Input a name")
         self.name = name
 
     def header(self):
