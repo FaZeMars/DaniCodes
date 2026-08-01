@@ -2,10 +2,13 @@ import sys
 from fpdf import FPDF
 
 class PDF(FPDF):
-
-    def header(self, name):
+    def __init__(self, name):
+        super().__init__(orientation="P", unit="mm", format="A4")
+        if not name:
+            sys.exit("Input a name")
         self.name = name
 
+    def header(self):
         self.set_font("helvetica", style="B", size=15)
         self.cell(0, 10, "CS50 Shirtificate", align="C")
         self.ln(20)
@@ -14,21 +17,9 @@ class PDF(FPDF):
         self.cell(0, 10, f"{self.name} took CS50", align="c")
 
 
-
-    @classmethod
-    def get(cls):
-        name = input("Name: ")
-        if not name:
-            sys.exit("Input a name")
-        return cls(name)
-
-
-
-
-
-
 def main():
-    pdf = PDF(orientation="P", unit="mm", format="A4")
+    name = input("Name: ")
+    pdf = PDF(name)
     pdf.add_page()
     pdf.output("shirtificate.pdf")
 
