@@ -7,7 +7,20 @@ class PDF(FPDF):
         self.set_font("helvetica", style="B", size=15)
         self.cell(0, 10, "CS50 Shirtificate", align="C")
         self.ln(20)
-        self.image("shirtificate/shirtificate.png", x=20, y=70, w=170)
+        self.image("/workspaces/85688235/shirtificate/shirtificate.png", x=20, y=70, w=170)
+
+
+
+
+
+def main():
+    pdf = PDF(orientation="P", unit="mm", format="A4")
+    pdf.add_page()
+    pdf.output("shirtificate.pdf")
+
+
+if __name__ == "__main__":
+    main()
 
 
 
