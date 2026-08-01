@@ -13,7 +13,7 @@ class PDF(FPDF):
         self.cell(0, 10, "CS50 Shirtificate", align="C")
         self.ln(20)
 
-        self.image("shirtificate/shirtificate.png", x=20, y=70, w=170)
+        self.image("shirtificate.png", x=20, y=70, w=170)
 
         self.set_y(140)
         self.set_font("helvetica", style="B", size=15)
