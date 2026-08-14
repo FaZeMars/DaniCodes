@@ -16,4 +16,8 @@ def main():
 
 
 def menu(s):
-    menu = ["1)"]
+    menu = ["1)"
+
+
+
+            ]
