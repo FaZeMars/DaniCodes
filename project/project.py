@@ -2,6 +2,7 @@
 
 import sys
 import re
+import time
 
 
 
@@ -15,5 +16,4 @@ def main():
 
 
 def menu(s):
-
-
+    menu = ["1)"]
