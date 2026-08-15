@@ -109,7 +109,7 @@ def currency_conversion_menu():
     ...
 
 
-def get_other_currency()
+def get_other_currency():
     ...
 
 
@@ -165,13 +165,15 @@ def get_dollar(type):
                   f"Last updated: {timeupdate}",
                   sep="\n"
                   )
-            answer = input("Do you wish to do something else? (y/n) ").strip().lower()
-            if answer == "y":
-                main_menu()
-            elif answer == "n":
-                sys.exit("Closing the program...")
-            else:
-                pass
+            while True:
+                answer = input("Do you wish to do something else? (y/n) ").strip().lower()
+                if answer == "y":
+                    main_menu()
+                elif answer == "n":
+                    sys.exit("Closing the program...")
+                else:
+                    print("")
+
 
         except requests.RequestException:
             sys.exit("Connection Error")
