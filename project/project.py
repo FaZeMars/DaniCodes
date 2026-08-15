@@ -85,7 +85,7 @@ def current_value_menu():
         get_dollar("Tarjeta")
     elif x == "5":
         get_dollar("Cripto")
-        
+
     elif x == "6":
         ...
 
@@ -214,7 +214,19 @@ def get_dollar(type):
                 sys.exit("Connection Error")
 
     elif type == "Cripto":
+            try:
+                o = pre_cripto.json()
+                cripto_buy = o["compra"]
+                cripto_sell = o["venta"]
+                timeupdate = o["fechaActualizacion"]
 
+                print(f"Sale Value: {cripto_sell}",
+                      f"Purchase Value: {cripto_buy}",
+                      f"Last updated: {timeupdate}",
+                      sep="\n"
+                      )
+            except requests.RequestException:
+                sys.exit("Connection Error")
 
 
 
