@@ -169,10 +169,22 @@ def get_dollar(type):
 def get_other_currency():
     menu = ["1)Euro",
             "2)Real Brasileño",
-            "3)Real Chileno",
+            "3)Peso Chileno",
             "4)Peso Uruguayo"
     ]
     print(*menu)
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+    if x == "1":
+        get_dollar("cotizaciones/eur")
+    elif x == "2":
+        get_dollar("cotizaciones/brl")
+    elif x == "3":
+        get_dollar("cotizaciones/clp)
+    elif x == "4":
+        get_dollar("cotizaciones/uyu")
+    else:
+        
+
 
 
 
