@@ -4,6 +4,8 @@ import sys
 import re
 import time
 import os
+import json
+import requests
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -25,7 +27,7 @@ def main_menu():
             "2)Conversion"
             ]
     print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ", end="\n").strip().lower()
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     try:
         if x == "1":
@@ -38,7 +40,7 @@ def main_menu():
             print("Opening current currency conversion options...")
             time.sleep(1)
             clean_terminal()
-            currency_convertion_menu()
+            currency_conversion_menu()
 
 
         else:
@@ -102,7 +104,7 @@ def current_value_menu():
 
 
 def currency_conversion_menu():
-
+    ...
 
 
 
@@ -176,14 +178,17 @@ def get_dollar(type):
         try:
             o = type.json()
             oficial_buy = o["compra"]
-            official_sell = o["venta"]
+            oficial_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
 
-            print(f"
+            print(f"Sale Value: {oficial_sell}",
+                  f"Purchase Value: {oficial_buy}",
+                  f"Last updated: {timeupdate}"
                   )
 
 
-
+        except requests.RequestException:
+            sys.exit("Connection Error")
 
 
 
