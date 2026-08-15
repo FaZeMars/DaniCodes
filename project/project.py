@@ -76,15 +76,15 @@ def current_value_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x == "1":
-        get_dollar("Oficial")
+        get_dollar("oficial")
     elif x == "2":
-        get_dollar("Blue")
+        get_dollar("blue")
     elif x == "3":
-        get_dollar("MEP")
+        get_dollar("bolsa")
     elif x == "4":
-        get_dollar("Tarjeta")
+        get_dollar("tarjeta")
     elif x == "5":
-        get_dollar("Cripto")
+        get_dollar("cripto")
 
     elif x == "6":
         get_other_currency()
@@ -151,17 +151,24 @@ def get_dollar(type):
     pre_cripto = requests.get("https://dolarapi.com/v1/dolares/cripto")
 
 
-    #Dólar oficial conversion
-    if type == "Oficial":
+
+    typelist = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
+
+
+
+
+    if type in typelist:
+        url = f"https://dolarapi.com/v1/dolares/{type}"
+        pre_type = requests.get(url)
         try:
             # o = variable used to store the requests.get json
-            o = pre_oficial.json()
-            oficial_buy = o["compra"]
-            oficial_sell = o["venta"]
+            o = pre_type.json()
+            type_buy = o["compra"]
+            type_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
 
-            print(f"Sale Value: {oficial_sell}",
-                  f"Purchase Value: {oficial_buy}",
+            print(f"Sale Value: {type_sell}",
+                  f"Purchase Value: {type_buy}",
                   f"Last updated: {timeupdate}",
                   sep="\n"
                   )
@@ -178,6 +185,17 @@ def get_dollar(type):
                 else:
                     clean_terminal()
                     print("")
+        except requests.RequestError:
+            sys.exit("Connection Error")
+
+
+
+
+    """
+
+
+    #Dólar oficial conversion
+    if type == "Oficial":
 
 
         except requests.RequestException:
@@ -243,7 +261,7 @@ def get_dollar(type):
             except requests.RequestException:
                 sys.exit("Connection Error")
 
-
+"""
 
 
 
