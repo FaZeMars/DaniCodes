@@ -15,12 +15,6 @@ def main():
     main_menu()
 
 
-
-
-
-
-
-
 def main_menu():
     #Opens up a main menu section for the user to select what they want to do, then calls the function the user wants to use
     menu = ["1)Current Value",
@@ -104,11 +98,6 @@ def current_value_menu():
         current_value_menu()
 
 
-
-
-
-
-    ...
 
 
 def get_dollar(type):
