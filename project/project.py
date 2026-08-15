@@ -19,7 +19,7 @@ def menu():
     menu = ["1)Current Value",
             "2)Conversion"
             ]
-    print(*menu, end=\n)
+    print(*menu, sep="\n")
 
 
 
