@@ -160,7 +160,8 @@ def get_dollar(type):
             sys.exit("Connection Error")
 
     elif type in other_type_list:
-        ...
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
 
 
 
@@ -172,6 +173,7 @@ def get_other_currency():
             "4)Peso Uruguayo"
     ]
     print(*menu)
+
 
 
 
