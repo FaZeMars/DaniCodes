@@ -11,6 +11,9 @@ import os
 def main():
     main_menu()
 
+def clean_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 
 
@@ -24,12 +27,29 @@ def main_menu():
     print(*menu, sep="\n")
     x = input("Select an option ").strip().lower
 
-    if x == "test":
-        print("please enter a valid option")
-        main_menu()
+    if x == "1":
+        print("opening current currency value options...")
+        time.sleep(1)
+        clean_terminal()
+        current_value_menu()
 
     else:
-        ...
+        print("please enter a valid option")
+
+        #pauses the program for 2 seconds
+        time.sleep(2)
+        clean_terminal()
+        main_menu()
+
+
+
+
+
+
+
+def current_value_menu():
+    ...
+
 
 
 
