@@ -20,6 +20,12 @@ def menu():
             "2)Conversion"
             ]
     print(*menu, sep="\n")
+    x = input("Select an option ")
+    if ...
+
+    else:
+        
+
 
 
 
