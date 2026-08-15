@@ -64,7 +64,7 @@ def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
     menu = ["1)Dólar Oficial",
             "2)Dólar Blue",
-            "3)Dólar MEP / Bolsa"
+            "3)Dólar MEP / Bolsa",
             "4)Dólar Tarjeta",
             "5)Dólar Cripto",
             "6)Other currencies:",
@@ -151,6 +151,9 @@ def get_dollar(type):
             oficial_buy = o["compra"]
             oficial_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
+
+
+            
 
             print(f"Sale Value: {oficial_sell}",
                   f"Purchase Value: {oficial_buy}",
