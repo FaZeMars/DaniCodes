@@ -8,14 +8,14 @@ import time
 
 
 def main():
-    menu()
+    main_menu()
 
 
 
 
 
 
-def menu():
+def main_menu():
     menu = ["1)Current Value",
             "2)Conversion"
             ]
@@ -23,7 +23,7 @@ def menu():
     x = input("Select an option ")
     if x == "test":
         print("please enter a valid option")
-        menu()
+        main_menu()
 
     else:
         ...
