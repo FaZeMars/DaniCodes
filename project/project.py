@@ -44,7 +44,8 @@ def main_menu():
 
 
         else:
-            print("please enter a valid option")
+            clean_terminal()
+            main_menu()
 
             #pauses the program for 1 second, then goes back to the main menu
             time.sleep(1)
@@ -154,7 +155,7 @@ def get_dollar(type):
 
 
 def get_other_currency():
-
+    ...
 
 
 
