@@ -40,7 +40,7 @@ def main_menu():
         else:
             print("please enter a valid option")
 
-            #pauses the program for 2 seconds
+            #pauses the program for 2 seconds, then goes back to the main menu
             time.sleep(2)
             clean_terminal()
             main_menu()
@@ -58,12 +58,21 @@ def main_menu():
 def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
     menu = ["1)Dólar Oficial",
-            "2)Dólar Mep",
+            "2)Dólar Blue",
             "3)Dólar MEP / Bolsa"
             "4)Dólar Tarjeta",
-            "5)Dólar Cripto"
-
+            "5)Dólar Cripto",
+            "6)Other currencies:",
+            "7)Main Menu"
     ]
+
+    print(*menu, sep="\n")
+
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
+    if 
+
+
 
 
 
