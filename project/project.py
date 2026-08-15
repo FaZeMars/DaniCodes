@@ -46,8 +46,8 @@ def main_menu():
         else:
             print("please enter a valid option")
 
-            #pauses the program for 2 seconds, then goes back to the main menu
-            time.sleep(2)
+            #pauses the program for 1 second, then goes back to the main menu
+            time.sleep(1)
             clean_terminal()
             main_menu()
 
@@ -85,8 +85,10 @@ def current_value_menu():
         get_dollar("Tarjeta")
     elif x == "5":
         get_dollar("Cripto")
+        
     elif x == "6":
-        get_dollar("Other")
+        ...
+
     elif x == "7":
         print("Returning to main menu...")
         time.sleep(1.5)
@@ -157,9 +159,6 @@ def get_dollar(type):
             oficial_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
 
-
-
-
             print(f"Sale Value: {oficial_sell}",
                   f"Purchase Value: {oficial_buy}",
                   f"Last updated: {timeupdate}",
@@ -168,6 +167,56 @@ def get_dollar(type):
 
         except requests.RequestException:
             sys.exit("Connection Error")
+
+    elif type == "Blue":
+        try:
+            o = pre_blue.json()
+            bolsa_buy = o["compra"]
+            bolsa_sell = o["venta"]
+            timeupdate = o["fechaActualizacion"]
+
+            print(f"Sale Value: {bolsa_sell}",
+                  f"Purchase Value: {bolsa_buy}",
+                  f"Last updated: {timeupdate}",
+                  sep="\n"
+                  )
+        except requests.RequestException:
+            sys.exit("Connection Error")
+
+    elif type == "MEP":
+        try:
+            o = pre_bolsa.json()
+            blue_buy = o["compra"]
+            blue_sell = o["venta"]
+            timeupdate = o["fechaActualizacion"]
+
+            print(f"Sale Value: {blue_sell}",
+                  f"Purchase Value: {blue_buy}",
+                  f"Last updated: {timeupdate}",
+                  sep="\n"
+                  )
+        except requests.RequestException:
+            sys.exit("Connection Error")
+
+    elif type == "Tarjeta":
+            try:
+                o = pre_tarjeta.json()
+                tarjeta_buy = o["compra"]
+                tarjeta_sell = o["venta"]
+                timeupdate = o["fechaActualizacion"]
+
+                print(f"Sale Value: {tarjeta_sell}",
+                      f"Purchase Value: {tarjeta_buy}",
+                      f"Last updated: {timeupdate}",
+                      sep="\n"
+                      )
+            except requests.RequestException:
+                sys.exit("Connection Error")
+
+    elif type == "Cripto":
+
+
+
 
 
 
