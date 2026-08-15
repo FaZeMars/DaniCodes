@@ -70,7 +70,23 @@ def current_value_menu():
 
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
-    if 
+    if x == "1":
+        get_dollar("Oficial")
+    elif x == "2":
+        get_dollar("Blue")
+    elif x == "3":
+        get_dollar("MEP")
+    elif x == "4":
+        get_dollar("Tarjeta")
+    elif x == "5":
+        get_dollar("Cripto")
+    elif x == "6":
+        get_dollar("Other")
+    elif x == "7":
+        print("Returning to main menu...")
+        time.sleep(1.5)
+        clean_terminal()
+        main_menu()
 
 
 
@@ -84,6 +100,33 @@ def current_value_menu():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def get_dollar(n):
+    ...
 
 
 
