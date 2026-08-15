@@ -118,44 +118,8 @@ def get_other_currency():
 
 ##############################################################################################
 def get_dollar(type):
-    """ {
-
-"compra":
-0,
-
-"venta":
-0,
-
-"casa":
-"string",
-
-"nombre":
-"string",
-
-"moneda":
-"string",
-
-"fechaActualizacion":
-"string"
-}
-
-: json returned from dolarapi.com
-"""
-
-#information source: https://dolarapi.com/docs/argentina/
-
-    pre_oficial = requests.get("https://dolarapi.com/v1/dolares/oficial")
-    pre_blue = requests.get("https://dolarapi.com/v1/dolares/blue")
-    pre_bolsa = requests.get("https://dolarapi.com/v1/dolares/bolsa")
-    pre_tarjeta = requests.get("https://dolarapi.com/v1/dolares/tarjeta")
-    pre_cripto = requests.get("https://dolarapi.com/v1/dolares/cripto")
-
-
-
+    
     typelist = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
-
-
-
 
     if type in typelist:
         url = f"https://dolarapi.com/v1/dolares/{type}"
@@ -187,83 +151,6 @@ def get_dollar(type):
                     print("")
         except requests.RequestError:
             sys.exit("Connection Error")
-
-
-
-
-    """
-
-
-    #Dólar oficial conversion
-    if type == "Oficial":
-
-
-        except requests.RequestException:
-            sys.exit("Connection Error")
-
-    elif type == "Blue":
-        try:
-            o = pre_blue.json()
-            bolsa_buy = o["compra"]
-            bolsa_sell = o["venta"]
-            timeupdate = o["fechaActualizacion"]
-
-            print(f"Sale Value: {bolsa_sell}",
-                  f"Purchase Value: {bolsa_buy}",
-                  f"Last updated: {timeupdate}",
-                  sep="\n"
-                  )
-        except requests.RequestException:
-            sys.exit("Connection Error")
-
-    elif type == "MEP":
-        try:
-            o = pre_bolsa.json()
-            blue_buy = o["compra"]
-            blue_sell = o["venta"]
-            timeupdate = o["fechaActualizacion"]
-
-            print(f"Sale Value: {blue_sell}",
-                  f"Purchase Value: {blue_buy}",
-                  f"Last updated: {timeupdate}",
-                  sep="\n"
-                  )
-        except requests.RequestException:
-            sys.exit("Connection Error")
-
-    elif type == "Tarjeta":
-            try:
-                o = pre_tarjeta.json()
-                tarjeta_buy = o["compra"]
-                tarjeta_sell = o["venta"]
-                timeupdate = o["fechaActualizacion"]
-
-                print(f"Sale Value: {tarjeta_sell}",
-                      f"Purchase Value: {tarjeta_buy}",
-                      f"Last updated: {timeupdate}",
-                      sep="\n"
-                      )
-            except requests.RequestException:
-                sys.exit("Connection Error")
-
-    elif type == "Cripto":
-            try:
-                o = pre_cripto.json()
-                cripto_buy = o["compra"]
-                cripto_sell = o["venta"]
-                timeupdate = o["fechaActualizacion"]
-
-                print(f"Sale Value: {cripto_sell}",
-                      f"Purchase Value: {cripto_buy}",
-                      f"Last updated: {timeupdate}",
-                      sep="\n"
-                      )
-            except requests.RequestException:
-                sys.exit("Connection Error")
-
-"""
-
-
 
 
 
