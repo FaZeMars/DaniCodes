@@ -125,7 +125,7 @@ def current_value_menu():
 
 
 
-def get_dollar(n):
+def get_dollar(t):
     ...
 
 
