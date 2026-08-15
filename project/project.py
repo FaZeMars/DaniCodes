@@ -60,7 +60,7 @@ def main_menu():
 
 
 
-
+"""Current Value Options"""
 def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
     menu = ["1)Dólar Oficial",
@@ -77,15 +77,15 @@ def current_value_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x == "1":
-        get_dollar("oficial")
+        get_dollar("dolares/oficial")
     elif x == "2":
-        get_dollar("blue")
+        get_dollar("dolares/blue")
     elif x == "3":
-        get_dollar("bolsa")
+        get_dollar("dolares/bolsa")
     elif x == "4":
-        get_dollar("tarjeta")
+        get_dollar("dolares/tarjeta")
     elif x == "5":
-        get_dollar("cripto")
+        get_dollar("dolares/cripto")
 
     elif x == "6":
         clean_terminal()
@@ -99,7 +99,7 @@ def current_value_menu():
 
     else:
         print("Please input a valid option.")
-        time.sleep(1)
+        time.sleep(0.5)
         clean_terminal
         current_value_menu()
 
@@ -107,25 +107,23 @@ def current_value_menu():
 
 
 
-def currency_conversion_menu():
+
     ...
 
 
-
-
-
-
-
-
-##############################################################################################
 def get_dollar(type):
 
     type = type.strip().lower()
 
-    type_list = ["dolares/oficial", "dolares/blue",
-                 "dolares/bolsa", "dolares/tarjeta",
-                 "dolares/cripto", "cotizaciones/clp",
-                 "cotizaciones/eur", "cotizaciones/brl",
+    #type of currencies available
+    type_list = ["dolares/oficial",
+                 "dolares/blue",
+                 "dolares/bolsa",
+                 "dolares/tarjeta",
+                 "dolares/cripto",
+                 "cotizaciones/clp",
+                 "cotizaciones/eur",
+                 "cotizaciones/brl",
                  "cotizaciones/uyu"
                  ]
 
@@ -166,9 +164,6 @@ def get_dollar(type):
 
 
 
-
-
-
 def get_other_currency():
     menu = ["1)Euro",
             "2)Real Brasileño",
@@ -189,10 +184,12 @@ def get_other_currency():
         clean_terminal()
         get_other_currency()
 
+"""Current Value Options"""
 
 
 
 
+def currency_conversion_menu():
 
 
 
