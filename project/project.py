@@ -5,7 +5,7 @@ import re
 import time
 import os
 import json
-import requests               
+import requests
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -179,6 +179,7 @@ def get_other_currency():
 
 
 def currency_conversion_menu():
+    ...
 
 
 
