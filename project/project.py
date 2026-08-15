@@ -87,7 +87,7 @@ def current_value_menu():
         get_dollar("Cripto")
 
     elif x == "6":
-        ...
+        get_other_currency()
 
     elif x == "7":
         print("Returning to main menu...")
@@ -109,7 +109,8 @@ def currency_conversion_menu():
     ...
 
 
-
+def get_other_currency()
+    ...
 
 
 
