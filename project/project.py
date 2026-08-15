@@ -160,7 +160,8 @@ def get_dollar(type):
             sys.exit("Connection Error")
 
     elif type in other_type_list:
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+        ...
+
 
 
 
@@ -172,18 +173,20 @@ def get_other_currency():
             "3)Peso Chileno",
             "4)Peso Uruguayo"
     ]
-    print(*menu)
+    print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
     if x == "1":
         get_dollar("cotizaciones/eur")
     elif x == "2":
         get_dollar("cotizaciones/brl")
     elif x == "3":
-        get_dollar("cotizaciones/clp)
+        get_dollar("cotizaciones/clp")
     elif x == "4":
         get_dollar("cotizaciones/uyu")
     else:
-        
+        clean_terminal()
+        get_other_currency()
+
 
 
 
