@@ -114,35 +114,6 @@ def currency_conversion_menu():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def get_dollar(type):
     """ {
 
@@ -174,16 +145,17 @@ def get_dollar(type):
     pre_tarjeta = requests.get("https://dolarapi.com/v1/dolares/tarjeta")
     pre_cripto = requests.get("https://dolarapi.com/v1/dolares/cripto")
 
-    if type == "1":
+    if type == "Oficial":
         try:
-            o = type.json()
+            o = pre_oficial.json()
             oficial_buy = o["compra"]
             oficial_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
 
             print(f"Sale Value: {oficial_sell}",
                   f"Purchase Value: {oficial_buy}",
-                  f"Last updated: {timeupdate}"
+                  f"Last updated: {timeupdate}",
+                  sep="\n"
                   )
 
 
