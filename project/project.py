@@ -122,16 +122,16 @@ def get_dollar(type):
 
     type = type.strip().lower()
 
-    type_list = ["oficial", "blue",
-                 "bolsa", "tarjeta",
-                 "cripto", "cotizaciones/clp",
+    type_list = ["dolares/oficial", "dolares/blue",
+                 "dolares/bolsa", "dolares/tarjeta",
+                 "dolares/cripto", "cotizaciones/clp",
                  "cotizaciones/eur", "cotizaciones/brl",
                  "cotizaciones/uyu"
                  ]
 
     if type in type_list:
         try:
-            url = f"https://dolarapi.com/v1/dolares/{type}"
+            url = f"https://dolarapi.com/v1/{type}"
             pre_type = requests.get(url)
             # o = variable used to store the requests.get json
             o = pre_type.json()
