@@ -88,6 +88,7 @@ def current_value_menu():
         get_dollar("cripto")
 
     elif x == "6":
+        clean_terminal()
         get_other_currency()
 
     elif x == "7":
@@ -121,8 +122,12 @@ def get_dollar(type):
 
     type = type.strip().lower()
 
-    type_list = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
-    other_type_list = ["cotizaciones/clp", "cotizaciones/eur", "cotizaciones/brl", "cotizaciones/uyu"]
+    type_list = ["oficial", "blue",
+                 "bolsa", "tarjeta",
+                 "cripto", "cotizaciones/clp",
+                 "cotizaciones/eur", "cotizaciones/brl",
+                 "cotizaciones/uyu"
+                 ]
 
     if type in type_list:
         try:
@@ -158,9 +163,6 @@ def get_dollar(type):
                     print("")
         except requests.RequestException:
             sys.exit("Connection Error")
-
-    elif type in other_type_list:
-        ...
 
 
 
