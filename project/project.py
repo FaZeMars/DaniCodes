@@ -139,9 +139,11 @@ def get_dollar(type):
 : json returned from dolarapi.com
 """
 
+#information source: https://dolarapi.com/docs/argentina/
+
     pre_oficial = requests.get("https://dolarapi.com/v1/dolares/oficial")
     pre_blue = requests.get("https://dolarapi.com/v1/dolares/blue")
-    pre_mep = requests.get("https://dolarapi.com/v1/dolares/bolsa")
+    pre_bolsa = requests.get("https://dolarapi.com/v1/dolares/bolsa")
     pre_tarjeta = requests.get("https://dolarapi.com/v1/dolares/tarjeta")
     pre_cripto = requests.get("https://dolarapi.com/v1/dolares/cripto")
 
@@ -153,7 +155,7 @@ def get_dollar(type):
             timeupdate = o["fechaActualizacion"]
 
 
-            
+
 
             print(f"Sale Value: {oficial_sell}",
                   f"Purchase Value: {oficial_buy}",
