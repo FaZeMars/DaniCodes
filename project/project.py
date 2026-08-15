@@ -5,14 +5,14 @@ import re
 import time
 import os
 
-
+def clean_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def main():
     main_menu()
 
-def clean_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 
 
@@ -35,7 +35,11 @@ def main_menu():
             current_value_menu()
 
         elif x == "2":
-            ...
+            print("Opening current currency conversion options...")
+            time.sleep(1)
+            clean_terminal()
+            currency_convertion_menu()
+
 
         else:
             print("please enter a valid option")
@@ -44,7 +48,6 @@ def main_menu():
             time.sleep(2)
             clean_terminal()
             main_menu()
-
 
     except (EOFError, KeyboardInterrupt):
         sys.exit("Closing the program...")
@@ -88,6 +91,18 @@ def current_value_menu():
         clean_terminal()
         main_menu()
 
+    else:
+        print("Please input a valid option.")
+        time.sleep(1)
+        clean_terminal
+        current_value_menu()
+
+
+
+
+
+def currency_conversion_menu():
+
 
 
 
@@ -127,6 +142,7 @@ def current_value_menu():
 
 def get_dollar(t):
     ...
+
 
 
 
