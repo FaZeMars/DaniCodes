@@ -119,9 +119,12 @@ def currency_conversion_menu():
 ##############################################################################################
 def get_dollar(type):
 
-    typelist = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
+    type = type.strip().lower()
 
-    if type in typelist:
+    type_list = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
+    other_type_list = ["cotizaciones/clp", "cotizaciones/eur", "cotizaciones/brl", "cotizaciones/uyu"]
+
+    if type in type_list:
         try:
             url = f"https://dolarapi.com/v1/dolares/{type}"
             pre_type = requests.get(url)
@@ -129,10 +132,13 @@ def get_dollar(type):
             o = pre_type.json()
             type_buy = o["compra"]
             type_sell = o["venta"]
+            coin_name = o["nombre"]
+            coin = o["moneda"]
             timeupdate = o["fechaActualizacion"]
 
             clean_terminal()
-            print(f"Sale Value: {type_sell}",
+            print(f"{coin} {coin_name}",
+                  f"Sale Value: {type_sell}",
                   f"Purchase Value: {type_buy}",
                   f"Last updated: {timeupdate}",
                   sep="\n"
@@ -153,6 +159,11 @@ def get_dollar(type):
         except requests.RequestException:
             sys.exit("Connection Error")
 
+    elif type in other_type_list:
+        ...
+
+
+
 
 def get_other_currency():
     menu = ["1)Euro",
@@ -161,7 +172,7 @@ def get_other_currency():
             "4)Peso Uruguayo"
     ]
     print(*menu)
-    
+
 
 
 
