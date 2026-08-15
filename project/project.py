@@ -102,7 +102,7 @@ def current_value_menu():
 
 
 def currency_conversion_menu():
-    
+
 
 
 
@@ -142,7 +142,20 @@ def currency_conversion_menu():
 
 
 def get_dollar(t):
-    ...
+    """["1)Dólar Oficial",
+            "2)Dólar Blue",
+            "3)Dólar MEP / Bolsa"
+            "4)Dólar Tarjeta",
+            "5)Dólar Cripto",
+            "6)Other currencies:",
+            "7)Main Menu""""
+    ]
+    oficial =
+    blue =
+    mep =
+    tarjeta =
+    cripto =
+
 
 
 
