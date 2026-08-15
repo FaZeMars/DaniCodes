@@ -57,8 +57,11 @@ def main_menu():
 
 def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
-    menu = ["1)Dólar Blue",
-            "2)Dólar Mep
+    menu = ["1)Dólar Oficial",
+            "2)Dólar Mep",
+            "3)Dólar MEP / Bolsa"
+            "4)Dólar Tarjeta",
+            "5)Dólar Cripto"
 
     ]
 
