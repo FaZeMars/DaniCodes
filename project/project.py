@@ -121,9 +121,9 @@ def get_dollar(type):
     typelist = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
 
     if type in typelist:
-        url = f"https://dolarapi.com/v1/dolares/{type}"
-        pre_type = requests.get(url)
         try:
+            url = f"https://dolarapi.com/v1/dolares/{type}"
+            pre_type = requests.get(url)
             # o = variable used to store the requests.get json
             o = pre_type.json()
             type_buy = o["compra"]
@@ -154,7 +154,7 @@ def get_dollar(type):
 
 
 def get_other_currency():
-    
+
 
 
 
