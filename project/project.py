@@ -21,10 +21,13 @@ def menu():
             ]
     print(*menu, sep="\n")
     x = input("Select an option ")
-    if ...
+    if x == "test":
+        print("please enter a valid option")
+        menu()
 
     else:
-        
+        ...
+
 
 
 
