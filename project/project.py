@@ -155,7 +155,13 @@ def get_dollar(type):
 
 
 def get_other_currency():
-    ...
+    menu = ["1)Euro",
+            "2)Real Brasileño",
+            "3)Real Chileno",
+            "4)Peso Uruguayo"
+    ]
+    print(*menu)
+    
 
 
 
