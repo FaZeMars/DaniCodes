@@ -60,7 +60,7 @@ def main_menu():
 
 
 
-"""Current Value Options"""
+"""Current Value Options""" ##########################################################
 def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
     menu = ["1)Dólar Oficial",
@@ -184,7 +184,7 @@ def get_other_currency():
         clean_terminal()
         get_other_currency()
 
-"""Current Value Options"""
+"""Current Value Options""" ##########################################################
 
 
 
