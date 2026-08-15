@@ -168,10 +168,15 @@ def get_dollar(type):
             while True:
                 answer = input("Do you wish to do something else? (y/n) ").strip().lower()
                 if answer == "y":
+                    print("Going back to the main menu...")
+                    time.sleep(1)
+                    clean_terminal()
                     main_menu()
                 elif answer == "n":
+                    clean_terminal()
                     sys.exit("Closing the program...")
                 else:
+                    clean_terminal()
                     print("")
 
 
