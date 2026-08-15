@@ -147,6 +147,8 @@ def get_dollar(type):
     pre_tarjeta = requests.get("https://dolarapi.com/v1/dolares/tarjeta")
     pre_cripto = requests.get("https://dolarapi.com/v1/dolares/cripto")
 
+
+    #Dólar oficial conversion
     if type == "Oficial":
         try:
             # o = variable used to store the requests.get json
@@ -163,7 +165,6 @@ def get_dollar(type):
                   f"Last updated: {timeupdate}",
                   sep="\n"
                   )
-
 
         except requests.RequestException:
             sys.exit("Connection Error")
