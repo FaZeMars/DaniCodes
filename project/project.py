@@ -149,6 +149,7 @@ def get_dollar(type):
 
     if type == "Oficial":
         try:
+            # o = variable used to store the requests.get json
             o = pre_oficial.json()
             oficial_buy = o["compra"]
             oficial_sell = o["venta"]
