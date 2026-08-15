@@ -118,7 +118,7 @@ def get_other_currency():
 
 ##############################################################################################
 def get_dollar(type):
-    
+
     typelist = ["oficial", "blue", "bolsa", "tarjeta", "cripto"]
 
     if type in typelist:
@@ -131,6 +131,7 @@ def get_dollar(type):
             type_sell = o["venta"]
             timeupdate = o["fechaActualizacion"]
 
+            clean_terminal()
             print(f"Sale Value: {type_sell}",
                   f"Purchase Value: {type_buy}",
                   f"Last updated: {timeupdate}",
@@ -149,7 +150,7 @@ def get_dollar(type):
                 else:
                     clean_terminal()
                     print("")
-        except requests.RequestError:
+        except requests.RequestException:
             sys.exit("Connection Error")
 
 
