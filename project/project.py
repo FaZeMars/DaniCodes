@@ -109,8 +109,7 @@ def currency_conversion_menu():
     ...
 
 
-def get_other_currency():
-    ...
+
 
 
 
@@ -152,6 +151,10 @@ def get_dollar(type):
                     print("")
         except requests.RequestException:
             sys.exit("Connection Error")
+
+
+def get_other_currency():
+    
 
 
 
