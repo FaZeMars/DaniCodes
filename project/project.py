@@ -66,17 +66,20 @@ def current_value_menu():
     ]
 
     print(*menu, sep="\n")
-
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x == "1":
         get_dollar("dolares/oficial")
+
     elif x == "2":
         get_dollar("dolares/blue")
+
     elif x == "3":
         get_dollar("dolares/bolsa")
+
     elif x == "4":
         get_dollar("dolares/tarjeta")
+
     elif x == "5":
         get_dollar("dolares/cripto")
 
