@@ -6,6 +6,7 @@ import time
 import os
 import json
 import requests
+import time
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -127,7 +128,6 @@ def get_dollar(type):
             timeupdate = o["fechaActualizacion"]
 
 
-            re = re.matches(r"^(\d{4})-)
 
 
 
