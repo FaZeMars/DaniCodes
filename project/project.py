@@ -6,7 +6,7 @@ import time
 import os
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -125,8 +125,19 @@ def get_dollar(type):
             type_sell = o["venta"]
             coin_name = o["nombre"]
             coin = o["moneda"]
-            dt = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
-            timeupdate = dt.strftime("%d/%m/%Y at %H:%M")
+
+            datestripped = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
+            now_utc = datetime.now(timezone.utc)
+            difference = now_utc - datestripped
+
+            minutes_ = int(difference.total_seconds() / 60)
+
+            if minutes_ == 0:
+                minutes_ = "Just now"
+            elif minutes_ == 1:
+                minutes_ = "A minute ago"
+            else:
+                minutes_ = f"{minutes_} minutes ago"
 
 
 
@@ -138,7 +149,7 @@ def get_dollar(type):
             print(f"{coin} {coin_name}",
                   f"Sale Value: {type_sell}",
                   f"Purchase Value: {type_buy}",
-                  f"Last updated: {timeupdate}",
+                  f"Last updated: {minutes_}",
                   sep="\n"
                   )
             while True:
