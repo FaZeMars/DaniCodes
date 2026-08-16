@@ -125,8 +125,9 @@ def get_dollar(type):
             type_sell = o["venta"]
             coin_name = o["nombre"]
             coin = o["moneda"]
+            timeupdate = o["fechaActualizacion"]
 
-            datestripped = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
+            """datestripped = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
             now_utc = datetime.now(timezone.utc)
             difference = now_utc - datestripped
 
@@ -137,7 +138,7 @@ def get_dollar(type):
             elif minutes_ == 1:
                 minutes_ = "A minute ago"
             else:
-                minutes_ = f"{minutes_} minutes ago"
+                minutes_ = f"{minutes_} minutes ago" """
 
 
 
@@ -149,7 +150,7 @@ def get_dollar(type):
             print(f"{coin} {coin_name}",
                   f"Sale Value: {type_sell}",
                   f"Purchase Value: {type_buy}",
-                  f"Last updated: {minutes_}",
+                  f"Last updated: {timeupdate}",
                   sep="\n"
                   )
             while True:
