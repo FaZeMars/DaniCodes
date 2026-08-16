@@ -6,7 +6,7 @@ import time
 import os
 import json
 import requests
-import time
+from datetime import datetime
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
