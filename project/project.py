@@ -12,7 +12,10 @@ def clean_terminal():
 
 
 def main():
-    main_menu()
+    try:
+        main_menu()
+    except (EOFError, KeyboardInterrupt):
+        sys.exit("Closing the program...")
 
 
 def main_menu():
@@ -23,31 +26,26 @@ def main_menu():
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
-    try:
-        if x == "1":
-            print("Opening current currency value options...")
-            time.sleep(1)
-            clean_terminal()
-            current_value_menu()
+    if x == "1":
+        print("Opening current currency value options...")
+        time.sleep(1)
+        clean_terminal()
+        current_value_menu()
 
-        elif x == "2":
-            print("Opening current currency conversion options...")
-            time.sleep(1)
-            clean_terminal()
-            currency_conversion_menu()
+    elif x == "2":
+        print("Opening current currency conversion options...")
+        time.sleep(1)
+        clean_terminal()
+        currency_conversion_menu()
 
 
-        else:
-            clean_terminal()
-            main_menu()
+    else:
+        clean_terminal()
+        main_menu()
 
-            #pauses the program for 1 second, then goes back to the main menu
-            time.sleep(1)
-            clean_terminal()
-            main_menu()
 
-    except (EOFError, KeyboardInterrupt):
-        sys.exit("Closing the program...")
+
+
 
 
 
@@ -179,14 +177,11 @@ def get_other_currency():
 
 
 def currency_conversion_menu():
-    menu = ["Currency you want to convert from:
-            "
+    ...
 
 
 
 
-
-    ]
 
 
 
