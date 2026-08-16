@@ -98,7 +98,7 @@ def current_value_menu():
 
 
 
-
+###
 def get_dollar(type):
 
     type = type.strip().lower()
