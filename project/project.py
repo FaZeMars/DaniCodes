@@ -6,7 +6,7 @@ import time
 import os
 import json
 import requests
-import datetime as dt
+from datetime import datetime
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -125,7 +125,8 @@ def get_dollar(type):
             type_sell = o["venta"]
             coin_name = o["nombre"]
             coin = o["moneda"]
-            timeupdate = dt.datetime.fromisoformat(o["fechaActualizacion"])
+            dt = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
+            timeupdate = dt.strftime("%d/%m/%Y at %H:%M")
 
 
 
