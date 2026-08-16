@@ -6,7 +6,7 @@ import time
 import os
 import json
 import requests
-from datetime import datetime
+import datetime as dt
 
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -125,7 +125,7 @@ def get_dollar(type):
             type_sell = o["venta"]
             coin_name = o["nombre"]
             coin = o["moneda"]
-            timeupdate = o["fechaActualizacion"]
+            timeupdate = dt.datetime.fromisoformat(o["fechaActualizacion"])
 
 
 
