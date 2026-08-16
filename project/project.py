@@ -126,6 +126,13 @@ def get_dollar(type):
             coin = o["moneda"]
             timeupdate = o["fechaActualizacion"]
 
+
+            re = re.matches(r"^(\d{4})-)
+
+
+
+
+
             clean_terminal()
             print(f"{coin} {coin_name}",
                   f"Sale Value: {type_sell}",
