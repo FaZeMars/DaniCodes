@@ -204,7 +204,7 @@ def get_other_currency():
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
     if x in valid:
-        get_rate(x)
+        get_rate(valid[x])
 
     else:
         clean_terminal()
