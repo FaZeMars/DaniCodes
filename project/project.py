@@ -136,7 +136,7 @@ def get_rate(type):
             coin = o["moneda"]
 
             #convert ISO 8601 string format to minutes ago
-            datestripped = datetime.strptime(o["fechaActualizacion"], "%Y-%m-%dT%H:%M:%S.%f%z")
+            datestripped = datetime.fromisoformat(o["fechaActualizacion"])
             now_utc = datetime.now(timezone.utc)
             difference = now_utc - datestripped
 
