@@ -143,18 +143,15 @@ def get_rate(type):
             else:
                 minutes_ = f"{minutes_} minutes ago"
 
+                currency_data["type_buy"] = type_buy
+                currency_data["type_sell"] = type_sell
+                currency_data["coin_name"] = coin_name
+                currency_data["coin"] = coin
+                currency_data["minutes_"] = minutes_
 
-            data = {
-                currency_data["type_buy"]: type_buy,
-                currency_data["type_sell"]: type_sell,
-                currency_data["coin_name"]: coin_name,
-                currency_data["coin"]: coin,
-                currency_data["minutes_"]: minutes_
-            }
 
-            print_currency_value(data)
+            print_currency_value(currency_data)
 
-            return data
 
         except requests.RequestException:
             sys.exit("Connection Error")
