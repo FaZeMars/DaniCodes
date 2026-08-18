@@ -82,6 +82,7 @@ def current_value_menu():
 
     if x in valid:
         get_rate(valid[x])
+        print_currency_value(currency_data)
 
     elif x == "6":
         clean_terminal()
