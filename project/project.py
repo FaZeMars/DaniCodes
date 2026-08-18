@@ -141,34 +141,36 @@ def get_rate(type):
             else:
                 minutes_ = f"{minutes_} minutes ago"
 
-
-
-
-
-
-
-            clean_terminal()
-            print(f"{coin} {coin_name}",
-                  f"Sale Value: {type_sell}",
-                  f"Purchase Value: {type_buy}",
-                  f"Last updated: {minutes_}",
-                  sep="\n"
-                  )
-            while True:
-                answer = input("Do you wish to do something else? (y/n) ").strip().lower()
-                if answer == "y":
-                    print("Going back to the main menu...")
-                    time.sleep(1)
-                    clean_terminal()
-                    main_menu()
-                elif answer == "n":
-                    clean_terminal()
-                    sys.exit("Closing the program...")
-                else:
-                    clean_terminal()
-                    print("")
         except requests.RequestException:
             sys.exit("Connection Error")
+
+
+
+
+
+
+def print_currency_value(s)
+        clean_terminal()
+        print(f"{coin} {coin_name}",
+                f"Sale Value: {type_sell}",
+                f"Purchase Value: {type_buy}",
+                f"Last updated: {minutes_}",
+                sep="\n"
+                )
+        while True:
+            answer = input("Do you wish to do something else? (y/n) ").strip().lower()
+            if answer == "y":
+                print("Going back to the main menu...")
+                time.sleep(1)
+                clean_terminal()
+                main_menu()
+            elif answer == "n":
+                clean_terminal()
+                sys.exit("Closing the program...")
+            else:
+                clean_terminal()
+                print("")
+
 
 
 
