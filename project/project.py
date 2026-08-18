@@ -145,11 +145,11 @@ def get_rate(type):
 
 
             data = {
-                "type_buy": type_buy,
-                "type_sell": type_sell,
-                "coin_name": coin_name,
-                "coin": coin,
-                "minutes_": minutes_
+                currency_data["type_buy"]: type_buy,
+                currency_data["type_sell"]: type_sell,
+                currency_data["coin_name"]: coin_name,
+                currency_data["coin"]: coin,
+                currency_data["minutes_"]: minutes_
             }
 
             print_currency_value(data)
