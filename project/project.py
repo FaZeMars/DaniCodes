@@ -228,17 +228,23 @@ def currency_conversion_menu():
           "9)Peso Uruguayo"
           ]
     valid = {
-        "1": 
-
-
-
-
-
-
+            "1": "dolares/oficial",
+            "2": "dolares/blue",
+            "3": "dolares/bolsa",
+            "4": "dolares/tarjeta",
+            "5": "dolares/cripto",
+            "6": "cotizaciones/clp",
+            "7": "cotizaciones/eur",
+            "8": "cotizaciones/brl",
+            "9": "cotizaciones/uyu"
 
     }
+
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
+    if x in valid:
+        
 
 
 
