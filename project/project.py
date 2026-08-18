@@ -102,7 +102,7 @@ def current_value_menu():
 
 
 #########################
-def get_rate(imprimir=True, type):
+def get_rate(type, imprimir=True):
 
     type = type.strip().lower()
 
@@ -244,7 +244,8 @@ def currency_conversion_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x in valid:
-        get_rate
+        get_rate(x, imprimir=False)
+        print(currency_data["type_sell"])
 
 
 
