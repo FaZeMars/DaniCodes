@@ -79,7 +79,7 @@ def current_value_menu():
 
 
     if x in valid:
-        get_rate(x)
+        get_rate(valid[x])
 
     elif x == "6":
         clean_terminal()
