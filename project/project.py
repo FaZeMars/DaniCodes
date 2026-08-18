@@ -179,7 +179,7 @@ def print_currency_value(s):
                 sys.exit("Closing the program...")
             else:
                 clean_terminal()
-                print("")
+
 
 
 
