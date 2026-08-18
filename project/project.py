@@ -81,6 +81,10 @@ def current_value_menu():
     if x in valid:
         get_rate(x)
 
+    elif x == "6":
+        clean_terminal()
+        get_other_currency()
+
     elif x == "7":
         print("Returning to main menu...")
         time.sleep(1.5)
