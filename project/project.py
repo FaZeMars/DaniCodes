@@ -24,25 +24,26 @@ def main_menu():
     menu = ["1)Current Value",
             "2)Conversion"
             ]
-    print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+    while True:
+        print(*menu, sep="\n")
+        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
-    if x == "1":
-        print("Opening current currency value options...")
-        time.sleep(1)
-        clean_terminal()
-        current_value_menu()
+        if x == "1":
+            print("Opening current currency value options...")
+            time.sleep(1)
+            clean_terminal()
+            current_value_menu()
 
-    elif x == "2":
-        print("Opening current currency conversion options...")
-        time.sleep(1)
-        clean_terminal()
-        currency_conversion_menu()
+        elif x == "2":
+            print("Opening current currency conversion options...")
+            time.sleep(1)
+            clean_terminal()
+            currency_conversion_menu()
 
 
-    else:
-        clean_terminal()
-        main_menu()
+        else:
+            clean_terminal()
+            print("Invalid option. Please try again.\n")
 
 
 
@@ -76,29 +77,33 @@ def current_value_menu():
             "7)Main Menu"
     ]
 
-    print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
+    while True:
+        print(*menu, sep="\n")
+        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
+        if x in valid:
+            get_rate(valid[x])
+            print_currency_value(currency_data)
+            break
+
+        elif x == "6":
+            clean_terminal()
+            get_other_currency()
+            break
+
+        elif x == "7":
+            print("Returning to main menu...")
+            time.sleep(1.5)
+            clean_terminal()
+            main_menu()
+            break
+
+        else:
+            print("Please input a valid option.")
+            time.sleep(0.5)
 
 
-    if x in valid:
-        get_rate(valid[x])
-        print_currency_value(currency_data)
-
-    elif x == "6":
-        clean_terminal()
-        get_other_currency()
-
-    elif x == "7":
-        print("Returning to main menu...")
-        time.sleep(1.5)
-        clean_terminal()
-        main_menu()
-
-    else:
-        print("Please input a valid option.")
-        time.sleep(0.5)
-        clean_terminal
-        current_value_menu()
 
 
 
