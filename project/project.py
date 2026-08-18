@@ -102,7 +102,7 @@ def current_value_menu():
 
 
 #########################
-def get_rate(type):
+def get_rate(imprimir=True, type):
 
     type = type.strip().lower()
 
@@ -150,8 +150,8 @@ def get_rate(type):
                 currency_data["coin"] = coin
                 currency_data["minutes_"] = minutes_
 
-
-            print_currency_value(currency_data)
+            if imprimir:
+                print_currency_value(currency_data)
 
 
         except requests.RequestException:
@@ -244,7 +244,8 @@ def currency_conversion_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x in valid:
-        
+        get_rate
+
 
 
 
