@@ -102,7 +102,7 @@ def current_value_menu():
 
 
 #########################
-def get_rate(type, imprimir=True):
+def get_rate(type):
 
     type = type.strip().lower()
 
@@ -149,10 +149,6 @@ def get_rate(type, imprimir=True):
             currency_data["coin_name"] = coin_name
             currency_data["coin"] = coin
             currency_data["minutes_"] = minutes_
-
-            if imprimir:
-                print_currency_value(currency_data)
-
 
         except requests.RequestException:
             sys.exit("Connection Error")
