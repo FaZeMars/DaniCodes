@@ -160,6 +160,7 @@ def get_rate(type):
 
 def print_currency_value(s):
         #prints the currency value, using the data from the global currency_data variable
+
         clean_terminal()
         print(f"{s["coin"]} {s["coin_name"]}",
                 f"Sale Value: {s["type_sell"]}",
@@ -201,6 +202,7 @@ def get_other_currency():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
     if x in valid:
         get_rate(valid[x])
+        print_currency_value(currency_data)
 
     else:
         clean_terminal()
@@ -212,7 +214,7 @@ def get_other_currency():
 
 
 def currency_conversion_menu():
-    menu = ["Currency to convert from:"
+    menu = ["Currency to convert from:",
           "1)Dólar Blue",
           "2)Dólar Oficial",
           "3)Dólar Bolsa",
@@ -240,7 +242,7 @@ def currency_conversion_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x in valid:
-        get_rate(valid[x], imprimir=False)
+        get_rate(valid[x])
         print(currency_data["type_sell"])
 
 
