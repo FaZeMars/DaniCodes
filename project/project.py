@@ -209,11 +209,11 @@ def currency_conversion_menu():
           "8)Peso Chileno",
           "9)Peso Uruguayo"
           ]
-    valid = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
     if x in valid:
-        
+
 
 
 
