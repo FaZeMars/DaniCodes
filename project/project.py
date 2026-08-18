@@ -6,6 +6,8 @@ import json
 import requests
 from datetime import datetime, timezone
 
+currency_data = get_rate()
+
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
