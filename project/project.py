@@ -198,7 +198,13 @@ def get_other_currency():
 
 
 def currency_conversion_menu():
-    ...
+    menu=["Currency to convert from:"
+          "1)
+
+
+
+
+    ]
 
 
 
