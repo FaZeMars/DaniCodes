@@ -140,7 +140,7 @@ def get_dollar(type):
                 minutes_ = "A minute ago"
             else:
                 minutes_ = f"{minutes_} minutes ago"
-            ### memo: check on 18/08 again
+
 
 
 
