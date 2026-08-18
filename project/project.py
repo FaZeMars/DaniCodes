@@ -54,6 +54,17 @@ def main_menu():
 """Current Value Options""" ##########################################################
 def current_value_menu():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
+    valid = {
+
+        "1": "dolares/oficial",
+        "2": "dolares/blue",
+        "3": "dolares/bolsa",
+        "4": "dolares/tarjeta",
+        "5": "dolares/cripto"
+
+    }
+
+
     menu = ["1)Dólar Oficial",
             "2)Dólar Blue",
             "3)Dólar MEP / Bolsa",
@@ -66,24 +77,9 @@ def current_value_menu():
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
-    if x == "1":
-        get_dollar("dolares/oficial")
 
-    elif x == "2":
-        get_dollar("dolares/blue")
-
-    elif x == "3":
-        get_dollar("dolares/bolsa")
-
-    elif x == "4":
-        get_dollar("dolares/tarjeta")
-
-    elif x == "5":
-        get_dollar("dolares/cripto")
-
-    elif x == "6":
-        clean_terminal()
-        get_other_currency()
+    if x in valid:
+        get_rate(x)
 
     elif x == "7":
         print("Returning to main menu...")
@@ -99,8 +95,8 @@ def current_value_menu():
 
 
 
-###
-def get_dollar(type):
+#########################
+def get_rate(type):
 
     type = type.strip().lower()
 
@@ -173,6 +169,14 @@ def get_dollar(type):
 
 
 def get_other_currency():
+    valid = {
+        "1": "cotizaciones/eur",
+        "2": "cotizaciones/brl",
+        "3": "cotizaciones/clp",
+        "4": "cotizaciones/uyu"
+    }
+
+
     menu = ["1)Euro",
             "2)Real Brasileño",
             "3)Peso Chileno",
@@ -180,14 +184,9 @@ def get_other_currency():
     ]
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-    if x == "1":
-        get_dollar("cotizaciones/eur")
-    elif x == "2":
-        get_dollar("cotizaciones/brl")
-    elif x == "3":
-        get_dollar("cotizaciones/clp")
-    elif x == "4":
-        get_dollar("cotizaciones/uyu")
+    if x in valid:
+        get_rate(x)
+
     else:
         clean_terminal()
         get_other_currency()
@@ -209,10 +208,10 @@ def currency_conversion_menu():
           "8)Peso Chileno",
           "9)Peso Uruguayo"
           ]
-
+    valid = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     print(*menu, sep="\n")
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-    if x in valid:
+    ...
 
 
 
