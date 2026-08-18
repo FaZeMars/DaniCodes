@@ -144,11 +144,11 @@ def get_rate(type, imprimir=True):
                 minutes_ = f"{minutes_} minutes ago"
 
                 #I saved this directly in the global variable currency_data so that i could extract this data anytime I want from any function I want to, also making it available to be extracted from third-party programs
-                currency_data["type_buy"] = type_buy
-                currency_data["type_sell"] = type_sell
-                currency_data["coin_name"] = coin_name
-                currency_data["coin"] = coin
-                currency_data["minutes_"] = minutes_
+            currency_data["type_buy"] = type_buy
+            currency_data["type_sell"] = type_sell
+            currency_data["coin_name"] = coin_name
+            currency_data["coin"] = coin
+            currency_data["minutes_"] = minutes_
 
             if imprimir:
                 print_currency_value(currency_data)
