@@ -143,6 +143,7 @@ def get_rate(type):
             else:
                 minutes_ = f"{minutes_} minutes ago"
 
+                #I saved this directly in the global variable currency_data so that i could extract this data anytime I want from any function I want to, also making it available to be extracted from third-party programs
                 currency_data["type_buy"] = type_buy
                 currency_data["type_sell"] = type_sell
                 currency_data["coin_name"] = coin_name
@@ -162,6 +163,7 @@ def get_rate(type):
 
 
 def print_currency_value(s):
+        #prints the currency value, using the data from the global currency_data variable
         clean_terminal()
         print(f"{s["coin"]} {s["coin_name"]}",
                 f"Sale Value: {s["type_sell"]}",
