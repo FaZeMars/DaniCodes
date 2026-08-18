@@ -196,7 +196,6 @@ def get_other_currency():
         "4": "cotizaciones/uyu"
     }
 
-
     menu = ["1)Euro",
             "2)Real Brasileño",
             "3)Peso Chileno",
@@ -228,8 +227,8 @@ def currency_conversion_menu():
           "8)Peso Chileno",
           "9)Peso Uruguayo"
           ]
-"""    valid = {
-        "1": f"{)"}
+    valid = {
+        "1": 
 
 
 
@@ -239,7 +238,7 @@ def currency_conversion_menu():
 
     }
     print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()"""
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
 
 
