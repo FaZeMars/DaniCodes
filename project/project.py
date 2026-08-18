@@ -218,7 +218,7 @@ def get_other_currency():
 def currency_conversion_menu():
     menu = ["Currency to convert from:"
           "1)Dólar Blue",
-          "2)Dólar Oficial"
+          "2)Dólar Oficial",
           "3)Dólar Bolsa",
           "4)Dólar Tarjeta",
           "5)Dólar Cripto",
