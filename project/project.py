@@ -213,7 +213,7 @@ def currency_conversion_menu():
           "9)Peso Uruguayo"
           ]
     valid = {
-        "1": f"{get_rate("dolares/blue")"}
+        "1": f"{)"}
 
 
 
