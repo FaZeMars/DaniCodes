@@ -231,9 +231,9 @@ def currency_conversion_menu():
             "3": "dolares/bolsa",
             "4": "dolares/tarjeta",
             "5": "dolares/cripto",
-            "6": "cotizaciones/clp",
-            "7": "cotizaciones/eur",
-            "8": "cotizaciones/brl",
+            "6": "cotizaciones/eur",
+            "7": "cotizaciones/brl",
+            "8": "cotizaciones/clp",
             "9": "cotizaciones/uyu"
 
     }
