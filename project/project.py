@@ -141,6 +141,19 @@ def get_rate(type):
             else:
                 minutes_ = f"{minutes_} minutes ago"
 
+
+            data = {
+                "type_buy": type_buy,
+                "type_sell": type_sell,
+                "coin_name": coin_name,
+                "coin": coin,
+                "minutes_": minutes_
+            }
+
+            print_currency_value(data)
+
+            return data
+
         except requests.RequestException:
             sys.exit("Connection Error")
 
@@ -149,12 +162,12 @@ def get_rate(type):
 
 
 
-def print_currency_value(s)
+def print_currency_value(s):
         clean_terminal()
-        print(f"{coin} {coin_name}",
-                f"Sale Value: {type_sell}",
-                f"Purchase Value: {type_buy}",
-                f"Last updated: {minutes_}",
+        print(f"{s["coin"]} {s["coin_name"]}",
+                f"Sale Value: {s["type_sell"]}",
+                f"Purchase Value: {s["type_buy"]}",
+                f"Last updated: {s["minutes_"]}",
                 sep="\n"
                 )
         while True:
@@ -214,7 +227,7 @@ def currency_conversion_menu():
           "8)Peso Chileno",
           "9)Peso Uruguayo"
           ]
-    valid = {
+"""    valid = {
         "1": f"{)"}
 
 
@@ -225,11 +238,7 @@ def currency_conversion_menu():
 
     }
     print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-    ...
-
-
-
+    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()"""
 
 
 
