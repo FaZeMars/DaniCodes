@@ -199,15 +199,17 @@ def get_other_currency():
             "3)Peso Chileno",
             "4)Peso Uruguayo"
     ]
-    print(*menu, sep="\n")
-    x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-    if x in valid:
-        get_rate(valid[x])
-        print_currency_value(currency_data)
 
-    else:
+    while True:
+        print(*menu, sep="\n")
+        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+        if x in valid:
+            get_rate(valid[x])
+            print_currency_value(currency_data)
+
         clean_terminal()
-        get_other_currency()
+        print("Invalid option. Please try again. \n")
+
 
 """Current Value Options""" ##########################################################
 
