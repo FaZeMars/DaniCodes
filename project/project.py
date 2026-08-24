@@ -107,12 +107,12 @@ def current_value_menu():
 
 
 #########################
-def get_rate(type):
+def get_rate(currency_key):
 
-    type = type.strip().lower()
+    currency_key = type.strip().lower()
 
     #type of currencies available
-    type_list = ["dolares/oficial",
+    currency_key_list = ["dolares/oficial",
                  "dolares/blue",
                  "dolares/bolsa",
                  "dolares/tarjeta",
@@ -123,9 +123,9 @@ def get_rate(type):
                  "cotizaciones/uyu"
                  ]
 
-    if type in type_list:
+    if currency_key in currency_key_list:
         try:
-            url = f"https://dolarapi.com/v1/{type}"
+            url = f"https://dolarapi.com/v1/{currency_key}"
             pre_type = requests.get(url)
             # o = variable used to store the requests.get json
             o = pre_type.json()
@@ -261,7 +261,7 @@ def currency_conversion_menu():
                 print("please convert to another currency")
                 return
         else:
-            
+
 
 
 
