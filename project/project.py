@@ -221,8 +221,7 @@ def get_other_currency():
 
 
 def currency_conversion_menu():
-    menu = ["Currency to convert from:",
-          "1)Dólar Blue",
+    menu = ["1)Dólar Blue",
           "2)Dólar Oficial",
           "3)Dólar Bolsa",
           "4)Dólar Tarjeta",
@@ -245,15 +244,26 @@ def currency_conversion_menu():
 
     }
 
-    print(*menu, sep="\n")
+    print("Currency to convert from", *menu, sep="\n")
     user_input1 = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if user_input1 in valid:
         get_rate(valid[user_input1])
         to_convert = currency_data["type_sell"]
 
-        print(*menu, sep="\n")
-        
+        print("Currency to convert to", *menu, sep="\n")
+
+        user_input2 = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+
+
+        if user_input2 in valid:
+            if user_input2 == user_input1:
+                print("please convert to another currency")
+                return
+        else:
+            
+
+
 
 
 
