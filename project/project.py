@@ -250,8 +250,8 @@ def currency_conversion_menu():
     x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if x in valid:
-        get_rate(valid[x])
-        print(currency_data["type_sell"])
+            get_rate(valid[x])
+            print(currency_data["type_sell"])
 
 
 
