@@ -249,8 +249,11 @@ def currency_conversion_menu():
     user_input1 = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
     if user_input1 in valid:
-        to_convert = get_rate(valid[user_input1])
-        print(currency_data["type_sell"])
+        get_rate(valid[user_input1])
+        to_convert = currency_data["type_sell"]
+
+        print(*menu, sep="\n")
+        
 
 
 
