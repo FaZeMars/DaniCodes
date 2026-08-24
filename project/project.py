@@ -96,8 +96,7 @@ def current_value_menu():
             print("Returning to main menu...")
             time.sleep(1.5)
             clean_terminal()
-            main_menu()
-            break
+            return
 
         else:
             print("Please input a valid option.")
@@ -180,7 +179,7 @@ def print_currency_value(s):
                 print("Going back to the main menu...")
                 time.sleep(1)
                 clean_terminal()
-                main_menu()
+                return
             elif answer == "n":
                 clean_terminal()
                 sys.exit("Closing the program...")
