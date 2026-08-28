@@ -109,7 +109,7 @@ def current_value_menu():
 #########################
 def get_rate(currency_key):
 
-    currency_key = type.strip().lower()
+    currency_key = currency_key.strip().lower()
 
     #type of currencies available
     currency_key_list = ["dolares/oficial",
