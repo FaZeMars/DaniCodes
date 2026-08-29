@@ -1,8 +1,6 @@
 import sys
-import re
 import time
 import os
-import json
 import requests
 from datetime import datetime, timezone
 
@@ -13,40 +11,35 @@ def clean_terminal():
 
 def main():
     try:
-        main_menu()
+        menu_displayer("mainmenu")
     except (EOFError, KeyboardInterrupt):
         sys.exit("Closing the program...\n")
 
-def menu_displayer():
-    main_menu_list =
+def menu_displayer(menu_to_display):
+    valid_menus = {
+        "mainmenu": mainmenu,
+        "currency_menu": currency_menu
+
+    }
 
 
 
-def main_menu():
-    #Opens up a main menu section for the user to select what they want to do, then calls the function the user wants to use
-    menu = ["1)Current Value",
-            "2)Conversion"
-            ]
-    while True:
-        print(*menu, sep="\n")
-        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
-        if x == "1":
-            print("Opening current currency value options...")
-            time.sleep(1)
-            clean_terminal()
-            current_value_menu()
+    mainmenu = ["1)Currency Value",
+                "2)Conversion"
+    ]
 
-        elif x == "2":
-            print("Opening current currency conversion options...")
-            time.sleep(1)
-            clean_terminal()
-            currency_conversion_menu()
-
-
-        else:
-            clean_terminal()
-            print("Invalid option. Please try again.\n")
+    currency_menu = [
+        "1)Dólar Oficial",
+        "2)Dólar Blue",
+        "3)Dólar MEP / Bolsa",
+        "4)Dólar Tarjeta",
+        "6)Dólar Cripto",
+        "7)Euro",
+        "8)Real Brasileño",
+        "9)Peso Chileno",
+        "10)Peso Uruguayo"
+    ]
 
 
 
@@ -58,7 +51,7 @@ def main_menu():
 
 
 """Current Value Options""" ##########################################################
-def current_value_menu():
+def current_value():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
     valid = {
 
