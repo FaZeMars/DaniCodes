@@ -16,16 +16,16 @@ def main():
         sys.exit("Closing the program...\n")
 
 def menu_displayer(menu_to_display):
-    valid_menus = {
-        "mainmenu": mainmenu,
-        "currency_menu": currency_menu
+    mainmenu = ["1)Currency Value",
+                "2)Conversion"
+    ]
+
+    valid_main_menu ={
+        "1":
 
     }
 
 
-    mainmenu = ["1)Currency Value",
-                "2)Conversion"
-    ]
 
     currency_menu = [
         "1)Dólar Oficial",
@@ -38,6 +38,10 @@ def menu_displayer(menu_to_display):
         "9)Peso Chileno",
         "10)Peso Uruguayo"
     ]
+
+    if menu_to_display == "mainmenu":
+        print(*mainmenu, sep="\n")
+        user_input = input("Select an option (e.g: 1, 2 ...)").strip().lower()
 
 
 
