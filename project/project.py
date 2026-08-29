@@ -83,7 +83,7 @@ def current_value_menu():
 
         if x in valid:
             data = get_rate(valid[x])
-            print_currency_value(get_rate["type_sell"])
+            print_currency_value(data["type_sell"])
             break
 
         elif x == "6":
