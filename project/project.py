@@ -219,7 +219,7 @@ def get_other_currency():
         if x in valid:
             data = get_rate(valid[x])
             if data:
-                print_currency_value(data[{"type_sell"}])
+                print_currency_value(data["type_sell"])
 
         clean_terminal()
         print("Invalid option. Please try again. \n")
