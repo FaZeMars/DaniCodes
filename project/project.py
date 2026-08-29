@@ -1,266 +1,160 @@
+#Libraries used in the program
 import sys
 import time
 import os
 import requests
 from datetime import datetime, timezone
 
+#Menus available to be used by other functions
+main_menu_options = ["1)Currency Value",
+             "2)Conversion"
+             ]
 
+
+
+currency_data_and_name = {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial",
+                          "id": 2, "name": "2)Dólar Blue", "route": "dolares/blue",
+                          "id": 3, "name": "3)Dólar Bolsa / MEP", "route": "dolares/bolsa",
+                          "id": 4, "name": "4)Dólar Tarjeta", "route": "dolares/tarjeta",
+                          "id": 5, "name": "5)Dólar Cripto", "route": "dolares/cripto",
+                          "id": 6, "name": "6)Euro", "route": "cotizaciones/eur",
+                          "id": 7, "name": "7)Real Brasileño", "route": "cotizaciones/brl",
+                          "id": 8, "name": "8)Peso Chileno", "route": "cotizaciones/clp",
+                          "id": 9, "name": "9)Peso Uruguayo", "route": "cotizaciones/uyu",
+}
+
+valid_currencies = [
+    {"id": 1, "name": "dolares/oficial"},
+    {"id": 2, "name": "dolares/blue"},
+    {"id": 3, "name": "dolares/bolsa"},
+    {"id": 4, "name": "dolares/tarjeta"},
+    {"id": 5, "name": "dolares/cripto"},
+    {"id": 6, "name": "cotizaciones/eur"},
+    {"id": 7, "name": "cotizaciones/brl"},
+    {"id": 8, "name": "cotizaciones/clp"},
+    {"id": 9, "name": "cotizaciones/uyu"}
+]
+
+
+
+valid_main_menu_options = {
+    "1": lambda: current_currency_value()
+
+
+}
+
+
+
+#Function used to clean the terminal for the user
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+#Main Function
+
+
 def main():
     try:
-        menu_displayer("mainmenu")
+        main_menu()
     except (EOFError, KeyboardInterrupt):
         sys.exit("Closing the program...\n")
 
-def menu_displayer(menu_to_display):
- 
-"""Current Value Options""" ##########################################################
-def current_value():
-    #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
-    valid = {
-
-        "1": "dolares/oficial",
-        "2": "dolares/blue",
-        "3": "dolares/bolsa",
-        "4": "dolares/tarjeta",
-        "5": "dolares/cripto"
-
-    }
 
 
-    menu = ["1)Dólar Oficial",
-            "2)Dólar Blue",
-            "3)Dólar MEP / Bolsa",
-            "4)Dólar Tarjeta",
-            "5)Dólar Cripto",
-            "6)Other currencies:",
-            "7)Main Menu"
-    ]
-
-
+#Function used to display menus, then ask the user for an input, then returns that input to the caller function
+def menu_displayer(menu_to_display, valid_options):
+    valid_options = {*valid_options}
     while True:
-        print(*menu, sep="\n")
-        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
+        for currency in menu_to_display:
+            print(currency["name"], sep="\n")
+        user_input = input("Please choose an option (1, 2, 3 ...)").strip().lower()
 
-        if x in valid:
-            data = get_rate(valid[x])
-            print_currency_value(data["type_sell"])
-            break
-
-        elif x == "6":
+        if user_input in valid_options["id"]:
             clean_terminal()
-            get_other_currency()
-            break
-
-        elif x == "7":
-            print("Returning to main menu...")
-            time.sleep(1.5)
-            clean_terminal()
-            return
+            return user_input
 
         else:
-            print("Please input a valid option.")
-            time.sleep(0.5)
+            print("Please select a valid option")
+            clean_terminal()
+
+def main_menu():
+    user_input = menu_displayer(main_menu_options, valid_main_menu_options)
+    valid_main_menu_options[user_input]()
 
 
 
 
+#Function in charge of getting the current value of the currency
 
-#########################
+def current_currency_value():
+
+    user_input = menu_displayer(currency_data_and_name, valid_currencies)
+
+    if not user_input == "10":
+        data = get_rate(valid_currencies[user_input])
+        print_currency_value(data)
+
+    else:
+        ...  # main menu
+
+#function used to convert ISO 8601 string format to minutes ago
+def iso_format_converter(isostring):
+    # convert ISO 8601 string format to minutes ago
+    datestripped = datetime.fromisoformat(isostring)
+    now_utc = datetime.now(timezone.utc)
+    difference = now_utc - datestripped
+
+    minutes_ago = int(difference.total_seconds() / 60)
+
+    #returns minutes_ago in a more user-friendly format
+    if minutes_ago == 0:
+        return "Just now"
+    elif minutes_ago == 1:
+        return "A minute ago"
+    else:
+        return f"{minutes_ago} minutes ago"
+
+
+#Function used to get the current value of the currency, returning it as a dictionary in order to be used by other functions
+
+
 def get_rate(currency_key):
 
     currency_key = currency_key.strip().lower()
 
-    #type of currencies available
-    currency_key_list = ["dolares/oficial",
-                 "dolares/blue",
-                 "dolares/bolsa",
-                 "dolares/tarjeta",
-                 "dolares/cripto",
-                 "cotizaciones/clp",
-                 "cotizaciones/eur",
-                 "cotizaciones/brl",
-                 "cotizaciones/uyu"
-                 ]
 
-    if currency_key in currency_key_list:
-        try:
-            url = f"https://dolarapi.com/v1/{currency_key}"
-            pre_type = requests.get(url)
-            # o = variable used to store the requests.get json
-            o = pre_type.json()
-            type_buy = o["compra"]
-            type_sell = o["venta"]
-            coin_name = o["nombre"]
-            coin = o["moneda"]
+    url = f"https://dolarapi.com/v1/{currency_key}"
+    request_json = requests.get(url)
 
-            #convert ISO 8601 string format to minutes ago
-            datestripped = datetime.fromisoformat(o["fechaActualizacion"])
-            now_utc = datetime.now(timezone.utc)
-            difference = now_utc - datestripped
+    # currency_data variable used to store the requests.get json
+    currency_data = request_json.json()
+    type_buy = currency_data["compra"]
+    type_sell = currency_data["venta"]
+    coin_name = currency_data["nombre"]
+    coin = currency_data["moneda"]
 
-            minutes_ = int(difference.total_seconds() / 60)
+    #calls iso_format_converter with currency_data["fechaActualizacion"] as parameter in order to be converted do a "minutes ago" format
+    minutes_ago = iso_format_converter(currency_data["fechaActualizacion"])
 
-            if minutes_ == 0:
-                minutes_ = "Just now"
-            elif minutes_ == 1:
-                minutes_ = "A minute ago"
-            else:
-                minutes_ = f"{minutes_} minutes ago"
-
-                #I saved this directly in the global variable currency_data so that i could extract this data anytime I want from any function I want to, also making it available to be extracted from third-party programs
-            currency_data = {"type_buy": type_buy,
-                "type_sell": type_sell,
-                "coin_name": coin_name,
-                "coin": coin,
-                "minutes_": minutes_
-                }
-            return {"type_buy": type_buy,
-                    "type_sell": type_sell,
-                    "coin_name": coin_name,
-                    "minutes_": minutes_
+    return {"type_buy": type_buy,
+            "type_sell": type_sell,
+            "coin_name": coin_name,
+            "coin": coin,
+            "minutes_ago": minutes_ago
             }
 
 
 
 
-
-        except requests.RequestException:
-            sys.exit("Connection Error")
-
-
-
-
-
-
-def print_currency_value(s):
-        #prints the currency value, using the data from the global currency_data variable
-
-        clean_terminal()
-        print(f"{s["coin"]} {s["coin_name"]}",
-                f"Sale Value: {s["type_sell"]}",
-                f"Purchase Value: {s["type_buy"]}",
-                f"Last updated: {s["minutes_"]}",
-                sep="\n"
-                )
-        while True:
-            answer = input("Do you wish to do something else? (y/n) ").strip().lower()
-            if answer == "y":
-                print("Going back to the main menu...")
-                time.sleep(1)
-                clean_terminal()
-                return
-            elif answer == "n":
-                clean_terminal()
-                sys.exit("Closing the program...")
-            else:
-                clean_terminal()
-
-
-
-
-
-def get_other_currency():
-    valid = {
-        "1": "cotizaciones/eur",
-        "2": "cotizaciones/brl",
-        "3": "cotizaciones/clp",
-        "4": "cotizaciones/uyu"
-    }
-
-    menu = ["1)Euro",
-            "2)Real Brasileño",
-            "3)Peso Chileno",
-            "4)Peso Uruguayo"
-    ]
-
-    while True:
-        print(*menu, sep="\n")
-        x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-        if x in valid:
-            data = get_rate(valid[x])
-            if data:
-                print_currency_value(data["type_sell"])
-
-        clean_terminal()
-        print("Invalid option. Please try again. \n")
-
-
-"""Current Value Options""" ##########################################################
-
-
-
-
-"""def currency_conversion_menu():
-    menu = ["1)Dólar Blue",
-          "2)Dólar Oficial",
-          "3)Dólar Bolsa",
-          "4)Dólar Tarjeta",
-          "5)Dólar Cripto",
-          "6)Euro",
-          "7)Real Brasileño",
-          "8)Peso Chileno",
-          "9)Peso Uruguayo"
-          ]
-    valid = {
-            "1": "dolares/oficial",
-            "2": "dolares/blue",
-            "3": "dolares/bolsa",
-            "4": "dolares/tarjeta",
-            "5": "dolares/cripto",
-            "6": "cotizaciones/eur",
-            "7": "cotizaciones/brl",
-            "8": "cotizaciones/clp",
-            "9": "cotizaciones/uyu"
-
-    }
-
-    print("Currency to convert from", *menu, sep="\n")
-    user_input1 = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-
-    if user_input1 in valid:
-        get_rate(valid[user_input1])
-        to_convert = currency_data["type_sell"]
-
-        print("Currency to convert to", *menu, sep="\n")
-
-        user_input2 = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
-
-
-        if user_input2 in valid:
-            if user_input2 == user_input1:
-                print("please convert to another currency")
-                return
-        else:
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#prints the currency value in a user-friendly format
+def print_currency_value(currency_data):
+    clean_terminal()
+    print(f"{currency_data["coin"]} {currency_data["coin_name"]}",
+          f"Sale Value: {currency_data["type_sell"]}",
+          f"Purchase Value: {currency_data["type_buy"]}",
+          f"Last updated: {currency_data["minutes_ago"]}",
+          sep="\n"
+          )
 
 
 
