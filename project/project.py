@@ -154,7 +154,11 @@ def get_rate(currency_key):
                 "coin": coin,
                 "minutes_": minutes_
                 }
-            return currency_data
+            return {"type_buy": type_buy,
+                    "type_sell": type_sell,
+                    "coin_name": coin_name,
+                    "minutes_": minutes_
+            }
 
 
 
@@ -213,8 +217,9 @@ def get_other_currency():
         print(*menu, sep="\n")
         x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
         if x in valid:
-            get_rate(valid[x])
-            print_currency_value(currency_data)
+            data = get_rate(valid[x])
+            if data:
+                print_currency_value(data[{"type_sell"}])
 
         clean_terminal()
         print("Invalid option. Please try again. \n")
