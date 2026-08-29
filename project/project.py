@@ -15,7 +15,10 @@ def main():
     try:
         main_menu()
     except (EOFError, KeyboardInterrupt):
-        sys.exit("Closing the program...")
+        sys.exit("Closing the program...\n")
+
+def menu_displayer():
+
 
 
 def main_menu():
