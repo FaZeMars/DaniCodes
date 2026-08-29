@@ -16,42 +16,7 @@ def main():
         sys.exit("Closing the program...\n")
 
 def menu_displayer(menu_to_display):
-    mainmenu = ["1)Currency Value",
-                "2)Conversion"
-    ]
-
-    valid_main_menu ={
-        "1":
-
-    }
-
-
-
-    currency_menu = [
-        "1)Dólar Oficial",
-        "2)Dólar Blue",
-        "3)Dólar MEP / Bolsa",
-        "4)Dólar Tarjeta",
-        "6)Dólar Cripto",
-        "7)Euro",
-        "8)Real Brasileño",
-        "9)Peso Chileno",
-        "10)Peso Uruguayo"
-    ]
-
-    if menu_to_display == "mainmenu":
-        print(*mainmenu, sep="\n")
-        user_input = input("Select an option (e.g: 1, 2 ...)").strip().lower()
-
-
-
-
-
-
-
-
-
-
+ 
 """Current Value Options""" ##########################################################
 def current_value():
     #Opens up a menu including the options for quoting specific currency types, then, according to the user input, calls a function which returns the current value of this currency type
