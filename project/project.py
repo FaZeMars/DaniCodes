@@ -18,6 +18,7 @@ def main():
         sys.exit("Closing the program...\n")
 
 def menu_displayer():
+    main_menu_list =
 
 
 
