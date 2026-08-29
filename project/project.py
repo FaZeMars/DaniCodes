@@ -82,8 +82,8 @@ def current_value_menu():
         x = input("Select an option (e.g.: 1, 2 ...) ").strip().lower()
 
         if x in valid:
-            get_rate(valid[x])
-            print_currency_value(get_rate)
+            data = get_rate(valid[x])
+            print_currency_value(get_rate["type_sell"])
             break
 
         elif x == "6":
