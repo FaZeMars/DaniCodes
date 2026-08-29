@@ -23,8 +23,6 @@ def menu_displayer(menu_to_display):
     }
 
 
-
-
     mainmenu = ["1)Currency Value",
                 "2)Conversion"
     ]
