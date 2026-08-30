@@ -5,6 +5,8 @@ import os
 import requests
 from datetime import datetime, timezone
 
+API_URL = "https://dolarapi.com/v1/"
+
 #Menus available to be used by other functions
 currency_data_and_name =[
                           {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial"},
@@ -122,7 +124,7 @@ def iso_format_converter(isostring):
 def get_rate(currency_key):
 
     currency_key = currency_key.strip().lower()
-    url = f"https://dolarapi.com/v1/{currency_key}"
+    url = f"{API_URL}{currency_key}"
 
     try:
         request_json = requests.get(url)
