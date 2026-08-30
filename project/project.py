@@ -1,16 +1,11 @@
 #Libraries used in the program
 import sys
+import time
 import os
 import requests
 from datetime import datetime, timezone
 
 #Menus available to be used by other functions
-main_menu_options = ["1)Currency Value",
-             "2)Conversion"
-             ]
-
-
-
 currency_data_and_name =[
                           {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial"},
                           {"id": 2, "name": "2)Dólar Blue", "route": "dolares/blue"},
@@ -25,13 +20,10 @@ currency_data_and_name =[
 
 ]
 
+valid_main_menu_options = [
+    {"id": 1, "name": "1)Currency Value", "1": lambda: current_currency_value()}
 
-
-valid_main_menu_options = {
-    "1": lambda: current_currency_value()
-
-
-}
+]
 
 
 
@@ -52,23 +44,23 @@ def main():
 
 
 #Function used to display menus, then ask the user for an input, then returns that input to the caller function
-def menu_displayer(menu_to_display, valid_options):
-    valid_options = {*valid_options}
+def menu_displayer(menu_to_display):
     while True:
-        for currency in menu_to_display:
-            print(currency["name"], sep="\n")
+        for option in menu_to_display:
+            print(option["name"], sep="\n")
         user_input = input("Please choose an option (1, 2, 3 ...)").strip().lower()
 
-        if user_input in valid_options["id"]:
+        if user_input in menu_to_display["id"]:
             clean_terminal()
             return user_input
 
         else:
             print("Please select a valid option")
+            time.sleep(1)
             clean_terminal()
 
 def main_menu():
-    user_input = menu_displayer(main_menu_options, valid_main_menu_options)
+    user_input = menu_displayer(valid_main_menu_options)
     valid_main_menu_options[user_input]()
 
 
@@ -78,10 +70,10 @@ def main_menu():
 
 def current_currency_value():
 
-    user_input = menu_displayer(currency_data_and_name, valid_currencies)
+    user_input = menu_displayer(currency_data_and_name)
 
     if not user_input == "10":
-        data = get_rate(valid_currencies[user_input])
+        data = get_rate(currency_data_and_name[user_input])
         print_currency_value(data)
 
     else:
