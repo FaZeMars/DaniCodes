@@ -67,7 +67,7 @@ def main_menu():
     user_input = menu_displayer(valid_main_menu_options)
 
     selected_option = menu_option_matcher(valid_main_menu_options, user_input)
-    selected_option["function_to_call"]()
+    selected_option["route"]()
 
 #matches the user input to the menu option, then, if valid, returns the user input to the caller
 def menu_option_matcher(valid_menu, user_input_):
@@ -93,10 +93,7 @@ def current_currency_value():
             break
 
         else:
-            data = get_rate(selected_currency["route"])
-            print_currency_value(data)
-            input("\nPress enter to continue...")
-            clean_terminal()
+            selected_currency["package"]
 
 
 
