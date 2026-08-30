@@ -9,7 +9,7 @@ API_URL = "https://dolarapi.com/v1/"
 
 #Menus available to be used by other functions
 currency_data_and_name =[
-                          {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial", "package": lambda: print_currency_value(get_rate(["route"]))},
+                          {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial", "package": lambda: print_currency_value(get_rate(currency_data_and_name["route"]))},
                           {"id": 2, "name": "2)Dólar Blue", "route": "dolares/blue"},
                           {"id": 3, "name": "3)Dólar Bolsa / MEP", "route": "dolares/bolsa"},
                           {"id": 4, "name": "4)Dólar Tarjeta", "route": "dolares/tarjeta"},
