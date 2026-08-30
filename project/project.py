@@ -21,7 +21,7 @@ currency_data_and_name =[
 ]
 
 valid_main_menu_options = [
-    {"id": 1, "name": "1)Currency Value", "function_to_call": lambda: current_currency_value()}
+    {"id": "1", "name": "1)Currency Value", "function_to_call": lambda: current_currency_value()}
 
 ]
 
