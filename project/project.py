@@ -16,13 +16,13 @@ currency_data_and_name =[
                           {"id": 7, "name": "7)Real Brasileño", "route": "cotizaciones/brl"},
                           {"id": 8, "name": "8)Peso Chileno", "route": "cotizaciones/clp"},
                           {"id": 9, "name": "9)Peso Uruguayo", "route": "cotizaciones/uyu"},
-                          {"id": 10, "name": "10)Main Menu", "": None}
+                          {"id": 10, "name": "10)Main Menu", "route": None}
 
 
 ]
 
 valid_main_menu_options = [
-    {"id": "1", "name": "1)Currency Value", "function_to_call": current_currency_value}
+    {"id": "1", "name": "1)Currency Value", "function_to_call": lambda: current_currency_value()}
 
 ]
 
@@ -64,18 +64,15 @@ def menu_displayer(menu_to_display):
 def main_menu():
     user_input = menu_displayer(valid_main_menu_options)
 
-    selected_option = None
-    for opt in valid_main_menu_options:
-        if str(opt["id"]) == user_input:
-            selected_option = opt
-            break
+    selected_option = menu_option_matcher(valid_main_menu_options, user_input)
     selected_option["function_to_call"]()
 
+#matches the user input to the menu option, then, if valid, returns the user input to the caller
 def menu_option_matcher(valid_menu, user_input_):
     for opt in valid_menu:
         if str(opt["id"]) == user_input_:
             return opt
-        return None
+    return None
 
 
 
@@ -88,20 +85,14 @@ def current_currency_value():
     while True:
         user_input = menu_displayer(currency_data_and_name).strip().lower()
 
-        selected_currency = None
-        for opt in currency_data_and_name:
-            if str(opt["id"]) == user_input:
-                selected_currency = opt
-                break
+        selected_currency = menu_option_matcher(currency_data_and_name, user_input)
 
         if selected_currency["id"] == 10:
             break
 
         else:
-
             data = get_rate(selected_currency["route"])
             print_currency_value(data)
-
             input("\nPress enter to continue...")
             clean_terminal()
 
