@@ -1,6 +1,5 @@
 #Libraries used in the program
 import sys
-import time
 import os
 import requests
 from datetime import datetime, timezone
@@ -24,18 +23,6 @@ currency_data_and_name =[
                           {"id": 9, "name": "9)Peso Uruguayo", "route": "cotizaciones/uyu"},
 
 
-]
-
-valid_currencies = [
-    {"id": 1, "name": "dolares/oficial"},
-    {"id": 2, "name": "dolares/blue"},
-    {"id": 3, "name": "dolares/bolsa"},
-    {"id": 4, "name": "dolares/tarjeta"},
-    {"id": 5, "name": "dolares/cripto"},
-    {"id": 6, "name": "cotizaciones/eur"},
-    {"id": 7, "name": "cotizaciones/brl"},
-    {"id": 8, "name": "cotizaciones/clp"},
-    {"id": 9, "name": "cotizaciones/uyu"}
 ]
 
 
