@@ -64,7 +64,7 @@ def main_menu():
     user_input = menu_displayer(valid_main_menu_options)
 
     selected_option = menu_option_matcher(valid_main_menu_options, user_input)
-    selected_option[""]()
+    selected_option["route"]()
 
 # matches the user input to the menu option, then, if valid, returns the user input to the caller
 
