@@ -141,14 +141,6 @@ def get_rate(currency_key):
                 "minutes_ago": minutes_ago
                 }
 
-    except requests.exceptions.RequestException as e:
-        return {
-            "type_buy": "Error",
-            "type_sell": "Error",
-            "coin_name": "API Unreachable",
-            "coin": "",
-            "minutes_ago": "N/A",
-        }
 
 
 # prints the currency value in a user-friendly format
