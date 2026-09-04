@@ -9,16 +9,16 @@ API_URL = "https://dolarapi.com/v1/"
 
 # Menus available to be used by other functions
 currency_data_and_name = [
-    {"id": 1, "name": "1)Dólar Oficial", "route": "dolares/oficial"},
-    {"id": 2, "name": "2)Dólar Blue", "route": "dolares/blue"},
-    {"id": 3, "name": "3)Dólar Bolsa / MEP", "route": "dolares/bolsa"},
-    {"id": 4, "name": "4)Dólar Tarjeta", "route": "dolares/tarjeta"},
-    {"id": 5, "name": "5)Dólar Cripto", "route": "dolares/cripto"},
-    {"id": 6, "name": "6)Euro", "route": "cotizaciones/eur"},
-    {"id": 7, "name": "7)Real Brasileño", "route": "cotizaciones/brl"},
-    {"id": 8, "name": "8)Peso Chileno", "route": "cotizaciones/clp"},
-    {"id": 9, "name": "9)Peso Uruguayo", "route": "cotizaciones/uyu"},
-    {"id": 10, "name": "10)Main Menu", "route": None},
+    {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
+    {"id": 2, "name": "Dólar Blue", "route": "dolares/blue"},
+    {"id": 3, "name": "Dólar Bolsa / MEP", "route": "dolares/bolsa"},
+    {"id": 4, "name": "Dólar Tarjeta", "route": "dolares/tarjeta"},
+    {"id": 5, "name": "Dólar Cripto", "route": "dolares/cripto"},
+    {"id": 6, "name": "Euro", "route": "cotizaciones/eur"},
+    {"id": 7, "name": "Real Brasileño", "route": "cotizaciones/brl"},
+    {"id": 8, "name": "Peso Chileno", "route": "cotizaciones/clp"},
+    {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
+    {"id": 10, "name": "Main Menu", "route": None},
 ]
 
 valid_main_menu_options = [
