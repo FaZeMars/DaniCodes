@@ -144,28 +144,23 @@ def get_rate(currency_key):
     request_json = requests.get(url)
     request_json.raise_for_status()
 
-    try:
-        request_json = requests.get(url)
-        request_json.raise_for_status()
 
-        # currency_data variable used to store the requests.get json
-        currency_data = request_json.json()
+    request_json = requests.get(url)
 
-        
-        type_buy = currency_data.get("compra", "N/A")
-        type_sell = currency_data.get("venta", "N/A")
-        coin_name = currency_data["nombre"]
-        coin = currency_data["moneda"]
+    request_json.raise_for_status()
 
-        # calls iso_format_converter with currency_data["fechaActualizacion"] as parameter in order to be converted do a "minutes ago" format
-        minutes_ago = iso_format_converter(currency_data["fechaActualizacion"])
+    # currency_data variable used to store the requests.get json
+    currency_data = request_json.json()
 
-        return {"type_buy": type_buy,
-                "type_sell": type_sell,
-                "coin_name": coin_name,
-                "coin": coin,
-                "minutes_ago": minutes_ago
-                }
+
+    return {
+        "type_buy": currency_data.get("compra", "N/A"),
+        "type_sell": currency_data.get("venta", "N/A"),
+        "coin_name": currency_data.get("nombre", "N/A"),
+        "coin": currency_data.get("moneda", "N/A"),
+        "minutes_ago": iso_format_converter(currency_data["fechaActualizacion"])
+    }
+
 
 
 
