@@ -18,7 +18,7 @@ currency_data_and_name = [
     {"id": 7, "name": "Real Brasileño", "route": "cotizaciones/brl"},
     {"id": 8, "name": "Peso Chileno", "route": "cotizaciones/clp"},
     {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
-    {"id": 10, "name": "Main Menu", "route": None},
+    {"id": 10, "name": "Back to Main Menu", "route": None, "is_exit": True},
 ]
 
 valid_main_menu_options = [
