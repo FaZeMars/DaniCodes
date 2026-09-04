@@ -8,6 +8,15 @@ from datetime import datetime, timezone
 API_URL = "https://dolarapi.com/v1/"
 
 # Menus available to be used by other functions
+
+MAIN_MENU_OPTIONS = [
+    {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
+    {"id": 2, "name": "Exit", "action": "exit"}
+]
+
+
+
+
 currency_data_and_name = [
     {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
     {"id": 2, "name": "Dólar Blue", "route": "dolares/blue"},
@@ -21,10 +30,7 @@ currency_data_and_name = [
     {"id": 10, "name": "Back to Main Menu", "route": None, "is_exit": True},
 ]
 
-valid_main_menu_options = [
-    {"id": "1", "name": "1)Currency Value", "route": lambda: current_currency_value()}
 
-]
 
 
 # Function used to clean the terminal for the user
@@ -47,7 +53,8 @@ def main():
 def menu_displayer(menu_to_display):
     while True:
         for option in menu_to_display:
-            print(option["name"], sep="\n")
+            print(f"{option['id']}) {option['name']}")
+
         user_input = input("Please choose an option (1, 2, 3 ...)").strip().lower()
 
         if any(str(option["id"]) == user_input for option in menu_to_display):
@@ -61,10 +68,18 @@ def menu_displayer(menu_to_display):
 
 
 def main_menu():
-    user_input = menu_displayer(valid_main_menu_options)
+    user_input = menu_displayer(MAIN_MENU_OPTIONS)
 
-    selected_option = menu_option_matcher(valid_main_menu_options, user_input)
-    selected_option["route"]()
+    selected_option = menu_option_matcher(MAIN_MENU_OPTIONS, user_input)
+
+    if not selected_option:
+        return
+
+    if selected_option["action"] == "view_rates":
+        current_currency_value()
+    elif selected_option["action"] == "exit":
+        sys.exit("Closing the program...\n")
+
 
 # matches the user input to the menu option, then, if valid, returns the user input to the caller
 
@@ -80,18 +95,26 @@ def menu_option_matcher(valid_menu, user_input_):
 
 def current_currency_value():
     while True:
-        user_input = menu_displayer(currency_data_and_name).strip().lower()
+        user_input = menu_displayer(currency_data_and_name)
 
         selected_currency = menu_option_matcher(currency_data_and_name, user_input)
 
-        if selected_currency["id"] == 10:
+        if not selected_currency:
+            continue
+
+        if selected_currency.get("is_exit"):
             break
 
-        else:
+        try:
             data = get_rate(selected_currency["route"])
             print_currency_value(data)
             input("\nPress enter to continue...")
             clean_terminal()
+        except requests.RequestException as e:
+            print(f"Error: Could not fetch currency data. ({e})")
+
+        input("\nPress enter to continue...")
+        clean_terminal()
 
 
 # function used to convert ISO 8601 string format to minutes ago
@@ -116,9 +139,10 @@ def iso_format_converter(isostring):
 
 
 def get_rate(currency_key):
+    url = f"{API_URL}{currency_key.strip().lower()}"
 
-    currency_key = currency_key.strip().lower()
-    url = f"{API_URL}{currency_key}"
+    request_json = requests.get(url)
+    request_json.raise_for_status()
 
     try:
         request_json = requests.get(url)
