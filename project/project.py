@@ -46,8 +46,8 @@ def main():
 # Function used to display menus, then ask the user for an input, then returns that input to the caller function
 def menu_displayer(menu_to_display):
     while True:
-        for option in enumerate(menu_to_display):
-            print(option["name"], sep="\n")
+        for option in menu_to_display:
+            print(enumerate(option["name"]), sep="\n")
         user_input = input("Please choose an option (1, 2, 3 ...)").strip().lower()
 
         if any(str(option["id"]) == user_input for option in menu_to_display):
