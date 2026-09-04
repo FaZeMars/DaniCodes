@@ -150,6 +150,8 @@ def get_rate(currency_key):
 
         # currency_data variable used to store the requests.get json
         currency_data = request_json.json()
+
+        
         type_buy = currency_data.get("compra", "N/A")
         type_sell = currency_data.get("venta", "N/A")
         coin_name = currency_data["nombre"]
