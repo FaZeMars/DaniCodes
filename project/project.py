@@ -108,8 +108,6 @@ def current_currency_value():
         try:
             data = get_rate(selected_currency["route"])
             print_currency_value(data)
-            input("\nPress enter to continue...")
-            clean_terminal()
         except requests.RequestException as e:
             print(f"Error: Could not fetch currency data. ({e})")
 
@@ -144,14 +142,8 @@ def get_rate(currency_key):
     request_json = requests.get(url)
     request_json.raise_for_status()
 
-
-    request_json = requests.get(url)
-
-    request_json.raise_for_status()
-
     # currency_data variable used to store the requests.get json
     currency_data = request_json.json()
-
 
     return {
         "type_buy": currency_data.get("compra", "N/A"),
