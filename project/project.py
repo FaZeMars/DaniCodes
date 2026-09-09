@@ -150,15 +150,16 @@ def get_rate(currency_key):
     request_json = requests.get(url)
     request_json.raise_for_status()
 
-    # currency_data variable used to store the requests.get json
-    currency_data = request_json.json()
+    return request_json.json()
+
+def parse_currency_payload(raw_data):
 
     return {
-        "type_buy": currency_data.get("compra", "N/A"),
-        "type_sell": currency_data.get("venta", "N/A"),
-        "coin_name": currency_data.get("nombre", "N/A"),
-        "coin": currency_data.get("moneda", "N/A"),
-        "minutes_ago": iso_format_converter(currency_data["fechaActualizacion"])
+        "type_buy": raw_data.get("compra", "N/A"),
+        "type_sell": raw_data.get("venta", "N/A"),
+        "coin_name": raw_data.get("nombre", "N/A"),
+        "coin": raw_data.get("moneda", "N/A"),
+        "minutes_ago": iso_format_converter(raw_data["fechaActualizacion"])
     }
 
 
