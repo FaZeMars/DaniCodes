@@ -80,7 +80,7 @@ def main_menu():
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
-        
+
     elif action["action"] == "exit":
         sys.exit("Closing the program...\n")
 
@@ -109,14 +109,18 @@ def current_currency_value():
         if selected_currency.get("is_exit"):
             break
 
-        try:
-            data = get_rate(selected_currency["route"])
-            print_currency_value(data)
-        except requests.RequestException as e:
-            print(f"Error: Could not fetch currency data. ({e})")
+        fetch_and_display_currency(selected_currency)
 
         input("\nPress enter to continue...")
         clean_terminal()
+
+
+def fetch_and_display_currency(currency):
+        try:
+            data = get_rate(currency["route"])
+            print_currency_value(data)
+        except requests.RequestException as e:
+            print(f"Error: Could not fetch currency data. ({e})")
 
 
 # function used to convert ISO 8601 string format to minutes ago
