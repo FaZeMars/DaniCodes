@@ -20,10 +20,17 @@ def test_menu_option_matcher():
 
 
 def test_parse_currency_payload():
-    mock_data = [
-        
+    mock_data = {"compra": 0,
+                 "venta": 0,
+                 "casa": "string",
+                 "nombre": "Blue",
+                 "moneda": "Dolar",
+                 "fechaActualizacion": "string"
+    }
 
 
 
-    ]
+
+
+
 
