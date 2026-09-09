@@ -10,3 +10,19 @@ def test_iso_formtat_converter():
 
 
 def test_menu_option_matcher():
+    mock_menu = [
+        {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
+        {"id": 2, "name": "Exit", "action": "exit"}
+    ]
+
+    assert project.menu_option_matcher(mock_menu, "1")["action"] == "view_rates"
+    assert project.menu_option_matcher(mock_menu, "2")["action"] == "exit"
+
+
+def test_parse_currency_payload():
+    raw_data = [
+        
+
+
+    ]
+

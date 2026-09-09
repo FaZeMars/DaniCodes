@@ -154,9 +154,7 @@ def get_rate(currency_key):
     return request_json.json()
 
 def parse_currency_payload(raw_data):
-
     date_str = raw_data.get("fechaActualizacion", datetime.now().isoformat())
-
     return {
         "type_buy": raw_data.get("compra", "N/A"),
         "type_sell": raw_data.get("venta", "N/A"),
