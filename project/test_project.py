@@ -7,9 +7,9 @@ from project import menu_displayer, MAIN_MENU_OPTIONS, main_menu, menu_option_ma
 # !--- Test for menu_displayer --! #
 
 
-def test_main_menu_currency_option(monkeypatch)
+def test_main_menu_currency_option(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "1")
-    
+
 
 
 def test_program_exit(monkeypatch):
