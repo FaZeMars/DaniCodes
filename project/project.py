@@ -69,15 +69,19 @@ def menu_displayer(menu_to_display):
 
 def main_menu():
     user_input = menu_displayer(MAIN_MENU_OPTIONS)
-
     selected_option = menu_option_matcher(MAIN_MENU_OPTIONS, user_input)
 
     if not selected_option:
         return
+    route_main_action(selected_option)
 
-    if selected_option["action"] == "view_rates":
+
+
+def route_main_action(action):
+    if action["action"] == "view_rates":
         current_currency_value()
-    elif selected_option["action"] == "exit":
+        
+    elif action["action"] == "exit":
         sys.exit("Closing the program...\n")
 
 
@@ -184,7 +188,7 @@ def print_currency_value(currency_data):
 
 
 
-    
+
 
 
 if __name__ == "__main__":
