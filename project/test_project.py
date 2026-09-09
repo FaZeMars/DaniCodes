@@ -20,8 +20,9 @@ def test_menu_option_matcher():
 
 
 def test_parse_currency_payload():
-    raw_data = [
+    mock_data = [
         
+
 
 
     ]
