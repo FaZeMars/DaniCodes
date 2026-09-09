@@ -120,7 +120,7 @@ def fetch_and_display_currency(currency):
             raw_data = get_rate(currency["route"])
             parsed_data = parse_currency_payload(raw_data)
             print_currency_value(parsed_data)
-        except requests.RequestException as e:
+        except (requests.RequestException, KeyError, ValueError) as e:
             print(f"Error: Could not fetch currency data. ({e})")
 
 
