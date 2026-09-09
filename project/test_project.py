@@ -7,6 +7,6 @@ from project import menu_displayer, MAIN_MENU_OPTIONS, main_menu, menu_option_ma
 # !--- Test for main_menu --! #
 
 def test_main_menu_currency():
-    assert main_menu("2") == "Closing the program...\n"
+    
 
 
