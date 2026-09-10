@@ -15,8 +15,6 @@ MAIN_MENU_OPTIONS = [
 ]
 
 
-
-
 currency_data_and_name = [
     {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
     {"id": 2, "name": "Dólar Blue", "route": "dolares/blue"},
@@ -29,8 +27,6 @@ currency_data_and_name = [
     {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
     {"id": 10, "name": "Back to Main Menu", "route": None, "is_exit": True},
 ]
-
-
 
 
 # Function used to clean the terminal for the user
@@ -76,7 +72,6 @@ def main_menu():
     route_main_action(selected_option)
 
 
-
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
@@ -116,12 +111,12 @@ def current_currency_value():
 
 
 def fetch_and_display_currency(currency):
-        try:
-            raw_data = get_rate(currency["route"])
-            parsed_data = parse_currency_payload(raw_data)
-            print_currency_value(parsed_data)
-        except (requests.RequestException, KeyError, ValueError) as e:
-            print(f"Error: Could not fetch currency data. ({e})")
+    try:
+        raw_data = get_rate(currency["route"])
+        parsed_data = parse_currency_payload(raw_data)
+        print_currency_value(parsed_data)
+    except (requests.RequestException, KeyError, ValueError) as e:
+        print(f"Error: Could not fetch currency data. ({e})")
 
 
 # function used to convert ISO 8601 string format to minutes ago
@@ -153,6 +148,7 @@ def get_rate(currency_key):
 
     return request_json.json()
 
+
 def parse_currency_payload(raw_data):
     date_str = raw_data.get("fechaActualizacion", datetime.now().isoformat())
     return {
@@ -164,8 +160,6 @@ def parse_currency_payload(raw_data):
     }
 
 
-
-
 # prints the currency value in a user-friendly format
 def print_currency_value(currency_data):
     clean_terminal()
@@ -175,26 +169,6 @@ def print_currency_value(currency_data):
           f"Last updated: {currency_data['minutes_ago']}",
           sep="\n"
           )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
