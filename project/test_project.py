@@ -7,8 +7,6 @@ def test_iso_formtat_converter():
     now_iso = datetime.now(timezone.utc).isoformat()
     assert project.iso_format_converter(now_iso) == "Just now"
 
-
-
 def test_menu_option_matcher():
     mock_menu = [
         {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
@@ -55,6 +53,10 @@ def test_print_currency_value(capsys):
     assert "Sale Value: 1400" in captured.out
     assert "Purchase Value: 1500" in captured.out
     assert "Last updated: 5 minutes ago" in captured.out
+
+
+def test_get_rate():
+    
 
 
 
