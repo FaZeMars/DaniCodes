@@ -39,6 +39,18 @@ def test_parse_currency_payload():
     }
 
 
+def test_print_currency_value():
+        valid_iso = datetime.now(timezone.utc).isoformat()
+        mock_data = {"compra": 1500,
+                 "venta": 1400,
+                 "casa": "string",
+                 "nombre": "Blue",
+                 "moneda": "Dolar",
+                 "fechaActualizacion": valid_iso
+    }
+
+    assert print_currency_value(mock_data) == 
+
 
 
 
