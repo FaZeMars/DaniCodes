@@ -40,12 +40,11 @@ def test_parse_currency_payload():
 
 
 def test_print_currency_value(capsys):
-    mock_data = {"compra": 1500,
-                "venta": 1400,
-                "casa": "string",
-                "nombre": "Blue",
-                "moneda": "USD",
-                "fechaActualizacion": "5 minutes ago"
+    mock_data = {"coin": "USD",
+                 "coin_name": "Blue",
+                 "type_sell": 1400,
+                 "type_buy": 1500,
+                 "minutes_ago": "5 minutes ago"
     }
 
     project.print_currency_value(mock_data)
@@ -55,7 +54,7 @@ def test_print_currency_value(capsys):
     assert "USD Blue" in captured.out
     assert "Sale Value: 1400" in captured.out
     assert "Purchase Value: 1500" in captured.out
-    assert "Last updated: 5 minutes ago" in
+    assert "Last updated: 5 minutes ago" in captured.out
 
 
 
