@@ -20,13 +20,14 @@ def test_menu_option_matcher():
 
 
 def test_parse_currency_payload():
+    valid_iso = datetime.now(timezone.utc).isoformat()
 
     mock_data = {"compra": 1500,
                  "venta": 1400,
                  "casa": "string",
                  "nombre": "Blue",
                  "moneda": "Dolar",
-                 "fechaActualizacion": "string"
+                 "fechaActualizacion": valid_iso
     }
 
     assert project.parse_currency_payload(mock_data) == {
@@ -34,7 +35,7 @@ def test_parse_currency_payload():
         "type_sell": mock_data.get("venta", "N/A"),
         "coin_name": mock_data.get("nombre", "N/A"),
         "coin": mock_data.get("moneda", "N/A"),
-            "minutes_ago": project.iso_format_converter(mock_data.get("fechaActualizacion", datetime.now().isoformat()))
+            "minutes_ago": project.iso_format_converter(valid_iso)
     }
 
 
