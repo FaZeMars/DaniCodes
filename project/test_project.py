@@ -55,7 +55,7 @@ def test_print_currency_value(capsys):
     assert "USD Blue" in captured.out
     assert "Sale Value: 1400" in captured.out
     assert "Purchase Value: 1500" in captured.out
-    assert "Last updated: 5 minutes ago" in captured.out
+    assert "Last updated: 5 minutes ago" in
 
 
 

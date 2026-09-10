@@ -160,7 +160,7 @@ def parse_currency_payload(raw_data):
         "type_sell": raw_data.get("venta", "N/A"),
         "coin_name": raw_data.get("nombre", "N/A"),
         "coin": raw_data.get("moneda", "N/A"),
-            "minutes_ago": iso_format_converter(date_str)
+        "minutes_ago": iso_format_converter(date_str)
     }
 
 
