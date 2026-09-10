@@ -20,12 +20,21 @@ def test_menu_option_matcher():
 
 
 def test_parse_currency_payload():
-    mock_data = {"compra": 0,
-                 "venta": 0,
+
+    mock_data = {"compra": 1500,
+                 "venta": 1400,
                  "casa": "string",
                  "nombre": "Blue",
                  "moneda": "Dolar",
                  "fechaActualizacion": "string"
+    }
+
+    assert project.parse_currency_payload(mock_data) == {
+        "type_buy": mock_data.get("compra", "N/A"),
+        "type_sell": mock_data.get("venta", "N/A"),
+        "coin_name": mock_data.get("nombre", "N/A"),
+        "coin": mock_data.get("moneda", "N/A"),
+            "minutes_ago": project.iso_format_converter(mock_data.get("fechaActualizacion", datetime.now().isoformat()))
     }
 
 
