@@ -35,7 +35,7 @@ def test_parse_currency_payload():
         "type_sell": mock_data.get("venta", "N/A"),
         "coin_name": mock_data.get("nombre", "N/A"),
         "coin": mock_data.get("moneda", "N/A"),
-            "minutes_ago": project.iso_format_converter(valid_iso)
+        "minutes_ago": project.iso_format_converter(valid_iso)
     }
 
 
