@@ -39,17 +39,23 @@ def test_parse_currency_payload():
     }
 
 
-def test_print_currency_value():
-        valid_iso = datetime.now(timezone.utc).isoformat()
-        mock_data = {"compra": 1500,
-                 "venta": 1400,
-                 "casa": "string",
-                 "nombre": "Blue",
-                 "moneda": "Dolar",
-                 "fechaActualizacion": valid_iso
+def test_print_currency_value(capsys):
+    mock_data = {"compra": 1500,
+                "venta": 1400,
+                "casa": "string",
+                "nombre": "Blue",
+                "moneda": "USD",
+                "fechaActualizacion": "5 minutes ago"
     }
 
-    assert print_currency_value(mock_data) == 
+    project.print_currency_value(mock_data)
+
+    captured = capsys.readouterr()
+
+    assert "USD Blue" in captured.out
+    assert "Sale Value: 1400" in captured.out
+    assert "Purchase Value: 1500" in captured.out
+    assert "Last updated: 5 minutes ago" in captured.out
 
 
 
