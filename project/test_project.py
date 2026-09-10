@@ -56,7 +56,8 @@ def test_print_currency_value(capsys):
 
 
 def test_get_rate():
-    
+    assert get_rate("cotizaciones/uyu") ==
+
 
 
 
