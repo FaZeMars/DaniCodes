@@ -11,7 +11,8 @@ API_URL = "https://dolarapi.com/v1/"
 
 MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
-    {"id": 2, "name": "Exit", "action": "exit"}
+    {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
+    {"id": 3, "name": "Exit", "action": "exit"}
 ]
 
 
@@ -46,8 +47,12 @@ def main():
 
 
 # Function used to display menus, then ask the user for an input, then returns that input to the caller function
-def menu_displayer(menu_to_display):
+def menu_displayer(menu_to_display, optional_string=None):
     while True:
+
+        if optional_string:
+            print(optional_string)
+
         for option in menu_to_display:
             print(f"{option['id']}) {option['name']}")
 
@@ -75,6 +80,9 @@ def main_menu():
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
+
+    elif action["action"] == "currency_conversion":
+        currency_conversion()
 
     elif action["action"] == "exit":
         sys.exit("Closing the program...\n")
@@ -169,6 +177,69 @@ def print_currency_value(currency_data):
           f"Last updated: {currency_data['minutes_ago']}",
           sep="\n"
           )
+
+
+def print_converted_currency_value(currency_to_print):
+    ...
+
+
+
+
+
+#--! Conversion functions !--#
+
+def currency_selection_checker(input_1, input_2):
+        if input_1 == input_2:
+            return False
+        else:
+            return True
+
+
+def currency_converter(currency_1, currency_2):
+    
+
+
+
+
+
+
+
+def currency_conversion():
+    while True:
+        selected_currency_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
+        selected_currency_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
+
+        checked = currency_selection_checker(selected_currency_1, selected_currency_2)
+
+        if checked == True:
+            currency_1 = get_rate(selected_currency_1["route"])
+            currency_2 = get_rate(selected_currency_2["route"])
+
+
+
+
+
+        else:
+            print("please select a different currency to convert to")
+            time.sleep(1)
+            clean_terminal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

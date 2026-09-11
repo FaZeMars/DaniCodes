@@ -55,8 +55,7 @@ def test_print_currency_value(capsys):
     assert "Last updated: 5 minutes ago" in captured.out
 
 
-def test_get_rate():
-    ...
+
 
 
 
