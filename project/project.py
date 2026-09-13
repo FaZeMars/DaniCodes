@@ -198,8 +198,17 @@ def currency_selection_checker(input_1, input_2, input_3):
 
 
 def currency_converter(currency_1, currency_2):
-    amount_to_convert = input("How much to you wish to convert?\n")
-    
+    while True:
+        amount_to_convert = input("How much to you wish to convert?\n")
+
+        if not isinstance(amount_to_convert, int):
+            print("Please enter a valid amount")
+            time.sleep(1)
+            clean_terminal()
+
+        else:
+            return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+
 
 
 
@@ -220,6 +229,7 @@ def currency_conversion():
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
             converted_currency = currency_converter(currency_1, currency_2)
+            print(converted_currency)
 
 
 
