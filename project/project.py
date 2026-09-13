@@ -188,10 +188,8 @@ def print_converted_currency_value(currency_to_print):
 
 #--! Conversion functions !--#
 
-def currency_selection_checker(input_1, input_2, input_3):
+def currency_selection_checker(input_1, input_2):
         if input_1 == input_2:
-            return False
-        if not isinstance(input_3, int):
             return False
         else:
             return True
