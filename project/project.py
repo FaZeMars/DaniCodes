@@ -179,12 +179,10 @@ def print_currency_value(currency_data):
           )
 
 
-def print_converted_currency_value(currency_to_print, currency_1, currency_2):
-    print(f"
-
-
-    )
-
+def print_converted_currency_value(value_to_print, currency_1, currency_2, amount_to_convert):
+    print(f"{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n")
+    input("Press enter to continue...")
+    clean_terminal()
 
 
 
@@ -205,7 +203,10 @@ def currency_converter(currency_1, currency_2):
             amount_to_convert = int(input("How much to you wish to convert?\n"))
             if 0 > amount_to_convert:
                 raise ValueError
-            return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+
+            converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+            print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
+            break
 
         except requests.RequestException as e:
             print(f"Error: Could not fetch currency data. ({e})")
@@ -246,11 +247,11 @@ def currency_conversion():
         if checked == True:
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
-            converted_currency = currency_converter(currency_1, currency_2)
-            print_converted_currency_value(converted_currency, selected_currency_1, selected_currency_2)
 
-            input("Press enter to continue...")
+            currency_converter(currency_1, currency_2)
             break
+
+
 
         else:
             print("please select a different currency to convert to")
