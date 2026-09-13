@@ -179,8 +179,11 @@ def print_currency_value(currency_data):
           )
 
 
-def print_converted_currency_value(currency_to_print):
-    ...
+def print_converted_currency_value(currency_to_print, currency_1, currency_2):
+    print(f"
+
+
+    )
 
 
 
@@ -202,12 +205,14 @@ def currency_converter(currency_1, currency_2):
             amount_to_convert = int(input("How much to you wish to convert?\n"))
             if 0 > amount_to_convert:
                 raise ValueError
-
-
             return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
 
-        except (requests.RequestException, KeyError, ValueError) as e:
+        except requests.RequestException as e:
             print(f"Error: Could not fetch currency data. ({e})")
+            return
+        except ValueError:
+            print("Please enter a valid amount to convert")
+
 
 
 
@@ -222,15 +227,19 @@ def currency_converter(currency_1, currency_2):
 def currency_conversion():
     while True:
         user_input_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
-        if user_input_1.get("is_exit"):
-            break
-        user_input_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
-        if user_input_2.get("is_exit"):
-            break
-
         selected_currency_1 = menu_option_matcher(currency_data_and_name, user_input_1)
+        if selected_currency_1.get("is_exit"):
+            break
 
+        user_input_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
         selected_currency_2 = menu_option_matcher(currency_data_and_name, user_input_2)
+        if selected_currency_1.get("is_exit"):
+            break
+
+
+
+
+
 
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
 
@@ -238,14 +247,10 @@ def currency_conversion():
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
             converted_currency = currency_converter(currency_1, currency_2)
-            print(f"{converted_currency}\n")
+            print_converted_currency_value(converted_currency, selected_currency_1, selected_currency_2)
 
             input("Press enter to continue...")
             break
-
-
-
-
 
         else:
             print("please select a different currency to convert to")
