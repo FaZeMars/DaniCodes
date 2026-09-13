@@ -197,7 +197,9 @@ def currency_selection_checker(input_1, input_2, input_3):
             return True
 
 
-def currency_converter(currency_1, currency_2, amount_to_convert):
+def currency_converter(currency_1, currency_2):
+    amount_to_convert = input("How much to you wish to convert?\n")
+    
 
 
 
@@ -211,14 +213,13 @@ def currency_conversion():
     while True:
         selected_currency_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
         selected_currency_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
-        amount_to_convert = input("How much do you wish to convert?")
 
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
 
         if checked == True:
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
-            converted_currency = currency_converter(currency_1, currency_2, amount_to_convert)
+            converted_currency = currency_converter(currency_1, currency_2)
 
 
 
