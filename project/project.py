@@ -218,8 +218,11 @@ def currency_converter(currency_1, currency_2):
 
 def currency_conversion():
     while True:
-        selected_currency_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
-        selected_currency_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
+        user_input_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
+        user_input_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
+
+        selected_currency_1 = menu_option_matcher(currency_data_and_name, user_input_1)
+        selected_currency_2 = menu_option_matcher(currency_data_and_name, user_input_2)
 
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
 
