@@ -198,7 +198,7 @@ def currency_selection_checker(input_1, input_2, input_3):
 
 
 def currency_converter(currency_1, currency_2, amount_to_convert):
-    currency_to_convert = currency_1["venta"] * amount_to_convert
+
 
 
 
