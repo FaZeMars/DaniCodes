@@ -215,9 +215,13 @@ def amount_input(type):
         try:
             if type == "currency":
                 amount_to_convert = int(input("How much to you wish to convert?\n"))
+                if amount_to_convert < 0:
+                    raise ValueError
                 return amount_to_convert
             elif type == "calculate":
                 amount_to_convert = int(input("How much USD are you paying or consuming?\n"))
+                if amount_to_convert < 0:
+                    raise ValueError
                 return amount_to_convert
 
         except ValueError:
@@ -228,7 +232,7 @@ def currency_converter(currency_1, currency_2):
     while True:
         try:
 
-            amount_to_convert = amount_input(currency)
+            amount_to_convert = amount_input("currency")
 
             converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
@@ -294,7 +298,7 @@ def route_calculator_options(selected_option):
         return
 
 def savings_calculator():
-    USD = amount_input(calculator)
+    USD = amount_input("calculator")
 
 
 
