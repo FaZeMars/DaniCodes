@@ -201,7 +201,7 @@ def currency_converter(currency_1, currency_2):
         try:
 
             amount_to_convert = int(input("How much to you wish to convert?\n"))
-            if 0 > amount_to_convert:
+            if 0 > amount_to_convert or not isinstance(amount_to_convert, int):
                 raise ValueError
 
             converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
@@ -213,13 +213,6 @@ def currency_converter(currency_1, currency_2):
             return
         except ValueError:
             print("Please enter a valid amount to convert")
-
-
-
-
-
-
-
 
 
 
@@ -237,11 +230,6 @@ def currency_conversion():
         if selected_currency_1.get("is_exit"):
             break
 
-
-
-
-
-
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
 
         if checked == True:
@@ -250,8 +238,6 @@ def currency_conversion():
 
             currency_converter(currency_1, currency_2)
             break
-
-
 
         else:
             print("please select a different currency to convert to")
