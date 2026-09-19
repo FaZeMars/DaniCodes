@@ -272,7 +272,7 @@ def calculator_options():
 
     if not selected_option:
         return
-    re
+    route_calculator_options(selected_option)
 
 
 
