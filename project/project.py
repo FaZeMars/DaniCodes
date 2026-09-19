@@ -201,8 +201,6 @@ def currency_converter_input():
     while True:
         try:
             amount_to_convert = int(input("How much to you wish to convert?\n"))
-            if 0 > amount_to_convert or not isinstance(amount_to_convert, int):
-                raise ValueError
             return amount_to_convert
         except ValueError:
             print("Please enter a valid amount")
