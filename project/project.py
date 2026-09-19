@@ -15,7 +15,13 @@ MAIN_MENU_OPTIONS = [
     {"id": 3, "name": "Exit", "action": "exit"}
 ]
 
-CALCULATOR_OPTIONS =
+CALCULATOR_OPTIONS =[
+    {"id": 1, "name": "Savings Calculator"}
+    {"id": 2, "name": "Exchange Rate Gap Calculator"}
+    {"id": 3, "name": "Savings Calculator"}
+
+
+]
 
 
 currency_data_and_name = [
