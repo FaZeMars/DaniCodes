@@ -35,7 +35,7 @@ currency_data_and_name = [
     {"id": 7, "name": "Real Brasileño", "route": "cotizaciones/brl"},
     {"id": 8, "name": "Peso Chileno", "route": "cotizaciones/clp"},
     {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
-    {"id": 10, "name": "Back to Main Menu", "route": None, "action": "exit"},
+    {"id": 10, "name": "Back to Main Menu", "route": "exit"},
 ]
 
 
@@ -122,7 +122,7 @@ def current_currency_value():
         if not selected_currency:
             continue
 
-        if selected_currency["action"] == "exit":
+        if selected_currency["route"] == "exit":
             break
 
         fetch_and_display_currency(selected_currency)
@@ -251,12 +251,12 @@ def currency_conversion():
     while True:
         user_input_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
         selected_currency_1 = menu_option_matcher(currency_data_and_name, user_input_1)
-        if selected_currency_1["action"] == "exit":
+        if selected_currency_1["route"] == "exit":
             break
 
         user_input_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
         selected_currency_2 = menu_option_matcher(currency_data_and_name, user_input_2)
-        if selected_currency_2["action"] == "exit":
+        if selected_currency_2["route"] == "exit":
             break
 
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
