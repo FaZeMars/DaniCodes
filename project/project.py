@@ -18,7 +18,7 @@ MAIN_MENU_OPTIONS = [
 CALCULATOR_OPTIONS =[
     {"id": 1, "name": "Savings Calculator"}
     {"id": 2, "name": "Exchange Rate Gap Calculator"}
-    {"id": 3, "name": "Savings Calculator"}
+    {"id": 3, "name": "Effective Sales Calculator"}
 
 
 ]
