@@ -267,7 +267,12 @@ def currency_conversion():
 
 
 def calculator_options():
-    ...
+    user_input = menu_displayer(CALCULATOR_OPTIONS)
+    selected_option = menu_option_matcher(CALCULATOR_OPTIONS, user_input)
+
+    if not selected_option:
+        return
+    re
 
 
 
