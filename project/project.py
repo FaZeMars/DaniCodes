@@ -26,7 +26,7 @@ currency_data_and_name = [
     {"id": 7, "name": "Real Brasileño", "route": "cotizaciones/brl"},
     {"id": 8, "name": "Peso Chileno", "route": "cotizaciones/clp"},
     {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
-    {"id": 10, "name": "Back to Main Menu", "route": None, "action": True},
+    {"id": 10, "name": "Back to Main Menu", "route": None, "action": "exit"},
 ]
 
 
@@ -109,7 +109,7 @@ def current_currency_value():
         if not selected_currency:
             continue
 
-        if selected_currency.get("is_exit"):
+        if selected_currency["action"] == "exit":
             break
 
         fetch_and_display_currency(selected_currency)
