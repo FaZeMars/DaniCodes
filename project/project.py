@@ -196,13 +196,23 @@ def currency_selection_checker(input_1, input_2):
             return True
 
 
+
+def currency_converter_input():
+    while True:
+        try:
+            amount_to_convert = int(input("How much to you wish to convert?\n"))
+            if 0 > amount_to_convert or not isinstance(amount_to_convert, int):
+                raise ValueError
+            return amount_to_convert
+        except ValueError:
+            print("Please enter a valid amount")
+
+
 def currency_converter(currency_1, currency_2):
     while True:
         try:
 
-            amount_to_convert = int(input("How much to you wish to convert?\n"))
-            if 0 > amount_to_convert or not isinstance(amount_to_convert, int):
-                raise ValueError
+            amount_to_convert = currency_converter_input()
 
             converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
@@ -211,8 +221,7 @@ def currency_converter(currency_1, currency_2):
         except requests.RequestException as e:
             print(f"Error: Could not fetch currency data. ({e})")
             return
-        except ValueError:
-            print("Please enter a valid amount to convert")
+
 
 
 
