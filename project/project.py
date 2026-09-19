@@ -15,6 +15,8 @@ MAIN_MENU_OPTIONS = [
     {"id": 3, "name": "Exit", "action": "exit"}
 ]
 
+CALCULATOR_OPTIONS =
+
 
 currency_data_and_name = [
     {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
