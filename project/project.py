@@ -242,7 +242,7 @@ def currency_conversion():
         else:
             print("please select a different currency to convert to")
             time.sleep(1)
-            clean_terminal
+            clean_terminal()
 
 
 
