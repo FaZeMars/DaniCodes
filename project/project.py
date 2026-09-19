@@ -289,7 +289,7 @@ def route_calculator_options(selected_option):
         return
 
 def savings_calculator():
-    
+    USD = amount_input()
 
 
 
