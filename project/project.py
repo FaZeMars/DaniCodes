@@ -12,14 +12,14 @@ API_URL = "https://dolarapi.com/v1/"
 MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
     {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
-    {"id": 3, "name": "Exit", "action": "exit"}
+    {"id": 3, "name": "Calculator Options", "action": "calculators"},
+    {"id": 4, "name": "Exit", "action": "exit"}
 ]
 
-CALCULATOR_OPTIONS =[
-    {"id": 1, "name": "Savings Calculator"}
-    {"id": 2, "name": "Exchange Rate Gap Calculator"}
-    {"id": 3, "name": "Effective Sales Calculator"}
-
+CALCULATOR_OPTIONS = [
+    {"id": 1, "name": "Savings Calculator"},
+    {"id": 2, "name": "Exchange Rate Gap Calculator"},
+    {"id": 3, "name": "Effective Sales Calculator"},
 
 ]
 
@@ -91,6 +91,9 @@ def route_main_action(action):
 
     elif action["action"] == "currency_conversion":
         currency_conversion()
+
+    elif action["action"] == "calculators":
+        calculator_options()
 
     elif action["action"] == "exit":
         sys.exit("Closing the program...\n")
@@ -262,7 +265,8 @@ def currency_conversion():
 
 
 
-
+def calculator_options():
+    ...
 
 
 
