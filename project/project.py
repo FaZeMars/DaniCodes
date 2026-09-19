@@ -12,14 +12,15 @@ API_URL = "https://dolarapi.com/v1/"
 MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
     {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
-    {"id": 3, "name": "Calculator Options", "action": "calculators"},
+    {"id": 3, "name": "Financial Calculators", "action": "calculators"},
     {"id": 4, "name": "Exit", "action": "exit"}
 ]
 
 CALCULATOR_OPTIONS = [
-    {"id": 1, "name": "Savings Calculator"},
-    {"id": 2, "name": "Exchange Rate Gap Calculator"},
-    {"id": 3, "name": "Effective Sales Calculator"},
+    {"id": 1, "name": "Savings Calculator", "action": "savings"},
+    {"id": 2, "name": "Exchange Rate Gap Calculator", "action": "exchange_rate"},
+    {"id": 3, "name": "Buy/sell spread calculator", "action": "spread"},
+    {"id": 4, "name": "Back to Main Menu", "action": "exit"}
 
 ]
 
@@ -274,6 +275,21 @@ def calculator_options():
         return
     route_calculator_options(selected_option)
 
+
+
+
+def route_calculator_options(selected_option):
+    if selected_option["action"] == "savings":
+        savings_calculator()
+    elif selected_option["action"] == "exchange_rate":
+        exchange_calculator()
+    elif selected_option["action"] == "spread":
+        buy_sell_spread_calculator()
+    elif selected_option["action"] == "exit":
+        return
+
+def savings_calculator():
+    
 
 
 
