@@ -232,7 +232,7 @@ def currency_conversion():
 
         checked = currency_selection_checker(selected_currency_1, selected_currency_2)
 
-        if checked == True:
+        if checked:
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
 
