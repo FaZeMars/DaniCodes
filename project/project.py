@@ -210,7 +210,7 @@ def currency_selection_checker(input_1, input_2):
 
 
 
-def currency_converter_input():
+def amount_input():
     while True:
         try:
             amount_to_convert = int(input("How much to you wish to convert?\n"))
@@ -223,7 +223,7 @@ def currency_converter(currency_1, currency_2):
     while True:
         try:
 
-            amount_to_convert = currency_converter_input()
+            amount_to_convert = amount_input()
 
             converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
@@ -290,6 +290,7 @@ def route_calculator_options(selected_option):
 
 def savings_calculator():
     
+
 
 
 
