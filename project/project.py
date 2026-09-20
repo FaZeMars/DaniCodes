@@ -31,6 +31,15 @@ BREACH_CALCULATOR_MENU = [
     {"id": 5, "name": "Back to Financial Calculators", "route": "exit"}
 ]
 
+SPREAD_CALCULATOR_MENU = [
+    {"id": 1, "name": "Dolar Blue", "route": "dolares/blue"},
+    {"id": 2, "name": "Dolar Bolsa / MEP", "route": "dolares/bolsa"},
+    {"id": 3, "name": "Dolar Tarjeta", "route": "dolares/tarjeta"},
+    {"id": 4, "name": "Dolar Cripto", "route": "dolares/cripto"},
+    {"id": 5, "name": "Euro", "route": "cotizaciones/euro"},
+    {"id": 6, "name": "Back to Financial Calculators", "route": "exit"}
+]
+
 
 CURRENCY_DATA_AND_NAME = [
     {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
@@ -387,16 +396,29 @@ def breach_calculator():
             print("There is no exchange gap between these rates.")
 
         input("\nPress enter to continue...")
-        clean_terminal
+        clean_terminal()
 
 
 
 
+
+
+def calculate_spread(selected_option):
+    ...
 
 
 
 def buy_sell_spread_calculator():
-    ...
+    while True:
+        user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
+        selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
+
+        if not selected_option or selected_option["route"] == "exit":
+            break
+
+        
+
+
 
 
 if __name__ == "__main__":
