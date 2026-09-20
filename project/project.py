@@ -298,10 +298,26 @@ def route_calculator_options(selected_option):
         return
 
 def calculate_savings(amount):
-    price_card = amount * get_rate()
+    tarjeta_data = get_rate("dolares/tarjeta")
+    mep_data = get_rate("dolares/bolsa")
+
+
+    price_card = amount * tarjeta_data["venta"]
+    price_mep = amount * mep_data["venta"]
+
+    return round(price_card - price_mep, 2)
 
 def savings_calculator():
     USD = amount_input("calculator")
+    savings = calculate_savings(USD)
+
+    if savings > 0:
+        ...
+    elif savings < 0:
+        ...
+    else:
+        ...
+
 
 
 
