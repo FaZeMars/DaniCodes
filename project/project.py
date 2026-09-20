@@ -373,7 +373,7 @@ def breach_calculator():
         gap_percentage, difference_ars = calculate_breach(selected_option["route"])
 
 
-        print(f"--- {selected_option['name']} ---)",
+        print(f"--- {selected_option['name']} ---",
               f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
               sep="\n")
 
