@@ -338,10 +338,10 @@ def savings_calculator():
 
 def calculate_breach(pre_type):
     pre_oficial = get_rate("dolares/oficial")
-    oficial_value = int(pre_oficial)
+    oficial_value = float(pre_oficial["venta"])
 
-    pre_type == int(get_rate(pre_type))
-    type_value = pre_type["venta"]
+    pre_type = get_rate(pre_type)
+    type_value = float(pre_type["venta"])
 
 
     return round(((type_value - oficial_value) / oficial_value) * 100, 2)
