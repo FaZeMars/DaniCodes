@@ -409,7 +409,7 @@ def calculate_spread(selected_option):
     currency_sell = float(currency["venta"])
 
     nominal_spread = currency_sell - currency_buy
-    percentage_spread = ((currency_buy - currency_sell) / 100) * 100
+    percentage_spread = ((currency_sell - currency_buy) / currency_sell) * 100
 
     return nominal_spread, percentage_spread, currency_buy, currency_sell
 
