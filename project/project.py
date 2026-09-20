@@ -305,7 +305,7 @@ def route_calculator_options(selected_option):
     if selected_option["action"] == "savings":
         savings_calculator()
     elif selected_option["action"] == "exchange_gap":
-        exchange_gap_calculator()
+        breach_calculator()
     elif selected_option["action"] == "spread":
         buy_sell_spread_calculator()
     elif selected_option["action"] == "exit":
@@ -359,8 +359,11 @@ def calculate_breach(pre_type):
 
 
 
-def exchange_gap_calculator():
+def breach_calculator():
     user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
+    gap_percentage, difference_ars = calculate_breach(user_input)
+
+
 
 
 
