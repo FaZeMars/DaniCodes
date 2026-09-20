@@ -426,13 +426,16 @@ def buy_sell_spread_calculator():
 
         nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
 
-        print(f"--- {selected_option["name"]} ---",
-              f"Sale price (venta)     : ${price_buy} ARS",
-              f"Purchase price (Compra): ${price_sell} ARS\n",
-              f"Spread (ARS): ${nominal_spread} ARS",
-              f"Spread (%)  : {percentage_spread}%",
-              sep="\n"
-        )
+        print(f"--- {selected_option['name']} ---",
+              f"Sale price (venta)     : ${price_sell} ARS",
+              f"Purchase price (Compra): ${price_buy} ARS\n",
+              f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
+              f"Spread (%)  : {round(percentage_spread, 2)}%",
+              sep="\n")
+
+        input("Press enter to continue...")
+        clean_terminal()
+
 
 
 
