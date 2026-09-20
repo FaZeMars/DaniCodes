@@ -359,13 +359,31 @@ def calculate_breach(pre_type):
 
 
 def breach_calculator():
-    user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
-    selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
-    gap_percentage, difference_ars = calculate_breach(selected_option["route"])
-    print(f"The exchange gap between {selected_option["name"]} and Dólar Oficial is {gap_percentage}%\n",
-          f"You would save {difference_ars} ARS buying {selected_option["name"]} rather than Dolar Oficial\n",
-          sep=""
-          )
+    while True:
+        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
+        selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
+
+        if not selected_option or selected_option["route"] == "exit":
+            break
+
+        gap_percentage, difference_ars = calculate_breach(selected_option["route"])
+
+
+        print(f"--- {selected_option['name']} ---)",
+              f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
+              sep="\n")
+
+        if gap_percentage > 0:
+            print(f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
+
+        elif gap_percentage < 0:
+            print(f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
+
+        else:
+            print("There is no exchange gap between these rates.")
+
+        input("\nPress enter to continue...")
+        clean_terminal
 
 
 
