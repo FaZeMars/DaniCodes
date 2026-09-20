@@ -318,13 +318,16 @@ def savings_calculator():
 
     if savings > 0:
         print("Pay using Dólar MEP/Blue\n",
-              f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos")
+              f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos",
+              sep="")
     elif savings < 0:
         print("Pay directly in ARS (card rate)\n",
-              f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.")
+              f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.",
+              sep="")
     else:
         print("Both options cost the same.\n"
-              "There is no price difference between paying with MEP or Card rate.")
+              "There is no price difference between paying with MEP or Card rate.",
+              sep="")
 
 
     input("Press enter to go back...")
