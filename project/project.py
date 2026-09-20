@@ -24,10 +24,10 @@ CALCULATOR_OPTIONS = [
 ]
 
 BREACH_CALCULATOR_MENU = [
-    {"id": 1, "name": "Dolar Blue vs Oficial", "route": "dolares/blue"},
-    {"id": 2, "name": "Dolar Bolsa / MEP vs Oficial", "route": "dolares/bolsa"},
-    {"id": 3, "name": "Dolar Tarjeta vs Oficial", "route": "dolares/tarjeta"},
-    {"id": 4, "name": "Dolar Cripto vs Oficial", "route": "dolares/cripto"},
+    {"id": 1, "name": "Dolar Blue", "route": "dolares/blue"},
+    {"id": 2, "name": "Dolar Bolsa / MEP", "route": "dolares/bolsa"},
+    {"id": 3, "name": "Dolar Tarjeta", "route": "dolares/tarjeta"},
+    {"id": 4, "name": "Dolar Cripto", "route": "dolares/cripto"},
     {"id": 5, "name": "Back to Financial Calculators", "route": "exit"}
 ]
 
