@@ -18,7 +18,7 @@ MAIN_MENU_OPTIONS = [
 
 CALCULATOR_OPTIONS = [
     {"id": 1, "name": "Savings Calculator", "action": "savings"},
-    {"id": 2, "name": "Exchange Rate Gap Calculator", "action": "exchange_rate"},
+    {"id": 2, "name": "Exchange Rate Gap Calculator", "action": "exchange_gap"},
     {"id": 3, "name": "Buy/sell spread calculator", "action": "spread"},
     {"id": 4, "name": "Back to Main Menu", "action": "exit"}
 
@@ -296,7 +296,7 @@ def calculator_options():
 def route_calculator_options(selected_option):
     if selected_option["action"] == "savings":
         savings_calculator()
-    elif selected_option["action"] == "exchange_rate":
+    elif selected_option["action"] == "exchange_gap":
         exchange_calculator()
     elif selected_option["action"] == "spread":
         buy_sell_spread_calculator()
@@ -334,6 +334,15 @@ def savings_calculator():
     input("Press enter to go back...")
     time.sleep(0.5)
     clean_terminal()
+
+
+def calculate_breach():
+
+
+
+def exchange_gap_calculator():
+    
+
 
 
 
