@@ -121,7 +121,6 @@ def route_main_action(action):
         sys.exit("Closing the program...\n")
 
 
-
 # matches the user input to the menu option, then, if valid, returns the user input to the caller
 
 
@@ -214,21 +213,19 @@ def print_currency_value(currency_data):
 
 
 def print_converted_currency_value(value_to_print, currency_1, currency_2, amount_to_convert):
-    print(f'{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n')
+    print(
+        f'{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n')
     input("Press enter to continue...")
     clean_terminal()
 
 
-
-
-#--! Conversion functions !--#
+# --! Conversion functions !--#
 
 def currency_selection_checker(input_1, input_2):
-        if input_1["route"] == input_2["route"]:
-            return False
-        else:
-            return True
-
+    if input_1["route"] == input_2["route"]:
+        return False
+    else:
+        return True
 
 
 def amount_input(type):
@@ -249,15 +246,13 @@ def amount_input(type):
         except ValueError:
             print("Please enter a valid amount")
 
-        #borrar antes de entregar
+        # borrar antes de entregar
         except UnboundLocalError:
             sys.exit("dani pusiste mal el parametro...")
 
 
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
     return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
-
-
 
 
 def currency_converter(currency_1, currency_2):
@@ -273,10 +268,6 @@ def currency_converter(currency_1, currency_2):
         except requests.RequestException as e:
             print(f"Error: Could not fetch currency data. ({e})")
             return
-
-
-
-
 
 
 def currency_conversion():
@@ -306,8 +297,6 @@ def currency_conversion():
             clean_terminal()
 
 
-
-
 def calculator_options():
     while True:
         user_input = menu_displayer(CALCULATOR_OPTIONS)
@@ -316,8 +305,6 @@ def calculator_options():
         if not selected_option or selected_option["action"] == "exit":
             return
         route_calculator_options(selected_option)
-
-
 
 
 def route_calculator_options(selected_option):
@@ -330,15 +317,16 @@ def route_calculator_options(selected_option):
     elif selected_option["action"] == "exit":
         return
 
+
 def calculate_savings(amount):
     tarjeta_data = get_rate("dolares/tarjeta")
     mep_data = get_rate("dolares/bolsa")
-
 
     price_card = amount * tarjeta_data["venta"]
     price_mep = amount * mep_data["venta"]
 
     return round(price_card - price_mep, 2)
+
 
 def savings_calculator():
     try:
@@ -348,24 +336,22 @@ def savings_calculator():
 
             if savings > 0:
                 print("Pay using Dólar MEP/Blue\n",
-                    f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos\n",
-                    sep="")
+                      f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos\n",
+                      sep="")
             elif savings < 0:
                 print("Pay directly in ARS (card rate)\n",
-                    f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.\n",
-                    sep="")
+                      f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.\n",
+                      sep="")
             else:
                 print("Both options cost the same.\n"
-                    "There is no price difference between paying with MEP or Card rate.\n",
-                    sep="")
-
+                      "There is no price difference between paying with MEP or Card rate.\n",
+                      sep="")
 
             input("Press enter to continue...")
             time.sleep(0.5)
             clean_terminal()
     except (KeyError, TypeError):
         print("Service temporarily unavailable. Please try again later.")
-
 
 
 def calculate_breach(pre_type):
@@ -375,18 +361,17 @@ def calculate_breach(pre_type):
     pre_type = get_rate(pre_type)
     type_value = float(pre_type["venta"])
 
-
-    difference_ars = round(type_value - oficial_value , 2)
+    difference_ars = round(type_value - oficial_value, 2)
     gap_percentage = round((difference_ars / oficial_value) * 100, 2)
 
     return gap_percentage, difference_ars
 
 
-
 def breach_calculator():
     try:
         while True:
-            user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
+            user_input = menu_displayer(BREACH_CALCULATOR_MENU,
+                                        "Breach calculation Options:\n", "vs Dólar Oficial")
             selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
             if not selected_option or selected_option["route"] == "exit":
@@ -394,16 +379,17 @@ def breach_calculator():
 
             gap_percentage, difference_ars = calculate_breach(selected_option["route"])
 
-
             print(f"--- {selected_option['name']} ---",
-                f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
-                sep="\n")
+                  f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
+                  sep="\n")
 
             if gap_percentage > 0:
-                print(f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
+                print(
+                    f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
 
             elif gap_percentage < 0:
-                print(f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
+                print(
+                    f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
 
             else:
                 print("There is no exchange gap between these rates.")
@@ -412,10 +398,6 @@ def breach_calculator():
             clean_terminal()
     except (KeyError, TypeError):
         print("Service temporarily unavailable. Please try again later.")
-
-
-
-
 
 
 def calculate_spread(selected_option):
@@ -429,38 +411,29 @@ def calculate_spread(selected_option):
     return nominal_spread, percentage_spread, currency_buy, currency_sell
 
 
-
 def buy_sell_spread_calculator():
     try:
         while True:
             user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
             selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
-
             if not selected_option or selected_option["route"] == "exit":
                 break
 
-            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
+            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(
+                selected_option["route"])
 
             print(f"--- {selected_option['name']} ---",
-                f"Sale price (venta)     : ${price_sell} ARS",
-                f"Purchase price (Compra): ${price_buy} ARS\n",
-                f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
-                f"Spread (%)  : {round(percentage_spread, 2)}%",
-                sep="\n")
+                  f"Sale price (venta)     : ${price_sell} ARS",
+                  f"Purchase price (Compra): ${price_buy} ARS\n",
+                  f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
+                  f"Spread (%)  : {round(percentage_spread, 2)}%",
+                  sep="\n")
 
             input("Press enter to continue...")
             clean_terminal()
     except (KeyError, TypeError):
         print("Service temporarily unavailable. Please try again later.")
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
