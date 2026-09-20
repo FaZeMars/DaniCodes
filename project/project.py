@@ -115,9 +115,9 @@ def menu_option_matcher(valid_menu, user_input_):
 
 def current_currency_value():
     while True:
-        user_input = menu_displayer(currency_data_and_name)
+        user_input = menu_displayer(CURRENCY_DATA_AND_NAME)
 
-        selected_currency = menu_option_matcher(currency_data_and_name, user_input)
+        selected_currency = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input)
 
         if not selected_currency:
             continue
@@ -254,13 +254,13 @@ def currency_converter(currency_1, currency_2):
 
 def currency_conversion():
     while True:
-        user_input_1 = menu_displayer(currency_data_and_name, "Currency to convert from:\n")
-        selected_currency_1 = menu_option_matcher(currency_data_and_name, user_input_1)
+        user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:\n")
+        selected_currency_1 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_1)
         if selected_currency_1["route"] == "exit":
             break
 
-        user_input_2 = menu_displayer(currency_data_and_name, "Currency to convert to:\n")
-        selected_currency_2 = menu_option_matcher(currency_data_and_name, user_input_2)
+        user_input_2 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert to:\n")
+        selected_currency_2 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_2)
         if selected_currency_2["route"] == "exit":
             break
 
@@ -297,7 +297,7 @@ def route_calculator_options(selected_option):
     if selected_option["action"] == "savings":
         savings_calculator()
     elif selected_option["action"] == "exchange_gap":
-        exchange_calculator()
+        exchange_gap_calculator()
     elif selected_option["action"] == "spread":
         buy_sell_spread_calculator()
     elif selected_option["action"] == "exit":
@@ -336,11 +336,29 @@ def savings_calculator():
     clean_terminal()
 
 
-def calculate_breach():
+def calculate_breach(pre_type):
+    pre_oficial = get_rate("dolares/oficial")
+    oficial_value = int(pre_oficial)
+
+    pre_type == int(get_rate(pre_type))
+    type_value = pre_type["venta"]
+
+
+    return round(((type_value - oficial_value) / oficial_value) * 100, 2)
 
 
 
-def exchange_gap_calculator(type):
+    if type == "blue":
+        blue_value = get_rate("dolares/blue")
+        breach = ((int(blue_value["venta"]) - oficial_value) / oficial_value) * 100
+    elif type == "mep":
+        mep_value = get_rate("dolares/bolsa")
+        breach = ((int(blue_value["venta"]) - oficial_value))
+
+
+
+def exchange_gap_calculator():
+    ...
 
 
 
