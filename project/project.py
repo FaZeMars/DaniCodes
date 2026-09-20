@@ -404,7 +404,14 @@ def breach_calculator():
 
 
 def calculate_spread(selected_option):
-    ...
+    currency = get_rate(selected_option)
+    currency_buy = float(currency["compra"])
+    currency_sell = float(currency["venta"])
+
+    nominal_spread = currency_buy - currency_sell
+    percentage_spread = ((currency_buy - currency_sell) / 100) * 100
+
+    return nominal_spread, percentage_spread
 
 
 
@@ -416,7 +423,11 @@ def buy_sell_spread_calculator():
         if not selected_option or selected_option["route"] == "exit":
             break
 
+        nominal_spread, percentage_spread = calculate_spread(selected_option["route"])
+
         
+
+
 
 
 
