@@ -12,7 +12,8 @@ MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
     {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
     {"id": 3, "name": "Financial Calculators", "action": "calculators"},
-    {"id": 4, "name": "Exit", "action": "exit"}
+    {"id": 4, "name": "Reverse Currency Converter", "action": "reverse_converter"}
+    {"id": 5, "name": "Exit", "action": "exit"}
 ]
 
 CALCULATOR_OPTIONS = [
@@ -334,26 +335,31 @@ def calculate_savings(amount):
     return round(price_card - price_mep, 2)
 
 def savings_calculator():
-    USD = amount_input("calculate")
-    savings = calculate_savings(USD)
+    try:
+        while True:
+            USD = amount_input("calculate")
+            savings = calculate_savings(USD)
 
-    if savings > 0:
-        print("Pay using Dólar MEP/Blue\n",
-              f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos\n",
-              sep="")
-    elif savings < 0:
-        print("Pay directly in ARS (card rate)\n",
-              f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.\n",
-              sep="")
-    else:
-        print("Both options cost the same.\n"
-              "There is no price difference between paying with MEP or Card rate.\n",
-              sep="")
+            if savings > 0:
+                print("Pay using Dólar MEP/Blue\n",
+                    f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos\n",
+                    sep="")
+            elif savings < 0:
+                print("Pay directly in ARS (card rate)\n",
+                    f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.\n",
+                    sep="")
+            else:
+                print("Both options cost the same.\n"
+                    "There is no price difference between paying with MEP or Card rate.\n",
+                    sep="")
 
 
-    input("Press enter to go back...")
-    time.sleep(0.5)
-    clean_terminal()
+            input("Press enter to continue...")
+            time.sleep(0.5)
+            clean_terminal()
+    except (KeyError, TypeError):
+        print("Service temporarily unavailable. Please try again later.")
+
 
 
 def calculate_breach(pre_type):
@@ -372,31 +378,34 @@ def calculate_breach(pre_type):
 
 
 def breach_calculator():
-    while True:
-        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
-        selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
+    try:
+        while True:
+            user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
+            selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
-        if not selected_option or selected_option["route"] == "exit":
-            break
+            if not selected_option or selected_option["route"] == "exit":
+                break
 
-        gap_percentage, difference_ars = calculate_breach(selected_option["route"])
+            gap_percentage, difference_ars = calculate_breach(selected_option["route"])
 
 
-        print(f"--- {selected_option['name']} ---",
-              f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
-              sep="\n")
+            print(f"--- {selected_option['name']} ---",
+                f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
+                sep="\n")
 
-        if gap_percentage > 0:
-            print(f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
+            if gap_percentage > 0:
+                print(f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
 
-        elif gap_percentage < 0:
-            print(f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
+            elif gap_percentage < 0:
+                print(f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
 
-        else:
-            print("There is no exchange gap between these rates.")
+            else:
+                print("There is no exchange gap between these rates.")
 
-        input("\nPress enter to continue...")
-        clean_terminal()
+            input("\nPress enter to continue...")
+            clean_terminal()
+    except (KeyError, TypeError):
+        print("Service temporarily unavailable. Please try again later.")
 
 
 
@@ -416,25 +425,29 @@ def calculate_spread(selected_option):
 
 
 def buy_sell_spread_calculator():
-    while True:
-        user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
-        selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
+    try:
+        while True:
+            user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
+            selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
 
-        if not selected_option or selected_option["route"] == "exit":
-            break
+            if not selected_option or selected_option["route"] == "exit":
+                break
 
-        nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
+            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
 
-        print(f"--- {selected_option['name']} ---",
-              f"Sale price (venta)     : ${price_sell} ARS",
-              f"Purchase price (Compra): ${price_buy} ARS\n",
-              f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
-              f"Spread (%)  : {round(percentage_spread, 2)}%",
-              sep="\n")
+            print(f"--- {selected_option['name']} ---",
+                f"Sale price (venta)     : ${price_sell} ARS",
+                f"Purchase price (Compra): ${price_buy} ARS\n",
+                f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
+                f"Spread (%)  : {round(percentage_spread, 2)}%",
+                sep="\n")
 
-        input("Press enter to continue...")
-        clean_terminal()
+            input("Press enter to continue...")
+            clean_terminal()
+    except (KeyError, TypeError):
+        print("Service temporarily unavailable. Please try again later.")
+
 
 
 
