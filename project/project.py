@@ -12,7 +12,7 @@ MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
     {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
     {"id": 3, "name": "Financial Calculators", "action": "calculators"},
-    {"id": 4, "name": "Reverse Currency Converter", "action": "reverse_converter"}
+    {"id": 4, "name": "Reverse Currency Converter", "action": "reverse_converter"},
     {"id": 5, "name": "Exit", "action": "exit"}
 ]
 
