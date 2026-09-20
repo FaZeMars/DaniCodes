@@ -285,7 +285,7 @@ def calculator_options():
         user_input = menu_displayer(CALCULATOR_OPTIONS)
         selected_option = menu_option_matcher(CALCULATOR_OPTIONS, user_input)
 
-        if not selected_option:
+        if not selected_option or selected_option["action"] == "exit":
             return
         route_calculator_options(selected_option)
 
