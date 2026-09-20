@@ -297,9 +297,12 @@ def route_calculator_options(selected_option):
     elif selected_option["action"] == "exit":
         return
 
+def calculate_savings(amount):
+    price_card = amount * get_rate()
+
 def savings_calculator():
     USD = amount_input("calculator")
-    
+
 
 
 
