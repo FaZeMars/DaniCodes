@@ -1,4 +1,3 @@
-# Libraries used in the program
 import sys
 import time
 import os
@@ -7,7 +6,7 @@ from datetime import datetime, timezone
 
 API_URL = "https://dolarapi.com/v1/"
 
-# Menus available to be used by other functions
+# Menus available to be used by other functions in this program
 
 MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
@@ -361,8 +360,12 @@ def calculate_breach(pre_type):
 
 def breach_calculator():
     user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
-    gap_percentage, difference_ars = calculate_breach(user_input)
-    print(f"The exchange gap between {})
+    selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
+    gap_percentage, difference_ars = calculate_breach(selected_option["route"])
+    print(f"The exchange gap between {selected_option["name"]} and Dólar Oficial is {gap_percentage}%\n",
+          f"You would save {difference_ars} ARS buying {selected_option["name"]} rather than Dolar Oficial\n",
+          sep=""
+          )
 
 
 
@@ -372,27 +375,6 @@ def breach_calculator():
 
 def buy_sell_spread_calculator():
     ...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
