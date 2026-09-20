@@ -360,7 +360,7 @@ def calculate_breach(pre_type):
 
 
 def exchange_gap_calculator():
-    ...
+    user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
 
 
 
