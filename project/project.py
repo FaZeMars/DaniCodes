@@ -312,7 +312,9 @@ def savings_calculator():
     savings = calculate_savings(USD)
 
     if savings > 0:
-        ...
+        print("" \
+        "" \
+        "")
     elif savings < 0:
         ...
     else:
