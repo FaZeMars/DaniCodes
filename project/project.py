@@ -222,6 +222,7 @@ def amount_input(type):
                 amount = int(input("How much USD are you paying or consuming?\n"))
                 if amount <= 0:
                     raise ValueError
+                clean_terminal()
                 return amount
 
         except ValueError:
