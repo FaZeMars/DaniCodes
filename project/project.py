@@ -212,6 +212,8 @@ def print_currency_value(currency_data):
           )
 
 
+# --! Conversion functions !--#
+
 def print_converted_currency_value(value_to_print, currency_1, currency_2, amount_to_convert):
     print(
         f'{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n')
@@ -219,7 +221,7 @@ def print_converted_currency_value(value_to_print, currency_1, currency_2, amoun
     clean_terminal()
 
 
-# --! Conversion functions !--#
+
 
 def currency_selection_checker(input_1, input_2):
     if input_1["route"] == input_2["route"]:
@@ -261,7 +263,7 @@ def currency_converter(currency_1, currency_2):
 
             amount_to_convert = amount_input("currency")
 
-            converted = calculate_conversion(currency_1, currency_2, amount_to_convert)
+            converted = round(calculate_conversion(currency_1, currency_2, amount_to_convert), 4)
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
             break
 
