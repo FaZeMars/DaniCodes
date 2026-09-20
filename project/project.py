@@ -224,7 +224,7 @@ def print_converted_currency_value(value_to_print, currency_1, currency_2, amoun
 #--! Conversion functions !--#
 
 def currency_selection_checker(input_1, input_2):
-        if input_1 == input_2:
+        if input_1["route"] == input_2["route"]:
             return False
         else:
             return True
@@ -235,12 +235,12 @@ def amount_input(type):
     while True:
         try:
             if type == "currency":
-                amount = int(input("How much to you wish to convert?\n"))
+                amount = float(input("How much to you wish to convert?\n"))
                 if amount < 0:
                     raise ValueError
                 return amount
             elif type == "calculate":
-                amount = int(input("How much USD are you paying or consuming?\n"))
+                amount = float(input("How much USD are you paying or consuming?\n"))
                 if amount <= 0:
                     raise ValueError
                 clean_terminal()
