@@ -411,7 +411,7 @@ def calculate_spread(selected_option):
     nominal_spread = currency_buy - currency_sell
     percentage_spread = ((currency_buy - currency_sell) / 100) * 100
 
-    return nominal_spread, percentage_spread
+    return nominal_spread, percentage_spread, currency_buy, currency_sell
 
 
 
@@ -420,12 +420,21 @@ def buy_sell_spread_calculator():
         user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
         selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
+
         if not selected_option or selected_option["route"] == "exit":
             break
 
-        nominal_spread, percentage_spread = calculate_spread(selected_option["route"])
+        nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
 
-        
+        print(f"--- {selected_option["name"]} ---",
+              f"Sale price (venta)     : ${price_buy} ARS",
+              f"Purchase price (Compra): ${price_sell} ARS\n",
+              f"Spread (ARS): ${nominal_spread} ARS",
+              f"Spread (%)  : {percentage_spread}%",
+              sep="\n"
+        )
+
+
 
 
 
