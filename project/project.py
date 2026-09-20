@@ -344,16 +344,10 @@ def calculate_breach(pre_type):
     type_value = float(pre_type["venta"])
 
 
-    return round(((type_value - oficial_value) / oficial_value) * 100, 2)
+    difference_ars = round(type_value - oficial_value , 2)
+    gap_percentage = round((difference_ars / oficial_value) * 100, 2)
 
-
-
-    if type == "blue":
-        blue_value = get_rate("dolares/blue")
-        breach = ((int(blue_value["venta"]) - oficial_value) / oficial_value) * 100
-    elif type == "mep":
-        mep_value = get_rate("dolares/bolsa")
-        breach = ((int(blue_value["venta"]) - oficial_value))
+    return gap_percentage, difference_ars
 
 
 
