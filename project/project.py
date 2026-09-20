@@ -233,7 +233,7 @@ def amount_input(type):
     while True:
         try:
             if type == "currency":
-                amount = float(input("How much to you wish to convert?\n"))
+                amount = float(input("How much do you wish to convert?\n"))
                 if amount < 0:
                     raise ValueError
                 return amount
