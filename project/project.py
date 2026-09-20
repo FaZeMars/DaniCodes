@@ -63,14 +63,18 @@ def main():
 
 
 # Function used to display menus, then ask the user for an input, then returns that input to the caller function
-def menu_displayer(menu_to_display, optional_string=None):
+def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
     while True:
 
         if optional_string:
             print(optional_string)
 
         for option in menu_to_display:
-            print(f"{option['id']}) {option['name']}")
+            if item_suffix and option.get("route") != "exit" and option.get("action") != "exit":
+                print(f"{option['id']}) {option['name']} {item_suffix}")
+
+            else:
+                print(f"{option['id']}) {option['name']}")
 
         user_input = input("Please choose an option (1, 2, 3 ...)").strip().lower()
 
@@ -360,7 +364,7 @@ def calculate_breach(pre_type):
 
 def breach_calculator():
     while True:
-        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
+        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
         selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
         if not selected_option or selected_option["route"] == "exit":
