@@ -362,6 +362,7 @@ def calculate_breach(pre_type):
 def breach_calculator():
     user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n")
     gap_percentage, difference_ars = calculate_breach(user_input)
+    print(f"The exchange gap between {})
 
 
 
