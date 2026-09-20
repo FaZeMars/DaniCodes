@@ -254,13 +254,19 @@ def amount_input(type):
             sys.exit("dani pusiste mal el parametro...")
 
 
+def calculate_conversion(currency_1, currency_2, amount_to_convert):
+    return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+
+
+
+
 def currency_converter(currency_1, currency_2):
     while True:
         try:
 
             amount_to_convert = amount_input("currency")
 
-            converted = (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+            converted = calculate_conversion(currency_1, currency_2, amount_to_convert)
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
             break
 
