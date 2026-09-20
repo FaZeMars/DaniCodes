@@ -193,7 +193,7 @@ def print_currency_value(currency_data):
 
 
 def print_converted_currency_value(value_to_print, currency_1, currency_2, amount_to_convert):
-    print(f"{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n")
+    print(f'{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n')
     input("Press enter to continue...")
     clean_terminal()
 
@@ -214,18 +214,22 @@ def amount_input(type):
     while True:
         try:
             if type == "currency":
-                amount_to_convert = int(input("How much to you wish to convert?\n"))
-                if amount_to_convert < 0:
+                amount = int(input("How much to you wish to convert?\n"))
+                if amount < 0:
                     raise ValueError
-                return amount_to_convert
+                return amount
             elif type == "calculate":
-                amount_to_convert = int(input("How much USD are you paying or consuming?\n"))
-                if amount_to_convert < 0:
+                amount = int(input("How much USD are you paying or consuming?\n"))
+                if amount <= 0:
                     raise ValueError
-                return amount_to_convert
+                return amount
 
         except ValueError:
             print("Please enter a valid amount")
+
+        #borrar antes de entregar
+        except UnboundLocalError:
+            sys.exit("dani pusiste mal el parametro...")
 
 
 def currency_converter(currency_1, currency_2):
@@ -308,7 +312,7 @@ def calculate_savings(amount):
     return round(price_card - price_mep, 2)
 
 def savings_calculator():
-    USD = amount_input("calculator")
+    USD = amount_input("calculate")
     savings = calculate_savings(USD)
 
     if savings > 0:
