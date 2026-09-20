@@ -25,7 +25,7 @@ CALCULATOR_OPTIONS = [
 ]
 
 
-currency_data_and_name = [
+CURRENCY_DATA_AND_NAME = [
     {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
     {"id": 2, "name": "Dólar Blue", "route": "dolares/blue"},
     {"id": 3, "name": "Dólar Bolsa / MEP", "route": "dolares/bolsa"},
@@ -340,8 +340,8 @@ def calculate_breach():
 
 
 
-def exchange_gap_calculator():
-    
+def exchange_gap_calculator(type):
+
 
 
 
