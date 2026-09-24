@@ -380,7 +380,7 @@ def savings_calculator():
 
 
         elif savings < 0:
-            print("  >>> RECOMMENDED OPTION: DÓLAR MEP <<<")
+            print("  >>> RECOMMENDED OPTION: DIRECT CARD PAYMENT <<<")
             print(f"  Estimated savings: ${abs(savings):,.2f} ARS\n")
             print("  [Tip] Card rate is currently cheaper than buying MEP.")
         else:
