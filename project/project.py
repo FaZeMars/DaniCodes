@@ -12,8 +12,7 @@ MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
     {"id": 2, "name": "Currency Conversion", "action": "currency_conversion"},
     {"id": 3, "name": "Financial Calculators", "action": "calculators"},
-    {"id": 4, "name": "Reverse Currency Converter", "action": "reverse_converter"},
-    {"id": 5, "name": "Exit", "action": "exit"}
+    {"id": 4, "name": "Exit", "action": "exit"}
 ]
 
 CALCULATOR_OPTIONS = [
@@ -95,6 +94,13 @@ def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
             print("Please select a valid option")
             time.sleep(1)
             clean_terminal()
+
+
+def print_header(title):
+    width = 51
+    print("=" * width)
+    print(title.center(width))
+    print("=" * width + "\n")
 
 
 def main_menu():
@@ -213,13 +219,30 @@ def print_currency_value(currency_data):
 
 # --! Conversion functions !--#
 
-def print_converted_currency_value(value_to_print, currency_1, currency_2, amount_to_convert):
-    print(
-        f'{amount_to_convert} {currency_1["moneda"]} {currency_1["nombre"]} is {value_to_print} {currency_2["moneda"]} {currency_2["nombre"]}\n')
+def print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert):
+    clean_terminal()
+    print_header("CURRENCY CONVERSION RESULT")
+
+    rate = currency_1["venta"] / currency_2["venta"] if currency_2["venta"] != 0 else 0
+
+    name_1 = f"{currency_1['moneda']} ({currency_1['nombre']})" if currency_1['moneda'] == "USD" else currency_1['moneda']
+    name_2 = f"{currency_2['moneda']} ({currency_2['nombre']})" if currency_2['moneda'] == "USD" else currency_2['moneda']
+
+    print(f"  Amount entered    : {amount_to_convert:.2f} {name_1}")
+    print(f"  Target Currency   : {name_2}\n")
+    print("-" * 51 + "\n")
+    print(f"  Exchange rate     : 1 {name_1} = {rate:,.2f} {name_2}")
+    print(f"  Total to receive  : ${converted:,.2f} {name_2}\n")
+    print("-" * 51)
+    print("  [i]Real-time rate fetched from DolarApi.")
+    print("=" * 51 + "\n")
+
+
+
+
+
     input("Press enter to continue...")
     clean_terminal()
-
-
 
 
 def currency_selection_checker(input_1, input_2):
@@ -247,9 +270,6 @@ def amount_input(type):
         except ValueError:
             print("Please enter a valid amount")
 
-        # borrar antes de entregar
-        except UnboundLocalError:
-            sys.exit("dani pusiste mal el parametro...")
 
 
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
@@ -266,36 +286,41 @@ def currency_converter(currency_1, currency_2):
             print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
             break
 
-        except requests.RequestException as e:
-            print(f"Error: Could not fetch currency data. ({e})")
-            return
+        except (KeyError, TypeError, ValueError):
+            print("Error procesing Currency values. Please try again.")
+            time.sleep(1.5)
 
 
 def currency_conversion():
     while True:
         user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:\n")
         selected_currency_1 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_1)
-        if selected_currency_1["route"] == "exit":
+        if not selected_currency_1 or selected_currency_1["route"] == "exit":
             break
 
         user_input_2 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert to:\n")
         selected_currency_2 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_2)
-        if selected_currency_2["route"] == "exit":
+        if not selected_currency_1 or selected_currency_2["route"] == "exit":
             break
 
-        checked = currency_selection_checker(selected_currency_1, selected_currency_2)
+        if not currency_selection_checker(selected_currency_1, selected_currency_2):
+            print("Please select a different currency to convert to")
+            time.sleep(1.5)
+            clean_terminal()
+            continue
 
-        if checked:
+        try:
             currency_1 = get_rate(selected_currency_1["route"])
             currency_2 = get_rate(selected_currency_2["route"])
 
             currency_converter(currency_1, currency_2)
             break
 
-        else:
-            print("please select a different currency to convert to")
-            time.sleep(1)
+        except requests.RequestException as e:
+            print(f"Error: Could not fetch currency data. ({e})")
+            time.sleep(2)
             clean_terminal()
+            break
 
 
 def calculator_options():
@@ -331,27 +356,41 @@ def calculate_savings(amount):
 
 def savings_calculator():
     try:
-        while True:
-            USD = amount_input("calculate")
-            savings = calculate_savings(USD)
+        usd_amount = amount_input("calculate")
+        savings = calculate_savings(usd_amount)
 
-            if savings > 0:
-                print("Pay using Dólar MEP/Blue\n",
-                      f"You will save ${savings:.2f} ARS by buying MEP dollars instead of paying in pesos\n",
-                      sep="")
-            elif savings < 0:
-                print("Pay directly in ARS (card rate)\n",
-                      f"Paying directly in ARS is cheaper. You save ${abs(savings):.2f} ARS this way.\n",
-                      sep="")
-            else:
-                print("Both options cost the same.\n"
-                      "There is no price difference between paying with MEP or Card rate.\n",
-                      sep="")
+        card_rate = get_rate("dolares/tarjeta")["venta"]
+        mep_rate = get_rate("dolares/bolsa")["venta"]
 
-            input("Press enter to continue...")
-            time.sleep(0.5)
-            clean_terminal()
-    except (KeyError, TypeError):
+        price_card = usd_amount * card_rate
+        price_mep = usd_amount * mep_rate
+
+        print_header("USD SAVINGS CALCULATOR")
+        print(f"  Purchase/Expense amount: {usd_amount:.2f} USD\n")
+        print(f"  • Direct Card Payment(ARS)   : ${price_card:,.2f} ARS")
+        print(f"  • Payment with MEP Dollars)  : ${price_mep:,.2f} ARS")
+        print("-" * 51 + "\n")
+
+        if savings > 0:
+            percentage = (savings / price_card) * 100
+            print("  >>> RECOMMENDED OPTION: DÓLAR MEP <<<")
+            print(f"  Estimated savings: ${savings:,.2f} ARS ({percentage:.1f}% off)\n")
+            print("  [Tip] Pay your credit card statement in USD before the due")
+            print("        date using MEP dollars to avoid ARS tax perception")
+
+
+        elif savings < 0:
+            print("  >>> RECOMMENDED OPTION: DÓLAR MEP <<<")
+            print(f"  Estimated savings: ${abs(savings):,.2f} ARS\n")
+            print("  [Tip] Card rate is currently cheaper than buying MEP.")
+        else:
+            print("  Both options cost the same.")
+
+
+
+        input("Press enter to continue...")
+        clean_terminal()
+    except (KeyError, TypeError, requests.RequestException):
         print("Service temporarily unavailable. Please try again later.")
 
 
@@ -369,36 +408,64 @@ def calculate_breach(pre_type):
 
 
 def breach_calculator():
-    try:
-        while True:
-            user_input = menu_displayer(BREACH_CALCULATOR_MENU,
-                                        "Breach calculation Options:\n", "vs Dólar Oficial")
-            selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
-            if not selected_option or selected_option["route"] == "exit":
-                break
+    while True:
+        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
+        selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
+
+        if not selected_option or selected_option["route"] == "exit":
+            break
+        try:
+            official = get_rate("dolares/oficial")
+            target = get_rate(selected_option["route"])
+
+            official_sell = official["venta"]
+            target_sell = target["venta"]
 
             gap_percentage, difference_ars = calculate_breach(selected_option["route"])
 
-            print(f"--- {selected_option['name']} ---",
-                  f"Gap percentage: {gap_percentage:.2f} ARS per USD\n",
-                  sep="\n")
+            print_breach_results(
+                selected_option["name"],
+                official_sell,
+                target_sell,
+                gap_percentage,
+                difference_ars
+            )
 
-            if gap_percentage > 0:
-                print(
-                    f"{selected_option['name']} is {gap_percentage:.2f}% (${difference_ars:.2f} ARS) more expensive than Dólar Oficial.")
 
-            elif gap_percentage < 0:
-                print(
-                    f"{selected_option['name']} is {abs(gap_percentage):.2f}% (${abs(difference_ars):.2f} ARS) cheaper than Dólar Oficial.")
 
-            else:
-                print("There is no exchange gap between these rates.")
+        except (KeyError, TypeError, ValueError, requests.RequestException):
+            print("[i] Could not fetch or process exchange rate data. Please try again.")
 
-            input("\nPress enter to continue...")
-            clean_terminal()
-    except (KeyError, TypeError):
-        print("Service temporarily unavailable. Please try again later.")
+
+def print_breach_results(target_name, official_sell, target_sell, gap_percentage, difference_ars):
+    clean_terminal()
+    print_header(f"EXCHANGE GAP: Official vs. {target_name}")
+
+    #Categorize status based on gap magnitude
+    if gap_percentage > 30:
+        status = "High"
+    elif gap_percentage > 15:
+        status = "Moderate"
+    else:
+        status = "Low"
+
+    print(f"  Official USD (Sell)  : ${official_sell:,.2f} ARS")
+    print(f"  {target_name} (Sell)  : ${target_sell:,.2f} ARS")
+    print("-" * 51)
+    print(f"  PERCENTAGE GAP    : +{gap_percentage:.2f}%")
+    print(f"  DIFFERENCE        : ${difference_ars:,2f} ARS per USD")
+    print(f"  GAP STATUS        : {status}")
+    print("  [i] Exchange gap measures the cost difference relative")
+    print("      to the official regulated exchange rate.")
+    print("=" * 51)
+
+    input("\nPress enter to continue...")
+    clean_terminal()
+
+
+
+
 
 
 def calculate_spread(selected_option):
@@ -413,28 +480,47 @@ def calculate_spread(selected_option):
 
 
 def buy_sell_spread_calculator():
-    try:
-        while True:
-            user_input = menu_displayer(SPREAD_CALCULATOR_MENU)
-            selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
-            if not selected_option or selected_option["route"] == "exit":
-                break
+    while True:
+        user_input = menu_displayer(SPREAD_CALCULATOR_MENU, "Select rate to check spread\n")
+        selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
-            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(
-                selected_option["route"])
+        if not selected_option or selected_option["route"] == "exit":
+            break
 
-            print(f"--- {selected_option['name']} ---",
-                  f"Sale price (venta)     : ${price_sell} ARS",
-                  f"Purchase price (Compra): ${price_buy} ARS\n",
-                  f"Spread (ARS): ${round(nominal_spread, 2)} ARS",
-                  f"Spread (%)  : {round(percentage_spread, 2)}%",
-                  sep="\n")
 
-            input("Press enter to continue...")
-            clean_terminal()
-    except (KeyError, TypeError):
-        print("Service temporarily unavailable. Please try again later.")
+
+        try:
+            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
+
+            print_spread_results(
+                selected_option["name"],
+                price_buy,
+                price_sell,
+                nominal_spread,
+                percentage_spread
+            )
+
+
+        except (KeyError, TypeError, ValueError, requests.RequestException):
+            print("Service temporarily unavailable. Please try again later.")
+
+
+def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread, percentage_spread):
+    clean_terminal()
+
+    print(f"  Buy Price  (User sells USD)  : ${compra_rate:,.2f} ARS")
+    print(f"  Sell Price (User buys USD))  : ${venta_rate:,.2f} ARS")
+    print(f"-" * 51)
+    print(f"  NOMIANL SPREAD     : ${nominal_spread:,.2f} ARS")
+    print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f} ARS")
+    print("-" * 51)
+    print("  [i] The spread represents the fee or margin retained")
+    print("      by intermediaries in a round trip transaction.")
+    print("=" * 51)
+
+    input("\nPress enter to continue...")
+    clean_terminal()
 
 
 if __name__ == "__main__":
