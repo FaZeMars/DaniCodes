@@ -300,7 +300,7 @@ def currency_conversion():
 
         user_input_2 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert to:\n")
         selected_currency_2 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_2)
-        if not selected_currency_1 or selected_currency_2["route"] == "exit":
+        if not selected_currency_2 or selected_currency_2["route"] == "exit":
             break
 
         if not currency_selection_checker(selected_currency_1, selected_currency_2):
