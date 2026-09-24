@@ -454,7 +454,7 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     print(f"  {target_name} (Sell)  : ${target_sell:,.2f} ARS")
     print("-" * 51)
     print(f"  PERCENTAGE GAP    : +{gap_percentage:.2f}%")
-    print(f"  DIFFERENCE        : ${difference_ars:,2f} ARS per USD")
+    print(f"  DIFFERENCE        : ${difference_ars:,.2f} ARS per USD")
     print(f"  GAP STATUS        : {status}")
     print("  [i] Exchange gap measures the cost difference relative")
     print("      to the official regulated exchange rate.")
@@ -508,6 +508,7 @@ def buy_sell_spread_calculator():
 
 def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread, percentage_spread):
     clean_terminal()
+    print_header(f"SPREAD CALCULATOR - {currency_name.upper()}")
 
     print(f"  Buy Price  (User sells USD)  : ${compra_rate:,.2f} ARS")
     print(f"  Sell Price (User buys USD))  : ${venta_rate:,.2f} ARS")
