@@ -386,7 +386,7 @@ def savings_calculator():
             print("  >>> RECOMMENDED OPTION: DÓLAR MEP <<<")
             print(f"  Estimated savings: ${savings:,.2f} ARS ({percentage:.1f}% off)\n")
             print("  [Tip] Pay your credit card statement in USD before the due")
-            print("        date using MEP dollars to avoid ARS tax perception")
+            print("        date using MEP dollars to avoid ARS tax perception\n")
 
 
         elif savings < 0:
