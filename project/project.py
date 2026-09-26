@@ -97,7 +97,7 @@ def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
 
 
 def print_header(title):
-    title = title.upper
+    title = title.upper()
     width = 51
     print("=" * width)
     print(title.center(width))
@@ -294,7 +294,7 @@ def currency_converter(currency_1, currency_2):
 
 def currency_conversion():
     while True:
-        user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:\n")
+        user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:")
         selected_currency_1 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_1)
         if not selected_currency_1 or selected_currency_1["route"] == "exit":
             break
