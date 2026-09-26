@@ -124,7 +124,7 @@ def route_main_action(action):
     elif action["action"] == "calculators":
         calculator_options()
 
-    elif action["action"] == "exit":
+    elif action["action"] == "exit": 
         sys.exit("Closing the program...\n")
 
 
