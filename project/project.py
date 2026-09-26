@@ -71,11 +71,14 @@ def main():
 
 
 # Function used to display menus, then ask the user for an input, then returns that input to the caller function
-def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
+def menu_displayer(menu_to_display, optional_string=None, item_suffix=None, print_welcome_flag=None):
     while True:
 
         if optional_string:
             print_header(optional_string)
+
+        if print_welcome_flag:
+            print_welcome()
 
         for option in menu_to_display:
             if item_suffix and option.get("route") != "exit" and option.get("action") != "exit":
@@ -103,10 +106,15 @@ def print_header(title):
     print(title.center(width))
     print("=" * width + "\n")
 
+def print_welcome():
+    print("Blue app is a financial tool that fetches real-time exchange rates")
+    print("from DolarApi to convert currencies and calculate spreads, savings")
+    print("and exchange gaps.\n")
+
 
 def main_menu():
     clean_terminal()
-    user_input = menu_displayer(MAIN_MENU_OPTIONS, "BLUEAPP")
+    user_input = menu_displayer(MAIN_MENU_OPTIONS, "BLUEAPP", None, True)
     selected_option = menu_option_matcher(MAIN_MENU_OPTIONS, user_input)
 
     if not selected_option:
