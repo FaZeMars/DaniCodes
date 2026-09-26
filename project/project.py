@@ -420,7 +420,7 @@ def calculate_breach(pre_type):
 def breach_calculator():
 
     while True:
-        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:\n", "vs Dólar Oficial")
+        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:", "vs Dólar Oficial")
         selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
         if not selected_option or selected_option["route"] == "exit":
@@ -492,7 +492,7 @@ def calculate_spread(selected_option):
 def buy_sell_spread_calculator():
 
     while True:
-        user_input = menu_displayer(SPREAD_CALCULATOR_MENU, "Select rate to check spread\n")
+        user_input = menu_displayer(SPREAD_CALCULATOR_MENU, "Select rate to check spread")
         selected_option = menu_option_matcher(SPREAD_CALCULATOR_MENU, user_input)
 
         if not selected_option or selected_option["route"] == "exit":
