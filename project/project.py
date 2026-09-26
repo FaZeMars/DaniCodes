@@ -75,7 +75,7 @@ def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
     while True:
 
         if optional_string:
-            print(optional_string)
+            print_header(optional_string)
 
         for option in menu_to_display:
             if item_suffix and option.get("route") != "exit" and option.get("action") != "exit":
@@ -97,6 +97,7 @@ def menu_displayer(menu_to_display, optional_string=None, item_suffix=None):
 
 
 def print_header(title):
+    title = title.upper
     width = 51
     print("=" * width)
     print(title.center(width))
