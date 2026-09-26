@@ -105,7 +105,8 @@ def print_header(title):
 
 
 def main_menu():
-    user_input = menu_displayer(MAIN_MENU_OPTIONS)
+    clean_terminal()
+    user_input = menu_displayer(MAIN_MENU_OPTIONS, "BLUEAPP")
     selected_option = menu_option_matcher(MAIN_MENU_OPTIONS, user_input)
 
     if not selected_option:
