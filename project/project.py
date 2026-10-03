@@ -177,8 +177,8 @@ def fetch_and_display_currency(currency):
 
 # function used to convert ISO 8601 string format to minutes ago
 def iso_format_converter(isostring):
-    # convert ISO 8601 string format to minutes ago
-    datestripped = datetime.fromisoformat(isostring.replace("Z", "+00:00"))
+    formatted_string = isostring.replace("Z", "+00:00")
+    datestripped = datetime.fromisoformat(formatted_string)
     now_utc = datetime.now(timezone.utc)
     difference = now_utc - datestripped
 
