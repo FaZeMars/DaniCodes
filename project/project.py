@@ -283,7 +283,9 @@ def amount_input(type):
 
 
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
-    return (currency_1["venta"] * amount_to_convert) / currency_2["venta"]
+    val_1 = float(currency_1["venta"])
+    val_2 = float(currency_2["venta"])
+    return (val_1 * amount_to_convert) / val_2
 
 
 def currency_converter(currency_1, currency_2):
