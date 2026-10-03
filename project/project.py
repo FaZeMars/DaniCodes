@@ -150,7 +150,7 @@ def menu_option_matcher(valid_menu, user_input_):
 
 def current_currency_value():
     while True:
-        user_input = menu_displayer(CURRENCY_DATA_AND_NAME)
+        user_input = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency Value Viewer")
 
         selected_currency = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input)
 
@@ -335,7 +335,7 @@ def currency_conversion():
 
 def calculator_options():
     while True:
-        user_input = menu_displayer(CALCULATOR_OPTIONS)
+        user_input = menu_displayer(CALCULATOR_OPTIONS, "Financial Calculators")
         selected_option = menu_option_matcher(CALCULATOR_OPTIONS, user_input)
 
         if not selected_option or selected_option["action"] == "exit":
@@ -523,7 +523,7 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     print(f"  Buy Price  (User sells USD)  : ${compra_rate:,.2f} ARS")
     print(f"  Sell Price (User buys USD))  : ${venta_rate:,.2f} ARS")
     print(f"-" * 51)
-    print(f"  NOMIANL SPREAD     : ${nominal_spread:,.2f} ARS")
+    print(f"  NOMINAL SPREAD     : ${nominal_spread:,.2f} ARS")
     print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f} ARS")
     print("-" * 51)
     print("  [i] The spread represents the fee or margin retained")
