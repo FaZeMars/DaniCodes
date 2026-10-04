@@ -232,10 +232,13 @@ def parse_currency_payload(raw_data):
 def print_currency_value(currency_data):
     clean_terminal()
     print_header("CURRENCY VALUE")
-    print(f"{currency_data['coin']} {currency_data['coin_name']}",
-          f"Sale Value: {currency_data['type_sell']}",
-          f"Purchase Value: {currency_data['type_buy']}",
-          f"Last updated: {currency_data['minutes_ago']}",
+    print(f"Coin           : {currency_data['coin']} {currency_data['coin_name']}",
+          "-" * 51,
+          f"Sale Value     : {currency_data['type_sell']}",
+          f"Purchase Value : {currency_data['type_buy']}",
+          "-" * 51,
+          f"Last updated   : {currency_data['minutes_ago']}",
+          "-" * 51,
           sep="\n"
           )
 
