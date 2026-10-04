@@ -231,6 +231,7 @@ def parse_currency_payload(raw_data):
 # prints the currency value in a user-friendly format
 def print_currency_value(currency_data):
     clean_terminal()
+    print_header("CURRENCY VALUE")
     print(f"{currency_data['coin']} {currency_data['coin_name']}",
           f"Sale Value: {currency_data['type_sell']}",
           f"Purchase Value: {currency_data['type_buy']}",
