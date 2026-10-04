@@ -2,6 +2,7 @@ import sys
 import time
 import os
 import requests
+import math
 from datetime import datetime, timezone
 
 API_URL = "https://dolarapi.com/v1/"
@@ -17,39 +18,39 @@ MAIN_MENU_OPTIONS = [
 
 CALCULATOR_OPTIONS = [
     {"id": 1, "name": "Savings Calculator", "action": "savings"},
-    {"id": 2, "name": "Exchange Rate Gap Calculator", "action": "exchange_gap"},
+    {"id": 2, "name": "Breach Calculator", "action": "exchange_gap"},
     {"id": 3, "name": "Buy/sell spread calculator", "action": "spread"},
     {"id": 4, "name": "Back to Main Menu", "action": "exit"}
 
 ]
 
 BREACH_CALCULATOR_MENU = [
-    {"id": 1, "name": "Dolar Blue", "route": "dolares/blue"},
-    {"id": 2, "name": "Dolar Bolsa / MEP", "route": "dolares/bolsa"},
-    {"id": 3, "name": "Dolar Tarjeta", "route": "dolares/tarjeta"},
+    {"id": 1, "name": "Blue Dollar", "route": "dolares/blue"},
+    {"id": 2, "name": "Stoch Market / MEP Dollar", "route": "dolares/bolsa"},
+    {"id": 3, "name": "Card Dollar", "route": "dolares/tarjeta"},
     {"id": 4, "name": "Back to Financial Calculators", "route": "exit"}
 ]
 
 SPREAD_CALCULATOR_MENU = [
-    {"id": 1, "name": "Dolar Blue", "route": "dolares/blue"},
-    {"id": 2, "name": "Dolar Bolsa / MEP", "route": "dolares/bolsa"},
-    {"id": 3, "name": "Dolar Tarjeta", "route": "dolares/tarjeta"},
-    {"id": 4, "name": "Dolar Cripto", "route": "dolares/cripto"},
+    {"id": 1, "name": "Blue Dollar", "route": "dolares/blue"},
+    {"id": 2, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
+    {"id": 3, "name": "Card Dollar", "route": "dolares/tarjeta"},
+    {"id": 4, "name": "Cripto Dollar", "route": "dolares/cripto"},
     {"id": 5, "name": "Euro", "route": "cotizaciones/eur"},
     {"id": 6, "name": "Back to Financial Calculators", "route": "exit"}
 ]
 
 
 CURRENCY_DATA_AND_NAME = [
-    {"id": 1, "name": "Dólar Oficial", "route": "dolares/oficial"},
-    {"id": 2, "name": "Dólar Blue", "route": "dolares/blue"},
-    {"id": 3, "name": "Dólar Bolsa / MEP", "route": "dolares/bolsa"},
-    {"id": 4, "name": "Dólar Tarjeta", "route": "dolares/tarjeta"},
-    {"id": 5, "name": "Dólar Cripto", "route": "dolares/cripto"},
+    {"id": 1, "name": "Official Dollar", "route": "dolares/oficial"},
+    {"id": 2, "name": "Blue Dollar", "route": "dolares/blue"},
+    {"id": 3, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
+    {"id": 4, "name": "Card Dollar", "route": "dolares/tarjeta"},
+    {"id": 5, "name": "Cripto Dollar", "route": "dolares/cripto"},
     {"id": 6, "name": "Euro", "route": "cotizaciones/eur"},
-    {"id": 7, "name": "Real Brasileño", "route": "cotizaciones/brl"},
-    {"id": 8, "name": "Peso Chileno", "route": "cotizaciones/clp"},
-    {"id": 9, "name": "Peso Uruguayo", "route": "cotizaciones/uyu"},
+    {"id": 7, "name": "Brasilian Real", "route": "cotizaciones/brl"},
+    {"id": 8, "name": "Chilean Peso", "route": "cotizaciones/clp"},
+    {"id": 9, "name": "Uruguayan Peso", "route": "cotizaciones/uyu"},
     {"id": 10, "name": "Back to Main Menu", "route": "exit"},
 ]
 
@@ -105,6 +106,7 @@ def print_header(title):
     print("=" * width)
     print(title.center(width))
     print("=" * width + "\n")
+
 
 def print_welcome():
     print("Blue app is a financial tool that fetches real-time exchange rates")
@@ -177,12 +179,22 @@ def fetch_and_display_currency(currency):
 
 # function used to convert ISO 8601 string format to minutes ago
 def iso_format_converter(isostring):
-    formatted_string = isostring.replace("Z", "+00:00")
-    datestripped = datetime.fromisoformat(formatted_string)
+    if not isinstance(isostring, str) or not isostring.strip():
+        return "Unknown"
+
+    try:
+        formatted_string = isostring.replace("Z", "+00:00")
+        datestripped = datetime.fromisoformat(formatted_string)
+    except ValueError:
+        return "Unknown"
+
+    if datestripped.tzinfo is None:
+        return "Unknown"
+
     now_utc = datetime.now(timezone.utc)
     difference = now_utc - datestripped
 
-    minutes_ago = int(difference.total_seconds() / 60)
+    minutes_ago = max(0, int(difference.total_seconds() / 60))
 
     # returns minutes_ago in a more user-friendly format
     if minutes_ago == 0:
@@ -199,14 +211,14 @@ def iso_format_converter(isostring):
 def get_rate(currency_key):
     url = f"{API_URL}{currency_key.strip().lower()}"
 
-    request_json = requests.get(url)
+    request_json = requests.get(url, timeout=10)
     request_json.raise_for_status()
 
     return request_json.json()
 
 
 def parse_currency_payload(raw_data):
-    date_str = raw_data.get("fechaActualizacion", datetime.now().isoformat())
+    date_str = raw_data.get("fechaActualizacion")
     return {
         "type_buy": raw_data.get("compra", "N/A"),
         "type_sell": raw_data.get("venta", "N/A"),
@@ -233,7 +245,10 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     clean_terminal()
     print_header("CURRENCY CONVERSION RESULT")
 
-    rate = currency_1["venta"] / currency_2["venta"] if currency_2["venta"] != 0 else 0
+    rate = (
+        rate_value(currency_1, "compra")
+        / rate_value(currency_2, "venta")
+    )
 
     name_1 = f"{currency_1['moneda']} ({currency_1['nombre']})" if currency_1['moneda'] == "USD" else currency_1['moneda']
     name_2 = f"{currency_2['moneda']} ({currency_2['nombre']})" if currency_2['moneda'] == "USD" else currency_2['moneda']
@@ -247,10 +262,6 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     print("  [i]Real-time rate fetched from DolarApi.")
     print("=" * 51 + "\n")
 
-
-
-
-
     input("Press enter to continue...")
     clean_terminal()
 
@@ -262,45 +273,66 @@ def currency_selection_checker(input_1, input_2):
         return True
 
 
-def amount_input(type):
+def amount_input(input_type):
+    prompts = {
+        "currency": "How much do you wish to convert?\n",
+        "calculate": "How much USD are you paying or consuming?\n",
+    }
+
+    if input_type not in prompts:
+        raise ValueError("Unknown input type")
+
     while True:
         try:
-            if type == "currency":
-                amount = float(input("How much do you wish to convert?\n"))
-                if amount < 0:
-                    raise ValueError
-                return amount
-            elif type == "calculate":
-                amount = float(input("How much USD are you paying or consuming?\n"))
-                if amount <= 0:
-                    raise ValueError
-                clean_terminal()
-                return amount
+            amount = float(input(prompts[input_type]))
 
+            if not math.isfinite(amount):
+                raise ValueError
+
+            if amount < 0:
+                raise ValueError
+
+            if input_type == "calculate" and amount == 0:
+                raise ValueError
+
+            if input_type == "calculate":
+                clean_terminal()
+
+            return amount
         except ValueError:
             print("Please enter a valid amount")
 
 
+def rate_value(currency, field):
+    value = float(currency[field])
+
+    if not math.isfinite(value) or value <= 0:
+        raise ValueError(f"Invalid exchange rate: {field}")
+
+    return value
+
 
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
-    val_1 = float(currency_1["venta"])
-    val_2 = float(currency_2["venta"])
-    return (val_1 * amount_to_convert) / val_2
+    rate_value_1 = rate_value(currency_1, "compra")
+    rate_value_2 = rate_value(currency_2, "venta")
+    return (rate_value_1 * amount_to_convert) / rate_value_2
 
 
 def currency_converter(currency_1, currency_2):
-    while True:
-        try:
+    try:
+        rate_value(currency_1, "compra")
+        rate_value(currency_2, "venta")
 
-            amount_to_convert = amount_input("currency")
+        amount_to_convert = amount_input("currency")
 
-            converted = round(calculate_conversion(currency_1, currency_2, amount_to_convert), 4)
-            print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
-            break
+        converted = round(calculate_conversion(currency_1, currency_2, amount_to_convert), 4)
 
-        except (KeyError, TypeError, ValueError):
-            print("Error procesing Currency values. Please try again.")
-            time.sleep(1.5)
+        print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert)
+
+    except (KeyError, TypeError, ValueError):
+        print("Could not process exchange rates. Please try again later.")
+        input("Press enter to continue...")
+        clean_terminal()
 
 
 def currency_conversion():
@@ -356,31 +388,25 @@ def route_calculator_options(selected_option):
         return
 
 
-def calculate_savings(amount):
-    tarjeta_data = get_rate("dolares/tarjeta")
-    mep_data = get_rate("dolares/bolsa")
-
-    price_card = amount * tarjeta_data["venta"]
-    price_mep = amount * mep_data["venta"]
-
-    return round(price_card - price_mep, 2)
+def calculate_savings(amount, card_rate, mep_rate):
+    return round(amount * (card_rate - mep_rate), 2)
 
 
 def savings_calculator():
     try:
         usd_amount = amount_input("calculate")
-        savings = calculate_savings(usd_amount)
 
-        card_rate = get_rate("dolares/tarjeta")["venta"]
-        mep_rate = get_rate("dolares/bolsa")["venta"]
+        card_rate = rate_value(get_rate("dolares/tarjeta"), "venta")
+        mep_rate = rate_value(get_rate("dolares/bolsa"), "venta")
 
         price_card = usd_amount * card_rate
         price_mep = usd_amount * mep_rate
+        savings = calculate_savings(usd_amount, card_rate, mep_rate)
 
         print_header("USD SAVINGS CALCULATOR")
         print(f"  Purchase/Expense amount: {usd_amount:.2f} USD\n")
         print(f"  • Direct Card Payment(ARS)   : ${price_card:,.2f} ARS")
-        print(f"  • Payment with MEP Dollars)  : ${price_mep:,.2f} ARS")
+        print(f"  • Payment with MEP Dollars  : ${price_mep:,.2f} ARS")
         print("-" * 51 + "\n")
 
         if savings > 0:
@@ -390,7 +416,6 @@ def savings_calculator():
             print("  [Tip] Pay your credit card statement in USD before the due")
             print("        date using MEP dollars to avoid ARS tax perception\n")
 
-
         elif savings < 0:
             print("  >>> RECOMMENDED OPTION: DIRECT CARD PAYMENT <<<")
             print(f"  Estimated savings: ${abs(savings):,.2f} ARS\n")
@@ -398,31 +423,26 @@ def savings_calculator():
         else:
             print("  Both options cost the same.")
 
-
-
         input("Press enter to continue...")
         clean_terminal()
-    except (KeyError, TypeError, requests.RequestException):
+    except (KeyError, TypeError, ValueError, requests.RequestException):
         print("Service temporarily unavailable. Please try again later.")
+        input("Press enter to continue...")
+        clean_terminal()
 
 
-def calculate_breach(pre_type):
-    pre_oficial = get_rate("dolares/oficial")
-    oficial_value = float(pre_oficial["venta"])
+def calculate_breach(oficial_value, type_value):
+    difference = type_value - oficial_value
+    gap_percentage = (difference / oficial_value) * 100
 
-    pre_type = get_rate(pre_type)
-    type_value = float(pre_type["venta"])
-
-    difference_ars = round(type_value - oficial_value, 2)
-    gap_percentage = round((difference_ars / oficial_value) * 100, 2)
-
-    return gap_percentage, difference_ars
+    return round(gap_percentage, 2), round(difference, 2)
 
 
 def breach_calculator():
 
     while True:
-        user_input = menu_displayer(BREACH_CALCULATOR_MENU, "Breach calculation Options:", "vs Dólar Oficial")
+        user_input = menu_displayer(BREACH_CALCULATOR_MENU,
+                                    "Breach calculation Options:", "vs Dólar Oficial")
         selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
         if not selected_option or selected_option["route"] == "exit":
@@ -432,9 +452,9 @@ def breach_calculator():
             target = get_rate(selected_option["route"])
 
             official_sell = official["venta"]
-            target_sell = target["venta"]
+            target_sell = rate_value(target, "venta")
 
-            gap_percentage, difference_ars = calculate_breach(selected_option["route"])
+            gap_percentage, difference_ars = calculate_breach(official_sell, target_sell)
 
             print_breach_results(
                 selected_option["name"],
@@ -444,8 +464,6 @@ def breach_calculator():
                 difference_ars
             )
 
-
-
         except (KeyError, TypeError, ValueError, requests.RequestException):
             print("[i] Could not fetch or process exchange rate data. Please try again.")
 
@@ -454,7 +472,7 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     clean_terminal()
     print_header(f"EXCHANGE GAP: Official vs. {target_name}")
 
-    #Categorize status based on gap magnitude
+    # Categorize status based on gap magnitude
     if gap_percentage > 30:
         status = "High"
     elif gap_percentage > 15:
@@ -465,7 +483,7 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     print(f"  Official USD (Sell)  : ${official_sell:,.2f} ARS")
     print(f"  {target_name} (Sell)  : ${target_sell:,.2f} ARS")
     print("-" * 51)
-    print(f"  PERCENTAGE GAP    : +{gap_percentage:.2f}%")
+    print(f"  PERCENTAGE GAP    : {gap_percentage:+.2f}%")
     print(f"  DIFFERENCE        : ${difference_ars:,.2f} ARS per USD")
     print(f"  GAP STATUS        : {status}")
     print("  [i] Exchange gap measures the cost difference relative")
@@ -476,14 +494,10 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     clean_terminal()
 
 
-
-
-
-
 def calculate_spread(selected_option):
     currency = get_rate(selected_option)
-    currency_buy = float(currency["compra"])
-    currency_sell = float(currency["venta"])
+    currency_buy = rate_value(currency, "compra")
+    currency_sell = rate_value(currency, "venta")
 
     nominal_spread = currency_sell - currency_buy
     percentage_spread = ((currency_sell - currency_buy) / currency_sell) * 100
@@ -500,10 +514,9 @@ def buy_sell_spread_calculator():
         if not selected_option or selected_option["route"] == "exit":
             break
 
-
-
         try:
-            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(selected_option["route"])
+            nominal_spread, percentage_spread, price_buy, price_sell = calculate_spread(
+                selected_option["route"])
 
             print_spread_results(
                 selected_option["name"],
@@ -512,7 +525,6 @@ def buy_sell_spread_calculator():
                 nominal_spread,
                 percentage_spread
             )
-
 
         except (KeyError, TypeError, ValueError, requests.RequestException):
             print("Service temporarily unavailable. Please try again later.")
