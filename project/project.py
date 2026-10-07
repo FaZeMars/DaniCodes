@@ -215,7 +215,14 @@ def get_rate(currency_key):
     request_json.raise_for_status()
 
     #Stops here if the API returns and HTTP error
-    return request_json.json()
+    request_json.raise_for_status()
+    data = request_json.json
+
+    # The app needs a dictionary with the exchange rate values
+    if not isinstance(data, dict):
+        raise ValueError("Invalid response from DolarApi")
+
+    return data
 
 #Picks the values needed to display the exchange rate
 def parse_currency_payload(raw_data):
@@ -370,7 +377,7 @@ def currency_conversion():
             currency_converter(currency_1, currency_2)
             break
 
-        except requests.RequestException as e:
+        except (requests.RequestException, ValueError) as e:
             print(f"Error: Could not fetch currency data. ({e})")
             time.sleep(2)
             clean_terminal()
