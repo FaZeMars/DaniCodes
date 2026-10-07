@@ -483,6 +483,8 @@ def breach_calculator():
 
         except (KeyError, TypeError, ValueError, requests.RequestException):
             print("[i] Could not fetch or process exchange rate data. Please try again.")
+            input("Press enter to continue...")
+            clean_terminal()
 
 # Shows the exchange rate gap annd labels it as low, moderate or high
 def print_breach_results(target_name, official_sell, target_sell, gap_percentage, difference_ars):
@@ -552,8 +554,8 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     clean_terminal()
     print_header(f"SPREAD CALCULATOR - {currency_name.upper()}")
 
-    print(f"  Buy Price  (User sells USD)  : ${compra_rate:,.2f} ARS")
-    print(f"  Sell Price (User buys USD))  : ${venta_rate:,.2f} ARS")
+    print(f"  Buy Price  (You sell the currency)  : ${compra_rate:,.2f} ARS")
+    print(f"  Sell Price (You buy the currency))  : ${venta_rate:,.2f} ARS")
     print(f"-" * 51)
     print(f"  NOMINAL SPREAD     : ${nominal_spread:,.2f} ARS")
     print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f}%")
