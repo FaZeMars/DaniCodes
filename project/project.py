@@ -461,7 +461,7 @@ def breach_calculator():
             official = get_rate("dolares/oficial")
             target = get_rate(selected_option["route"])
 
-            official_sell = official["venta"]
+            official_sell = rate_value(official, "venta")
             target_sell = rate_value(target, "venta")
 
             gap_percentage, difference_ars = calculate_breach(official_sell, target_sell)
