@@ -267,7 +267,7 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     print(f"  Amount entered    : {amount_to_convert:.2f} {name_1}")
     print(f"  Target Currency   : {name_2}\n")
     print("-" * 51 + "\n")
-    print(f"  Exchange rate     : 1 {name_1} = {rate:,.2f} {name_2}")
+    print(f"  Exchange rate     : 1 {name_1} = {rate:,.6f} {name_2}")
     print(f"  Total to receive  : ${converted:,.2f} {name_2}\n")
     print("-" * 51)
 
