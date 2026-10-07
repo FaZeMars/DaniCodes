@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 API_URL = "https://dolarapi.com/v1/"
 
-# Menus available to be used by other functions in this program
+# Menu options used by the app
 
 MAIN_MENU_OPTIONS = [
     {"id": 1, "name": "Value of Currencies", "action": "view_rates"},
@@ -55,14 +55,12 @@ CURRENCY_DATA_AND_NAME = [
 ]
 
 
-# Function used to clean the terminal for the user
+# Clears the screen before showing another menu
 def clean_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-# Main Function
-
-
+# Keeps showing the main menu until the user exits
 def main():
     try:
         while True:
@@ -71,7 +69,7 @@ def main():
         sys.exit("Closing the program...\n")
 
 
-# Function used to display menus, then ask the user for an input, then returns that input to the caller function
+# Shows the options and asks again if the user enters an invalid choice
 def menu_displayer(menu_to_display, optional_string=None, item_suffix=None, print_welcome_flag=None):
     while True:
 
@@ -100,6 +98,7 @@ def menu_displayer(menu_to_display, optional_string=None, item_suffix=None, prin
             clean_terminal()
 
 
+# Shows a title between two lines to separate each screen
 def print_header(title):
     title = title.upper()
     width = 51
@@ -107,13 +106,14 @@ def print_header(title):
     print(title.center(width))
     print("=" * width + "\n")
 
-
+# Explains what the app can do
 def print_welcome():
     print("Blue app is a financial tool that fetches real-time exchange rates")
     print("from DolarApi to convert currencies and calculate spreads, savings")
     print("and exchange gaps.\n")
 
 
+# Shosw th emain menu and gets the selected option
 def main_menu():
     clean_terminal()
     user_input = menu_displayer(MAIN_MENU_OPTIONS, "BLUEAPP", None, True)
@@ -124,6 +124,7 @@ def main_menu():
     route_main_action(selected_option)
 
 
+# Opens the feature chosen in the main menu
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
@@ -138,9 +139,8 @@ def route_main_action(action):
         sys.exit("Closing the program...\n")
 
 
-# matches the user input to the menu option, then, if valid, returns the user input to the caller
 
-
+    #Finds the menu option that matches the user's choice
 def menu_option_matcher(valid_menu, user_input_):
     for opt in valid_menu:
         if str(opt["id"]) == user_input_:
@@ -148,7 +148,7 @@ def menu_option_matcher(valid_menu, user_input_):
     return None
 
 
-# Function in charge of getting the current value of the currency
+# Lets the user check exchange rates until they go back
 
 def current_currency_value():
     while True:
@@ -167,7 +167,7 @@ def current_currency_value():
         input("\nPress enter to continue...")
         clean_terminal()
 
-
+# Gets the selected exchange rate and shows it on screen
 def fetch_and_display_currency(currency):
     try:
         raw_data = get_rate(currency["route"])
@@ -177,7 +177,7 @@ def fetch_and_display_currency(currency):
         print(f"Error: Could not fetch currency data. ({e})")
 
 
-# function used to convert ISO 8601 string format to minutes ago
+# Calculates how many minutes have passed since the last update
 def iso_format_converter(isostring):
     if not isinstance(isostring, str) or not isostring.strip():
         return "Unknown"
@@ -188,6 +188,7 @@ def iso_format_converter(isostring):
     except ValueError:
         return "Unknown"
 
+    # A date without a time zone cannot be safely compared with UTC
     if datestripped.tzinfo is None:
         return "Unknown"
 
@@ -205,18 +206,18 @@ def iso_format_converter(isostring):
         return f"{minutes_ago} minutes ago"
 
 
-# Function used to get the current value of the currency, returning it as a dictionary in order to be used by other functions
 
-
+#Requests exchange rate data from DolarApi
 def get_rate(currency_key):
     url = f"{API_URL}{currency_key.strip().lower()}"
 
     request_json = requests.get(url, timeout=10)
     request_json.raise_for_status()
 
+    #Stops here if the API returns and HTTP error
     return request_json.json()
 
-
+#Picks the values needed to display the exchange rate
 def parse_currency_payload(raw_data):
     date_str = raw_data.get("fechaActualizacion")
     return {
@@ -228,7 +229,7 @@ def parse_currency_payload(raw_data):
     }
 
 
-# prints the currency value in a user-friendly format
+# Shows the buy price, sell price and last update
 def print_currency_value(currency_data):
     clean_terminal()
     print_header("CURRENCY VALUE")
@@ -243,8 +244,9 @@ def print_currency_value(currency_data):
           )
 
 
-# --! Conversion functions !--#
 
+
+# Shows the conversion rate and the amount the user would receive
 def print_converted_currency_value(converted, currency_1, currency_2, amount_to_convert):
     clean_terminal()
     print_header("CURRENCY CONVERSION RESULT")
@@ -270,6 +272,7 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     clean_terminal()
 
 
+#Checks that the user selected two different exchange rate options
 def currency_selection_checker(input_1, input_2):
     if input_1["route"] == input_2["route"]:
         return False
@@ -277,6 +280,7 @@ def currency_selection_checker(input_1, input_2):
         return True
 
 
+# Asks for an amount and rejects invalid numbers
 def amount_input(input_type):
     prompts = {
         "currency": "How much do you wish to convert?\n",
@@ -290,6 +294,7 @@ def amount_input(input_type):
         try:
             amount = float(input(prompts[input_type]))
 
+            #Rejects nan and infinity because float() accepts them
             if not math.isfinite(amount):
                 raise ValueError
 
@@ -307,6 +312,7 @@ def amount_input(input_type):
             print("Please enter a valid amount")
 
 
+# Checks that the exchange rate is a valid positive number
 def rate_value(currency, field):
     value = float(currency[field])
 
@@ -316,12 +322,14 @@ def rate_value(currency, field):
     return value
 
 
+# Sells the starting currency for pesos, then buys the target currency
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
     rate_value_1 = rate_value(currency_1, "compra")
     rate_value_2 = rate_value(currency_2, "venta")
     return (rate_value_1 * amount_to_convert) / rate_value_2
 
 
+# Checks the rates, asks for an amount and shows the conversion
 def currency_converter(currency_1, currency_2):
     try:
         rate_value(currency_1, "compra")
@@ -338,7 +346,7 @@ def currency_converter(currency_1, currency_2):
         input("Press enter to continue...")
         clean_terminal()
 
-
+#Lets the user choose the starting and target currencies
 def currency_conversion():
     while True:
         user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:")
@@ -370,7 +378,7 @@ def currency_conversion():
             clean_terminal()
             break
 
-
+# Shosw the calculators until the user goes back to the main menu
 def calculator_options():
     while True:
         user_input = menu_displayer(CALCULATOR_OPTIONS, "Financial Calculators")
@@ -380,7 +388,7 @@ def calculator_options():
             return
         route_calculator_options(selected_option)
 
-
+# Opens the calculator chosen by the user
 def route_calculator_options(selected_option):
     if selected_option["action"] == "savings":
         savings_calculator()
@@ -391,11 +399,11 @@ def route_calculator_options(selected_option):
     elif selected_option["action"] == "exit":
         return
 
-
+#Compares the cost of paying with the card rate and buying MEP dollars
 def calculate_savings(amount, card_rate, mep_rate):
     return round(amount * (card_rate - mep_rate), 2)
 
-
+#Shows the estimated cost of each payment option and their difference
 def savings_calculator():
     try:
         usd_amount = amount_input("calculate")
@@ -434,14 +442,14 @@ def savings_calculator():
         input("Press enter to continue...")
         clean_terminal()
 
-
+# Calculates the difference from the official rate in pesos and as a percentage
 def calculate_breach(oficial_value, type_value):
     difference = type_value - oficial_value
     gap_percentage = (difference / oficial_value) * 100
 
     return round(gap_percentage, 2), round(difference, 2)
 
-
+# Gets the official rate and the rate the user wants to compare
 def breach_calculator():
 
     while True:
@@ -471,12 +479,12 @@ def breach_calculator():
         except (KeyError, TypeError, ValueError, requests.RequestException):
             print("[i] Could not fetch or process exchange rate data. Please try again.")
 
-
+# Shows the exchange rate gap annd labels it as low, moderate or high
 def print_breach_results(target_name, official_sell, target_sell, gap_percentage, difference_ars):
     clean_terminal()
     print_header(f"EXCHANGE GAP: Official vs. {target_name}")
 
-    # Categorize status based on gap magnitude
+    # Categorizes status based on gap magnitude
     if gap_percentage > 30:
         status = "High"
     elif gap_percentage > 15:
@@ -497,7 +505,7 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     input("\nPress enter to continue...")
     clean_terminal()
 
-
+#Calculates the difference between the buy and sell prices
 def calculate_spread(selected_option):
     currency = get_rate(selected_option)
     currency_buy = rate_value(currency, "compra")
@@ -508,7 +516,7 @@ def calculate_spread(selected_option):
 
     return nominal_spread, percentage_spread, currency_buy, currency_sell
 
-
+# Lets the use rchoose a rate and check its spread
 def buy_sell_spread_calculator():
 
     while True:
@@ -534,6 +542,7 @@ def buy_sell_spread_calculator():
             print("Service temporarily unavailable. Please try again later.")
 
 
+# Shows both prices and the spread in pesos and as a percentage
 def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread, percentage_spread):
     clean_terminal()
     print_header(f"SPREAD CALCULATOR - {currency_name.upper()}")
@@ -551,6 +560,6 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     input("\nPress enter to continue...")
     clean_terminal()
 
-
+#Starts the app only  when this file is run directly
 if __name__ == "__main__":
     main()
