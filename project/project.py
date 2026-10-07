@@ -210,13 +210,11 @@ def iso_format_converter(isostring):
 #Requests exchange rate data from DolarApi
 def get_rate(currency_key):
     url = f"{API_URL}{currency_key.strip().lower()}"
-
     request_json = requests.get(url, timeout=10)
-    request_json.raise_for_status()
 
     #Stops here if the API returns and HTTP error
     request_json.raise_for_status()
-    data = request_json.json
+    data = request_json.json()
 
     # The app needs a dictionary with the exchange rate values
     if not isinstance(data, dict):
