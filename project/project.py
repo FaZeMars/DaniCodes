@@ -26,7 +26,7 @@ CALCULATOR_OPTIONS = [
 
 BREACH_CALCULATOR_MENU = [
     {"id": 1, "name": "Blue Dollar", "route": "dolares/blue"},
-    {"id": 2, "name": "Stoch Market / MEP Dollar", "route": "dolares/bolsa"},
+    {"id": 2, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
     {"id": 3, "name": "Card Dollar", "route": "dolares/tarjeta"},
     {"id": 4, "name": "Back to Financial Calculators", "route": "exit"}
 ]
@@ -35,7 +35,7 @@ SPREAD_CALCULATOR_MENU = [
     {"id": 1, "name": "Blue Dollar", "route": "dolares/blue"},
     {"id": 2, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
     {"id": 3, "name": "Card Dollar", "route": "dolares/tarjeta"},
-    {"id": 4, "name": "Cripto Dollar", "route": "dolares/cripto"},
+    {"id": 4, "name": "Crypto Dollar", "route": "dolares/cripto"},
     {"id": 5, "name": "Euro", "route": "cotizaciones/eur"},
     {"id": 6, "name": "Back to Financial Calculators", "route": "exit"}
 ]
@@ -46,9 +46,9 @@ CURRENCY_DATA_AND_NAME = [
     {"id": 2, "name": "Blue Dollar", "route": "dolares/blue"},
     {"id": 3, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
     {"id": 4, "name": "Card Dollar", "route": "dolares/tarjeta"},
-    {"id": 5, "name": "Cripto Dollar", "route": "dolares/cripto"},
+    {"id": 5, "name": "Crypto Dollar", "route": "dolares/cripto"},
     {"id": 6, "name": "Euro", "route": "cotizaciones/eur"},
-    {"id": 7, "name": "Brasilian Real", "route": "cotizaciones/brl"},
+    {"id": 7, "name": "Brazilian Real", "route": "cotizaciones/brl"},
     {"id": 8, "name": "Chilean Peso", "route": "cotizaciones/clp"},
     {"id": 9, "name": "Uruguayan Peso", "route": "cotizaciones/uyu"},
     {"id": 10, "name": "Back to Main Menu", "route": "exit"},
@@ -113,7 +113,7 @@ def print_welcome():
     print("and exchange gaps.\n")
 
 
-# Shosw th emain menu and gets the selected option
+# Shows the main menu and gets the selected option
 def main_menu():
     clean_terminal()
     user_input = menu_displayer(MAIN_MENU_OPTIONS, "BLUEAPP", None, True)
@@ -486,7 +486,7 @@ def breach_calculator():
             input("Press enter to continue...")
             clean_terminal()
 
-# Shows the exchange rate gap annd labels it as low, moderate or high
+# Shows the exchange rate gap and labels it as low, moderate or high
 def print_breach_results(target_name, official_sell, target_sell, gap_percentage, difference_ars):
     clean_terminal()
     print_header(f"EXCHANGE GAP: Official vs. {target_name}")
@@ -523,7 +523,7 @@ def calculate_spread(selected_option):
 
     return nominal_spread, percentage_spread, currency_buy, currency_sell
 
-# Lets the use rchoose a rate and check its spread
+# Lets the user choose a rate and check its spread
 def buy_sell_spread_calculator():
 
     while True:
@@ -555,7 +555,7 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     print_header(f"SPREAD CALCULATOR - {currency_name.upper()}")
 
     print(f"  Buy Price  (You sell the currency)  : ${compra_rate:,.2f} ARS")
-    print(f"  Sell Price (You buy the currency))  : ${venta_rate:,.2f} ARS")
+    print(f"  Sell Price (You buy the curre))  : ${venta_rate:,.2f} ARS")
     print(f"-" * 51)
     print(f"  NOMINAL SPREAD     : ${nominal_spread:,.2f} ARS")
     print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f}%")
