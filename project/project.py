@@ -265,8 +265,6 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     print(f"  Exchange rate     : 1 {name_1} = {rate:,.2f} {name_2}")
     print(f"  Total to receive  : ${converted:,.2f} {name_2}\n")
     print("-" * 51)
-    print("  [i]Real-time rate fetched from DolarApi.")
-    print("=" * 51 + "\n")
 
     input("Press enter to continue...")
     clean_terminal()
