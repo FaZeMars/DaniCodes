@@ -18,7 +18,7 @@ MAIN_MENU_OPTIONS = [
 
 CALCULATOR_OPTIONS = [
     {"id": 1, "name": "Savings Calculator", "action": "savings"},
-    {"id": 2, "name": "Breach Calculator", "action": "exchange_gap"},
+    {"id": 2, "name": "Exchange Rate Gap Calculator", "action": "exchange_gap"},
     {"id": 3, "name": "Buy/sell spread calculator", "action": "spread"},
     {"id": 4, "name": "Back to Main Menu", "action": "exit"}
 
@@ -136,7 +136,8 @@ def route_main_action(action):
         calculator_options()
 
     elif action["action"] == "exit":
-        sys.exit("Closing the program...\n")
+        print("Closing the program...\n")
+        sys.exit(0)
 
 
 
@@ -553,7 +554,7 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     print_header(f"SPREAD CALCULATOR - {currency_name.upper()}")
 
     print(f"  Buy Price  (You sell the currency)  : ${compra_rate:,.2f} ARS")
-    print(f"  Sell Price (You buy the curre))  : ${venta_rate:,.2f} ARS")
+    print(f"  Sell Price (You buy the currency)  : ${venta_rate:,.2f} ARS")
     print(f"-" * 51)
     print(f"  NOMINAL SPREAD     : ${nominal_spread:,.2f} ARS")
     print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f}%")
