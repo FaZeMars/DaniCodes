@@ -7,6 +7,9 @@ from datetime import datetime, timezone
 
 API_URL = "https://dolarapi.com/v1/"
 
+# Max amount accepted by the app
+MAX_AMOUNT = 1_000_000_000
+
 # Menu options used by the app
 
 MAIN_MENU_OPTIONS = [
@@ -282,7 +285,8 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     print(f"  Target Currency   : {name_2}\n")
     print("-" * 51 + "\n")
     print(f"  Exchange rate     : 1 {name_1} = {rate:,.6f} {name_2}")
-    print(f"  Total to receive  : ${converted:,.2f} {name_2}\n")
+    print(f"  Estimated amount  : ${converted:,.2f} {name_2}\n")
+    print("   Estimated based on published rates. Fees are not included.")
     print("-" * 51)
 
     input("Press enter to continue...")
@@ -315,7 +319,7 @@ def amount_input(input_type):
             if not math.isfinite(amount):
                 raise ValueError
 
-            if amount < 0:
+            if amount < 0 or amount > MAX_AMOUNT:
                 raise ValueError
 
             if input_type == "calculate" and amount == 0:
@@ -326,7 +330,10 @@ def amount_input(input_type):
 
             return amount
         except ValueError:
-            print("Please enter a valid amount")
+            print(f"Enter a finite number from 0 to {MAX_AMOUNT:,}.")
+            print("Use a decimal point and no thousands separators.")
+            if input_type == "calculate":
+                print("For savings, the amount must be greater than zero")
 
 
 # Checks that the exchange rate is a valid positive number
@@ -343,7 +350,12 @@ def rate_value(currency, field):
 def calculate_conversion(currency_1, currency_2, amount_to_convert):
     rate_value_1 = rate_value(currency_1, "compra")
     rate_value_2 = rate_value(currency_2, "venta")
-    return (rate_value_1 * amount_to_convert) / rate_value_2
+    converted = (rate_value_1 * amount_to_convert) / rate_value_2
+
+    if not math.isfinite(converted):
+        raise ValueError("Conversion result is too large")
+
+    return converted
 
 
 # Checks the rates, asks for an amount and shows the conversion
@@ -430,6 +442,10 @@ def savings_calculator():
 
         price_card = usd_amount * card_rate
         price_mep = usd_amount * mep_rate
+
+        if not math.isfinte(price_card) or not math.isfinite(price_mep):
+            raise ValueError("Payment amount is too large")
+
         savings = calculate_savings(usd_amount, card_rate, mep_rate)
 
         print_header("USD SAVINGS CALCULATOR")
