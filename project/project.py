@@ -124,7 +124,7 @@ def print_header(title):
 
 # Explains what the app can do
 def print_welcome():
-    print("Blue app is a financial tool that fetches  published exchange rates")
+    print("BlueApp is a financial tool that fetches  published exchange rates")
     print("from DolarApi to convert currencies and calculate spreads, savings")
     print("and exchange gaps.\n")
 
