@@ -458,8 +458,7 @@ def savings_calculator():
             percentage = (savings / price_card) * 100
             print("  >>> RECOMMENDED OPTION: DÓLAR MEP <<<")
             print(f"  Estimated savings: ${savings:,.2f} ARS ({percentage:.1f}% off)\n")
-            print("  [Tip] Pay your credit card statement in USD before the due")
-            print("        date using MEP dollars to avoid ARS tax perception\n")
+
 
         elif savings < 0:
             print("  >>> RECOMMENDED OPTION: DIRECT CARD PAYMENT <<<")
@@ -467,6 +466,8 @@ def savings_calculator():
             print("  [Tip] Card rate is currently cheaper than buying MEP.")
         else:
             print("  Both options cost the same.")
+
+        print("Estimate based on published rates. Fees are not included.")
 
         input("Press enter to continue...")
         clean_terminal()
