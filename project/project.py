@@ -589,8 +589,8 @@ def print_spread_results(currency_name, compra_rate, venta_rate, nominal_spread,
     print(f"  NOMINAL SPREAD     : ${nominal_spread:,.2f} ARS")
     print(f"  PERCENTAGE MARGIN  : {percentage_spread:.2f}%")
     print("-" * 51)
-    print("  [i] The spread represents the fee or margin retained")
-    print("      by intermediaries in a round trip transaction.")
+    print("  [i] The spread is the difference between buy and sell prices.")
+    print("      The percentage is calculated using the sell price.")
     print("=" * 51)
 
     input("\nPress enter to continue...")
