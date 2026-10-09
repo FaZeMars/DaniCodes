@@ -34,10 +34,9 @@ BREACH_CALCULATOR_MENU = [
 SPREAD_CALCULATOR_MENU = [
     {"id": 1, "name": "Blue Dollar", "route": "dolares/blue"},
     {"id": 2, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
-    {"id": 3, "name": "Card Dollar", "route": "dolares/tarjeta"},
-    {"id": 4, "name": "Crypto Dollar", "route": "dolares/cripto"},
-    {"id": 5, "name": "Euro", "route": "cotizaciones/eur"},
-    {"id": 6, "name": "Back to Financial Calculators", "route": "exit"}
+    {"id": 3, "name": "Crypto Dollar", "route": "dolares/cripto"},
+    {"id": 4, "name": "Euro", "route": "cotizaciones/eur"},
+    {"id": 5, "name": "Back to Financial Calculators", "route": "exit"}
 ]
 
 
@@ -54,7 +53,7 @@ CURRENCY_DATA_AND_NAME = [
     {"id": 10, "name": "Back to Main Menu", "route": "exit"},
 ]
 
-CURRENCY_DATA_AND_NAME = [
+CONVERSION_MENU = [
     {"id": 1, "name": "Official Dollar", "route": "dolares/oficial"},
     {"id": 2, "name": "Blue Dollar", "route": "dolares/blue"},
     {"id": 3, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
@@ -367,13 +366,13 @@ def currency_converter(currency_1, currency_2):
 #Lets the user choose the starting and target currencies
 def currency_conversion():
     while True:
-        user_input_1 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert from:")
-        selected_currency_1 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_1)
+        user_input_1 = menu_displayer(CONVERSION_MENU, "Currency to convert from:")
+        selected_currency_1 = menu_option_matcher(CONVERSION_MENU, user_input_1)
         if not selected_currency_1 or selected_currency_1["route"] == "exit":
             break
 
-        user_input_2 = menu_displayer(CURRENCY_DATA_AND_NAME, "Currency to convert to:\n")
-        selected_currency_2 = menu_option_matcher(CURRENCY_DATA_AND_NAME, user_input_2)
+        user_input_2 = menu_displayer(CONVERSION_MENU, "Currency to convert to:\n")
+        selected_currency_2 = menu_option_matcher(CONVERSION_MENU, user_input_2)
         if not selected_currency_2 or selected_currency_2["route"] == "exit":
             break
 
