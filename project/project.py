@@ -521,9 +521,11 @@ def print_breach_results(target_name, official_sell, target_sell, gap_percentage
     print_header(f"EXCHANGE GAP: Official vs. {target_name}")
 
     # Categorizes status based on gap magnitude
-    if gap_percentage > 30:
+    gap_size = abs(gap_percentage)
+
+    if gap_size > 30:
         status = "High"
-    elif gap_percentage > 15:
+    elif gap_size > 15:
         status = "Moderate"
     else:
         status = "Low"
