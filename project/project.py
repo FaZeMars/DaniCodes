@@ -124,7 +124,7 @@ def print_header(title):
 
 # Explains what the app can do
 def print_welcome():
-    print("Blue app is a financial tool that fetches real-time published exchange rates")
+    print("Blue app is a financial tool that fetches  published exchange rates")
     print("from DolarApi to convert currencies and calculate spreads, savings")
     print("and exchange gaps.\n")
 
@@ -140,7 +140,7 @@ def main_menu():
     route_main_action(selected_option)
 
 
-# Finds the menu option that matches the user's choice
+# Opens the feature chosen in the main menu
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
@@ -157,7 +157,7 @@ def route_main_action(action):
 
 
 
-    #Finds the menu option that matches the user's choice
+# Finds the menu option that matches the user's choice
 def menu_option_matcher(valid_menu, user_input_):
     for opt in valid_menu:
         if str(opt["id"]) == user_input_:
@@ -229,7 +229,7 @@ def get_rate(currency_key):
     url = f"{API_URL}{currency_key.strip().lower()}"
     request_json = requests.get(url, timeout=10)
 
-    #Stops here if the API returns and HTTP error
+    #Stops here if the API returns an HTTP error
     request_json.raise_for_status()
     data = request_json.json()
 
@@ -285,8 +285,8 @@ def print_converted_currency_value(converted, currency_1, currency_2, amount_to_
     print(f"  Target Currency   : {name_2}\n")
     print("-" * 51 + "\n")
     print(f"  Exchange rate     : 1 {name_1} = {rate:,.6f} {name_2}")
-    print(f"  Estimated amount  : ${converted:,.2f} {name_2}\n")
-    print("   Estimated based on published rates. Fees are not included.")
+    print(f"  Estimated amount  : {converted:,.2f} {name_2}\n")
+    print("   Estimate based on published rates. Fees are not included.")
     print("-" * 51)
 
     input("Press enter to continue...")
@@ -443,7 +443,7 @@ def savings_calculator():
         price_card = usd_amount * card_rate
         price_mep = usd_amount * mep_rate
 
-        if not math.isfinte(price_card) or not math.isfinite(price_mep):
+        if not math.isfinite(price_card) or not math.isfinite(price_mep):
             raise ValueError("Payment amount is too large")
 
         savings = calculate_savings(usd_amount, card_rate, mep_rate)
