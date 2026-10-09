@@ -458,7 +458,7 @@ def breach_calculator():
 
     while True:
         user_input = menu_displayer(BREACH_CALCULATOR_MENU,
-                                    "Breach calculation Options:", "vs Dólar Oficial")
+                                    "Exchange Rate Gap calculation Options:", "vs Dólar Oficial")
         selected_option = menu_option_matcher(BREACH_CALCULATOR_MENU, user_input)
 
         if not selected_option or selected_option["route"] == "exit":
