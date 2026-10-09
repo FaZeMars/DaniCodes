@@ -124,7 +124,7 @@ def print_header(title):
 
 # Explains what the app can do
 def print_welcome():
-    print("Blue app is a financial tool that fetches real-time exchange rates")
+    print("Blue app is a financial tool that fetches real-time published exchange rates")
     print("from DolarApi to convert currencies and calculate spreads, savings")
     print("and exchange gaps.\n")
 
@@ -140,7 +140,7 @@ def main_menu():
     route_main_action(selected_option)
 
 
-# Opens the feature chosen in the main menu
+# Finds the menu option that matches the user's choice
 def route_main_action(action):
     if action["action"] == "view_rates":
         current_currency_value()
@@ -407,7 +407,7 @@ def currency_conversion():
             clean_terminal()
             break
 
-# Shosw the calculators until the user goes back to the main menu
+# Shows the calculators until the user goes back to the main menu
 def calculator_options():
     while True:
         user_input = menu_displayer(CALCULATOR_OPTIONS, "Financial Calculators")
@@ -576,6 +576,8 @@ def buy_sell_spread_calculator():
 
         except (KeyError, TypeError, ValueError, requests.RequestException):
             print("Service temporarily unavailable. Please try again later.")
+            input("Press enter to continue...")
+            clean_terminal()
 
 
 # Shows both prices and the spread in pesos and as a percentage
