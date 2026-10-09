@@ -54,6 +54,20 @@ CURRENCY_DATA_AND_NAME = [
     {"id": 10, "name": "Back to Main Menu", "route": "exit"},
 ]
 
+CURRENCY_DATA_AND_NAME = [
+    {"id": 1, "name": "Official Dollar", "route": "dolares/oficial"},
+    {"id": 2, "name": "Blue Dollar", "route": "dolares/blue"},
+    {"id": 3, "name": "Stock Market / MEP Dollar", "route": "dolares/bolsa"},
+    {"id": 4, "name": "Crypto Dollar", "route": "dolares/cripto"},
+    {"id": 5, "name": "Euro", "route": "cotizaciones/eur"},
+    {"id": 6, "name": "Brazilian Real", "route": "cotizaciones/brl"},
+    {"id": 7, "name": "Chilean Peso", "route": "cotizaciones/clp"},
+    {"id": 8, "name": "Uruguayan Peso", "route": "cotizaciones/uyu"},
+    {"id": 9, "name": "Back to Main Menu", "route": "exit"},
+]
+
+
+
 
 # Clears the screen before showing another menu
 def clean_terminal():
