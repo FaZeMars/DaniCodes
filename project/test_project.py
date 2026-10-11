@@ -68,12 +68,8 @@ def test_calculate_savings():
     assert project.calculate_savings(100, 1200, 1200) == 0
     assert project.calculate_savings(3, 100.123, 100) == 0.37
 
-
-
-
-
-
-
-
-
-
+def test_calculate_breach():
+    assert project.calculate_breach(1000, 1200) == (20, 200)
+    assert project.calculate_breach(1000, 800) == (-20, -200)
+    assert project.calculate_breach(1000, 1000) == (0, 0)
+    assert project.calculate_breach(3, 4) == (33.33, 1)
