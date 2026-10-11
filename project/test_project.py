@@ -57,7 +57,16 @@ def test_print_currency_value(capsys):
 
 def test_calculate_conversion():
     dollars = {"compra": 1000, "venta": 1100}
-    
+    euros = {"compra": 1200, "venta": 1250}
+
+    assert project.calculate_conversion(dollars,euros, 100) == 80
+    assert project.calculate_conversion(dollars, euros, 0) == 0
+    assert project.calculate_conversion(dollars, euros, 50) == 40
+def test_calculate_savings():
+    assert project.calculate_savings(100, 1500, 1200) == 30000
+    assert project.calculate_savings(100, 1200, 1500) == -30000
+    assert project.calculate_savings(100, 1200, 1200) == 0
+    assert project.calculate_savings(3, 100.123, 100) == 0.37
 
 
 
