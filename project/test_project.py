@@ -3,7 +3,7 @@ from datetime import timezone, datetime
 import project
 
 
-def test_iso_formtat_converter():
+def test_iso_format_converter():
     now_iso = datetime.now(timezone.utc).isoformat()
     assert project.iso_format_converter(now_iso) == "Just now"
 
@@ -15,6 +15,7 @@ def test_menu_option_matcher():
 
     assert project.menu_option_matcher(mock_menu, "1")["action"] == "view_rates"
     assert project.menu_option_matcher(mock_menu, "2")["action"] == "exit"
+    assert project.menu_option_matcher(mock_menu, "3") is none
 
 
 def test_parse_currency_payload():
